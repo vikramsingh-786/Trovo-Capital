@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit",
+      "Write"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // .tool_response.filePath' | { read -r f; if [[ \"$f\" =~ \\.(ts|tsx|js|jsx|mjs|json|css)$ ]]; then npx eslint --fix \"$f\" 2>/dev/null || true; fi; }",
+            "statusMessage": "Auto-formatting...",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

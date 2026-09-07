@@ -1,1 +1,272 @@
 @import "tailwindcss";
+
+/* ===========================================================================
+   TROVE CAPITAL PARTNERS — DESIGN SYSTEM
+   Light / ivory editorial. Warm neutrals, near-black ink, one bronze accent.
+
+   Contrast ratios in these comments are measured (WCAG 2.1 relative
+   luminance). They are GROUND-SPECIFIC: unless noted otherwise the figure is
+   against --color-ivory-50, the page ground. Where a token is meant for a
+   tinted surface, the ratio against that surface is given instead.
+   Thresholds: 4.5 = AA body text, 3.0 = AA large text / non-text UI, 7.0 = AAA.
+   =========================================================================== */
+
+@theme {
+  /* --- Surfaces: warm ivory, never pure white --------------------------- */
+  /* The 50 -> 100 step is 1.083:1 — deliberately perceptible, so alternating
+     sections read as bands rather than as accidental variation. */
+  --color-ivory-50: oklch(0.982 0.006 85); /* #FBF9F5  page ground          */
+  --color-ivory-100: oklch(0.955 0.01 85); /* #F3F0E9  alternating band     */
+  --color-ivory-200: oklch(0.93 0.012 85); /* #EBE7DF  inset / hover fill   */
+  --color-ivory-300: oklch(0.895 0.014 85); /* #E1DCD2  hairline rules      */
+
+  /* --- Ink: warm near-black, never pure black --------------------------- */
+  --color-ink-900: oklch(0.205 0.012 60); /* #1B1612  17.03 : AAA           */
+  --color-ink-800: oklch(0.3 0.012 60); /* #322C28  12.98 : AAA             */
+  --color-ink-700: oklch(0.4 0.011 60); /* #4C4642   8.77 : AAA             */
+  --color-ink-600: oklch(0.5 0.01 60); /* #68625E   5.71 : AA               */
+  /* 400/500 are non-text on ivory (3.16 / 4.72). ink-400 IS text-safe on the
+     inverted ground, where it measures 5.39 against ink-900. */
+  --color-ink-500: oklch(0.545 0.01 60); /* #756F6A                         */
+  --color-ink-400: oklch(0.643 0.009 60); /* #918C88                        */
+
+  /* --- Accent: single muted bronze. Restraint is the point. ------------- */
+  /* 700 for accent text on the page ground; 600 is darkened enough to hold
+     AA on every ivory surface (5.46 / 5.04 / 4.68); 500 is non-text. */
+  --color-bronze-700: oklch(0.47 0.075 65); /* #78512A  6.60 : AA           */
+  --color-bronze-600: oklch(0.515 0.085 65); /* #895D2E  5.46 : AA          */
+  /* Non-text on ivory (3.13), but text-safe on the inverted ground (5.44). */
+  --color-bronze-500: oklch(0.65 0.09 65); /* #B58452                        */
+
+  /* --- Semantic aliases -------------------------------------------------
+     Components use these, never the raw steps above. Every alias below is
+     text-safe on the ground it is named for.                              */
+  --color-background: var(--color-ivory-50);
+  --color-surface: var(--color-ivory-100);
+  --color-surface-sunken: var(--color-ivory-200);
+  --color-foreground: var(--color-ink-900);
+  --color-foreground-secondary: var(--color-ink-700);
+  /* AA on all three ivory surfaces: 5.71 / 5.28 / 4.89 */
+  --color-foreground-muted: var(--color-ink-600);
+  --color-foreground-on-tint: var(--color-ink-800);
+  --color-border: var(--color-ivory-300);
+  /* 3.16 on the page ground, but 2.92 / 2.71 on ivory-100 / ivory-200 — so it
+     only satisfies non-text contrast (1.4.11) for interactive boundaries drawn
+     directly on the background. On a tint, use a darker step. */
+  --color-border-strong: var(--color-ink-400);
+  --color-accent: var(--color-bronze-700);
+  --color-accent-on-tint: var(--color-bronze-600);
+  --color-accent-quiet: var(--color-bronze-500);
+
+  /* Inverted ground (closing CTA, footer). Ratios here are against
+     --color-inverse, not the page ground. */
+  --color-inverse: var(--color-ink-900);
+  --color-inverse-foreground: var(--color-ivory-50); /* 17.03 : AAA         */
+  --color-inverse-foreground-muted: var(--color-ink-400); /*  5.39 : AA     */
+  --color-inverse-border: var(--color-ink-700); /*  1.94 : hairline         */
+
+  /* --- Responsive type scale -------------------------------------------
+     Fluid via clamp(). The middle term keeps a rem component so text-only
+     zoom still changes the size (a pure-vw font-size would not).          */
+
+  --text-eyebrow: 0.6875rem;
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.14em;
+  --text-eyebrow--font-weight: 500;
+
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.5;
+
+  /* Body copy is tuned like every other step rather than inheriting
+     Tailwind's stock 1rem/1.5 — it is the size readers spend longest in. */
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.65;
+
+  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.3125rem);
+  --text-lead--line-height: 1.55;
+  --text-lead--letter-spacing: -0.005em;
+
+  --text-title-sm: clamp(1.125rem, 1.05rem + 0.35vw, 1.375rem);
+  --text-title-sm--line-height: 1.3;
+  --text-title-sm--letter-spacing: -0.008em;
+
+  --text-title: clamp(1.375rem, 1.2rem + 0.7vw, 1.875rem);
+  --text-title--line-height: 1.22;
+  --text-title--letter-spacing: -0.012em;
+
+  --text-display-sm: clamp(1.75rem, 1.5rem + 1.1vw, 2.5rem);
+  --text-display-sm--line-height: 1.14;
+  --text-display-sm--letter-spacing: -0.015em;
+
+  --text-display-md: clamp(2rem, 1.72rem + 1.6vw, 3.25rem);
+  --text-display-md--line-height: 1.08;
+  --text-display-md--letter-spacing: -0.019em;
+
+  --text-display-lg: clamp(2.25rem, 1.7rem + 2.75vw, 4.5rem);
+  --text-display-lg--line-height: 1.05;
+  --text-display-lg--letter-spacing: -0.022em;
+
+  --text-display-xl: clamp(2.75rem, 1.95rem + 4vw, 6.5rem);
+  --text-display-xl--line-height: 1.02;
+  --text-display-xl--letter-spacing: -0.028em;
+
+  /* --- Spacing rhythm ---------------------------------------------------
+     Tailwind's 0.25rem step scale is kept. These add the page-level rhythm
+     so sections stay consistent without repeating clamp() everywhere.     */
+  --spacing-gutter: clamp(1.25rem, 3.5vw, 2.75rem);
+  --spacing-section: clamp(4.5rem, 9vw, 8.5rem);
+  --spacing-section-tight: clamp(3rem, 6vw, 5.5rem);
+  /* Shared by the sticky header's height and html's scroll-padding-top, so
+     anchored sections cannot drift out of sync with the nav. */
+  --spacing-header: 6rem;
+
+  /* --- Containers -------------------------------------------------------
+     Named `measure` rather than `prose`: Tailwind ships a static
+     `max-w-prose` (65ch) that would shadow a --container-prose token. */
+  --container-shell: 84rem; /* standard page frame                         */
+  --container-wide: 96rem; /* full-bleed-ish editorial spreads             */
+  --container-measure: 42rem; /* running text                              */
+  --container-narrow: 32rem;
+
+  /* --- Radii: minimal. Sharp corners read as editorial, not SaaS. ------- */
+  --radius-card: 0.1875rem;
+  --radius-media: 0.25rem;
+  --radius-pill: 9999px;
+
+  /* --- Motion ----------------------------------------------------------
+     `--transition-duration-*` is the namespace Tailwind reads for
+     `duration-*` utilities; `--duration-*` would generate nothing.        */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-standard: cubic-bezier(0.4, 0.14, 0.3, 1);
+  --transition-duration-swift: 160ms;
+  --transition-duration-base: 240ms;
+  --transition-duration-slow: 480ms;
+}
+
+/* `inline` because these resolve CSS variables that next/font defines on
+   <html>; it keeps the utility referencing the font var directly, so it also
+   keeps working if the font class ever moves off :root. */
+@theme inline {
+  --font-sans: var(--font-schibsted-grotesk), ui-sans-serif, system-ui,
+    -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-newsreader), ui-serif, Georgia, "Times New Roman",
+    serif;
+}
+
+/* ===========================================================================
+   CUSTOM UTILITIES
+   =========================================================================== */
+
+/* The page frame. One utility instead of repeating mx-auto/max-w/px on every
+   section. */
+@utility shell {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-shell);
+  padding-inline: var(--spacing-gutter);
+}
+
+/* The inverted band (closing CTA, footer). Bundled with the ground it needs so
+   a focus ring inside it can never end up near-black on near-black.
+
+   BANDS AND CONTAINERS ONLY. Do not put this on a dark button that sits on the
+   ivory ground: it would swap the ring to ivory, and `outline-offset` draws the
+   ring OUTSIDE the element — ivory on ivory, 1:1. A dark button on light ground
+   wants `bg-inverse text-inverse-foreground` and the default near-black ring
+   (17.03 against the page ground). Inside this band, buttons inherit the ivory
+   ring correctly. */
+@utility inverse-band {
+  background-color: var(--color-inverse);
+  color: var(--color-inverse-foreground);
+  --focus-ring: var(--color-inverse-foreground);
+}
+
+/* Small uppercase label used above headlines. */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--text-eyebrow--font-weight);
+  line-height: var(--text-eyebrow--line-height);
+  letter-spacing: var(--text-eyebrow--letter-spacing);
+  text-transform: uppercase;
+}
+
+/* ===========================================================================
+   BASE LAYER
+   =========================================================================== */
+
+@layer base {
+  html {
+    scroll-padding-top: var(--spacing-header);
+  }
+
+  /* Smooth scrolling only for users who have not asked for less motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    /* Set here, not only via the `text-base` utility, so an unclassed <p>
+       inherits the tuned body size instead of preflight's 1rem/1.5. */
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    /* Allow a synthesised oblique (no italic face is loaded yet — see the
+       note in layout.tsx) but never a synthesised bold: both families carry
+       a real weight axis. */
+    font-synthesis: style;
+  }
+
+  /* Headlines are the editorial serif by default; opt out with `font-sans`.
+     Note they inherit their SIZE from Tailwind's preflight (1rem), so every
+     heading needs an explicit `text-*` class. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible, high-contrast focus ring. `--focus-ring` lets an inverted
+     container swap it for a light one; the fallback is the 17:1 near-black. */
+  :focus-visible {
+    outline: 2px solid var(--focus-ring, var(--color-foreground));
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-quiet);
+    color: var(--color-ink-900);
+  }
+}
+
+/* ===========================================================================
+   REDUCED MOTION
+   Global safety net: honours the OS setting even if a component forgets to.
+   Unlayered on purpose, so it outranks every @layer above.
+   =========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: -1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}

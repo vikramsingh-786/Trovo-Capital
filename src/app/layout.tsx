@@ -10,6 +10,14 @@ import "./globals.css";
    measured on this project it added 73.7 KB (+127%) to the preloaded latin
    file — not worth it on the critical path for a refinement at this scale.
 
+   Newsreader is pinned to the static 400 instance rather than its variable
+   file: the serif is only ever set at 400 (globals.css sets it explicitly on
+   h1-h6 and nothing asks the serif for another weight), and the static cut is
+   22.0 KB against 56.8 KB for the variable range 200-800. If a heading ever
+   needs a different serif weight, drop the `weight` option to restore the full
+   axis. Schibsted Grotesk stays variable — asking it for specific weights
+   resolved to the same file, so pinning it would only cap future weights.
+
    NO ITALIC FACE IS LOADED. Measured, adding `style: ["normal","italic"]`
    here preloads the italic too: +64.5 KB (105 KB -> 169 KB critical). Until a
    real pull quote needs it (founder-reviews phase), `font-synthesis: style`
@@ -18,6 +26,7 @@ import "./globals.css";
    instance with `preload: false` so the italic loads only where used. */
 const newsreader = Newsreader({
   subsets: ["latin"],
+  weight: ["400"],
   display: "swap",
   variable: "--font-newsreader",
 });

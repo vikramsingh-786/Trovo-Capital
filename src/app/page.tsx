@@ -27,11 +27,14 @@ export default function Home() {
       <FinalCta />
 
       {/* Internal link, kept out of the Hero so that section carries approved
-          copy only. Removed with the styleguide route at deployment prep. */}
+          copy only. `prefetch={false}` because the default would pull this
+          dev-only route's RSC payload (~140 KB) on the production page.
+          Removed with the styleguide route at deployment prep. */}
       <div className="border-t border-border">
         <p className="shell py-8 text-caption text-foreground-muted">
           <Link
             href="/styleguide"
+            prefetch={false}
             className="underline decoration-from-font underline-offset-4 transition-colors duration-swift ease-editorial hover:text-accent"
           >
             Design system reference

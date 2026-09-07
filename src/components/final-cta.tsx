@@ -23,15 +23,15 @@ export function FinalCta() {
           <span className="h-px flex-1 bg-border" />
         </div>
 
-        <h2 className="mt-10 max-w-[22ch] text-display-lg md:mt-14">
+        <h2 className="reveal mt-10 max-w-[22ch] text-display-lg md:mt-14">
           Building a company ready to scale?
         </h2>
 
-        <p className="mt-6 max-w-measure text-lead text-foreground-secondary">
+        <p className="reveal mt-6 max-w-measure text-lead text-foreground-secondary">
           Connect with Trove Capital Partners.
         </p>
 
-        <p className="mt-10 md:mt-12">
+        <p className="reveal mt-10 md:mt-12">
           <a
             href={`mailto:${EMAIL}`}
             className="font-sans text-title text-foreground underline decoration-from-font underline-offset-[0.3em] transition-colors duration-swift ease-editorial hover:text-accent"

@@ -144,6 +144,10 @@
   --animate-rise: rise var(--transition-duration-slow) var(--ease-editorial)
     both;
 
+  /* Used when a filtered list is replaced, so the swap reads as a change of
+     content rather than a flicker. */
+  --animate-fade: fade var(--transition-duration-base) var(--ease-standard) both;
+
   @keyframes rise {
     from {
       opacity: 0;
@@ -152,6 +156,15 @@
     to {
       opacity: 1;
       translate: 0 0;
+    }
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 
@@ -183,12 +196,36 @@
   width: 100%;
   max-width: var(--container-shell);
   padding-inline: var(--spacing-gutter);
+
+  /* Past ~1920px an 84rem column leaves ~300px of dead margin each side. One
+     step wider keeps the composition intentional without touching any
+     section's internal grid. */
+  @media (width >= 120rem) {
+    max-width: var(--container-wide);
+  }
 }
 
 /* The inverted band (closing CTA, footer), bundled with the ground it needs. */
 @utility inverse-band {
   background-color: var(--color-inverse);
   color: var(--color-inverse-foreground);
+}
+
+/* Reveal a block as it scrolls into view.
+   Driven entirely by CSS: `animation-timeline: view()` ties the same `rise`
+   keyframes the Hero uses to the element's own position in the viewport, so
+   there is no observer, no client component and nothing to hydrate. Guarded by
+   @supports, so a browser without scroll-driven animations — or a visitor with
+   JavaScript disabled, which makes no difference here — simply sees the content
+   in place with no animation at all. */
+@utility reveal {
+  @supports (animation-timeline: view()) {
+    animation: rise var(--transition-duration-slow) var(--ease-editorial) both;
+    animation-timeline: view();
+    /* Finish well before the element is centred, so reading is never waiting
+       on motion. */
+    animation-range: entry 8% cover 26%;
+  }
 }
 
 /* Small uppercase label used above headlines. */

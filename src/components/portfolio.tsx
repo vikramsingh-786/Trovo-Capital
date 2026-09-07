@@ -26,7 +26,7 @@ export function Portfolio() {
         <span className="h-px flex-1 bg-border" />
       </div>
 
-      <div className="mt-10 grid gap-x-8 gap-y-6 md:mt-14 md:grid-cols-12 md:gap-y-0">
+      <div className="reveal mt-10 grid gap-x-8 gap-y-6 md:mt-14 md:grid-cols-12 md:gap-y-0">
         <p className="eyebrow text-accent md:col-span-3 md:pt-0.5">Portfolio</p>
         <h2 className="text-display-md md:col-span-9 md:col-start-4">
           The company we keep.

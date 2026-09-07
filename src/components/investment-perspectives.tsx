@@ -31,7 +31,7 @@ export function InvestmentPerspectives() {
         {perspectives.map((perspective) => (
           <li
             key={perspective.marker}
-            className="border-b border-border py-10 last:border-b-0 md:py-14"
+            className="reveal border-b border-border py-10 last:border-b-0 md:py-14"
           >
             <div className="grid gap-x-8 gap-y-4 lg:grid-cols-12">
               {/* `lg:pt-0.5` drops the marker's cap onto the title's cap line.

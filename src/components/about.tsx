@@ -25,7 +25,7 @@ export function About() {
         <span className="h-px flex-1 bg-border" />
       </div>
 
-      <div className="mt-10 grid gap-x-8 gap-y-6 md:mt-14 lg:grid-cols-12 lg:gap-y-0">
+      <div className="reveal mt-10 grid gap-x-8 gap-y-6 md:mt-14 lg:grid-cols-12 lg:gap-y-0">
         {/* The rail. The label sets at 0.6875rem, so top-aligning it with a
             ~52px heading would leave it above the heading's cap line;
             `lg:pt-0.5` drops it onto that line. Derived from font metrics

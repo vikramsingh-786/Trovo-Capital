@@ -72,7 +72,7 @@ export function PortfolioLedger() {
         </div>
       )}
 
-      <ul>
+      <ul key={active} className="animate-fade">
         {visible.map((company) => (
           <li key={company.name} className="border-b border-border last:border-b-0">
             {/* The three-column split engages at `md`, not `lg`. Stacked rows
@@ -98,7 +98,7 @@ export function PortfolioLedger() {
                 alt=""
                 width={company.logo.width}
                 height={company.logo.height}
-                className="size-12 rounded-card border border-border bg-surface object-contain md:col-span-3 md:size-14"
+                className="size-12 rounded-card border border-border bg-surface object-contain transition-colors duration-swift ease-standard group-hover:border-border-strong md:col-span-3 md:size-14"
               />
 
               <h3 className="text-title-sm text-foreground transition-colors duration-swift ease-standard group-hover:text-accent md:col-span-4 md:col-start-4">

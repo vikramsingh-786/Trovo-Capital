@@ -30,7 +30,7 @@ export function FounderReviews() {
 
       <ul className="mt-12 grid items-start gap-x-8 gap-y-14 md:mt-14 lg:grid-cols-2 lg:gap-x-16">
         {founderReviews.map((review) => (
-          <li key={review.name}>
+          <li key={review.name} className="reveal">
             <blockquote>
               <p className="max-w-measure text-title text-foreground">
                 {review.quote}

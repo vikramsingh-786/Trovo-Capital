@@ -38,7 +38,7 @@ export function Team() {
 
       <ul className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
         {teamMembers.map((member) => (
-          <li key={member.name} className="border-t border-border pt-6">
+          <li key={member.name} className="reveal border-t border-border pt-6">
             {member.image && (
               <Image
                 src={member.image.src}

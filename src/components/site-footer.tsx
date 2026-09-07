@@ -19,7 +19,7 @@ const EMAIL = "trovecapital@partners.co";
 export function SiteFooter() {
   return (
     <footer className="border-t border-border">
-      <div className="shell flex flex-col gap-10 py-section-tight md:flex-row md:items-center md:justify-between md:gap-8">
+      <div className="shell flex flex-col gap-12 py-section-tight md:flex-row md:items-center md:justify-between md:gap-8">
         <Wordmark priority={false} />
 
         <nav>
@@ -28,7 +28,7 @@ export function SiteFooter() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="eyebrow text-foreground-muted transition-colors duration-swift ease-standard hover:text-foreground"
+                  className="eyebrow text-foreground-muted transition-colors duration-base ease-standard hover:text-foreground"
                 >
                   {item.label}
                 </a>
@@ -39,7 +39,7 @@ export function SiteFooter() {
 
         <a
           href={`mailto:${EMAIL}`}
-          className="text-caption text-foreground-muted transition-colors duration-swift ease-standard hover:text-accent"
+          className="text-caption text-foreground-muted transition-colors duration-base ease-standard hover:text-accent"
         >
           {EMAIL}
         </a>

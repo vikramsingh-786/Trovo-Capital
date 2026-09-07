@@ -31,7 +31,7 @@ export function InvestmentPerspectives() {
         {perspectives.map((perspective) => (
           <li
             key={perspective.marker}
-            className="reveal border-b border-border py-10 last:border-b-0 md:py-14"
+            className="reveal border-b border-border py-12 last:border-b-0 md:py-16 lg:py-18"
           >
             <div className="grid gap-x-8 gap-y-4 lg:grid-cols-12">
               {/* `lg:pt-0.5` drops the marker's cap onto the title's cap line.
@@ -42,7 +42,7 @@ export function InvestmentPerspectives() {
             sits 4.6-5.3px below its own, so ~2px closes the gap at every width
             in the clamp range. Browsers vary slightly in how they derive
             half-leading, so treat it as accurate to about a pixel. */}
-              <p className="eyebrow text-accent tabular-nums lg:col-span-3 lg:pt-0.5">
+              <p className="eyebrow text-accent tabular-nums font-medium tracking-tight lg:col-span-3 lg:pt-0.5">
                 {perspective.marker}
               </p>
 
@@ -53,8 +53,8 @@ export function InvestmentPerspectives() {
                   title column strands a single word ("...runs / deep") at
                   1024px but holds every title on one line from 1280px up. */}
               <div className="lg:col-span-9 lg:col-start-4 xl:grid xl:grid-cols-9 xl:gap-x-8">
-                <h2 className="text-title xl:col-span-4">{perspective.title}</h2>
-                <p className="mt-4 max-w-measure text-base text-foreground-muted xl:col-span-5 xl:mt-0">
+                <h2 className="text-title font-display xl:col-span-4">{perspective.title}</h2>
+                <p className="mt-5 max-w-measure text-base text-foreground-muted xl:col-span-5 xl:mt-0">
                   {perspective.description}
                 </p>
               </div>

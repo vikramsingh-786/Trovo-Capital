@@ -22,13 +22,13 @@ export function Portfolio() {
   return (
     <section id="portfolio" className="shell py-section">
       <div className="flex items-center">
-        <span className="h-px w-12 bg-accent md:w-16" />
+        <span className="h-px w-12 bg-accent md:w-16 lg:w-20" />
         <span className="h-px flex-1 bg-border" />
       </div>
 
       <div className="reveal mt-10 grid gap-x-8 gap-y-6 md:mt-14 md:grid-cols-12 md:gap-y-0">
         <p className="eyebrow text-accent md:col-span-3 md:pt-0.5">Portfolio</p>
-        <h2 className="text-display-md md:col-span-9 md:col-start-4">
+        <h2 className="text-display-md font-display md:col-span-9 md:col-start-4">
           The company we keep.
         </h2>
       </div>

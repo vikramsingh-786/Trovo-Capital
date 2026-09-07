@@ -29,12 +29,12 @@ export function SiteNav() {
         <Wordmark />
 
         <nav className="hidden md:block">
-          <ul className="flex items-center gap-8 lg:gap-11">
+          <ul className="flex items-center gap-8 lg:gap-12">
             {navItems.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="eyebrow relative text-foreground-muted transition-colors duration-swift ease-standard after:absolute after:-bottom-2 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-swift after:ease-editorial hover:text-foreground hover:after:scale-x-100 active:text-accent"
+                  className="eyebrow relative text-foreground-muted transition-colors duration-base ease-standard after:absolute after:-bottom-2.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-base after:ease-editorial hover:text-foreground hover:after:scale-x-100 active:text-accent"
                 >
                   {item.label}
                 </a>

@@ -27,10 +27,10 @@ export function About() {
 
       <div className="reveal mt-10 grid gap-x-8 gap-y-6 md:mt-14 lg:grid-cols-12 lg:gap-y-0">
         {/* The rail. The label sets at 0.6875rem, so top-aligning it with a
-            ~52px heading would leave it above the heading's cap line;
+            ~52px heading would leave it above the heading’s cap line;
             `lg:pt-0.5` drops it onto that line. Derived from font metrics
-            rather than eyeballed: Newsreader's cap sits 4.6-5.3px below its
-            line-box top across the clamp range and Schibsted Grotesk's marker
+            rather than eyeballed: Newsreader’s cap sits 4.6-5.3px below its
+            line-box top across the clamp range and Schibsted Grotesk’s marker
             cap sits 2.82px below its own, leaving ~2px to close. Browsers
             differ slightly in how they derive half-leading, so treat it as
             accurate to about a pixel. */}
@@ -44,18 +44,18 @@ export function About() {
               the longer line fits its column at every width from 768px (423px
               of 714px) to 2560px (552px of 934px). Below `md` they wrap
               naturally — forcing the break there would overflow. */}
-          <h2 className="text-display-md">
+          <h2 className="text-display-md font-display">
             <span className="md:block">An investor’s capital. </span>
             <span className="md:block">An operator’s perspective.</span>
           </h2>
 
           {/* Two reading layers, descending in weight of voice: the first
               paragraph as a standfirst at `text-lead`, the second as body. */}
-          <p className="mt-8 max-w-measure text-lead text-foreground-secondary md:mt-10">
+          <p className="mt-10 max-w-measure text-lead text-foreground-secondary md:mt-12">
             Trove Capital Partners invests in emerging technology companies with
             the potential to shape large, evolving markets.
           </p>
-          <p className="mt-6 max-w-measure text-base text-foreground-muted">
+          <p className="mt-7 max-w-measure text-base text-foreground-muted md:mt-8">
             Built on the foundations of one of India’s leading technology groups,
             we combine investment discipline with an operator’s perspective,
             bringing deep technology understanding, global relationships, and

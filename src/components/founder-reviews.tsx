@@ -28,17 +28,17 @@ export function FounderReviews() {
 
       <p className="eyebrow mt-10 text-accent md:mt-14">Founder Reviews</p>
 
-      <ul className="mt-12 grid items-start gap-x-8 gap-y-14 md:mt-14 lg:grid-cols-2 lg:gap-x-16">
+      <ul className="mt-14 grid items-start gap-x-8 gap-y-16 md:mt-16 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-18">
         {founderReviews.map((review) => (
           <li key={review.name} className="reveal">
             <blockquote>
-              <p className="max-w-measure text-title text-foreground">
+              <p className="max-w-measure text-title font-display text-foreground leading-tight">
                 {review.quote}
               </p>
             </blockquote>
 
             {/* Quote, rule, byline. */}
-            <div className="mt-7 flex items-center gap-4 border-t border-border pt-5">
+            <div className="mt-8 flex items-center gap-4 border-t border-border pt-6">
               {review.image && (
                 <Image
                   src={review.image.src}
@@ -56,7 +56,7 @@ export function FounderReviews() {
                       href={review.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="transition-colors duration-swift ease-standard hover:text-accent"
+                      className="transition-colors duration-base ease-standard hover:text-accent"
                     >
                       {review.name}
                     </a>

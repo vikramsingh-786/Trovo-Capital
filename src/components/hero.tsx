@@ -17,11 +17,11 @@
  */
 export function Hero() {
   return (
-    <section className="shell flex min-h-[calc(100svh-var(--spacing-header))] flex-col justify-end pt-section-tight pb-section">
+    <section className="shell flex min-h-[calc(100svh-var(--spacing-header))] flex-col justify-end pt-section-tight pb-section 2xl:min-h-[calc(100svh-var(--spacing-header)+2rem)]">
       {/* One hairline, with the accent carrying only its first few centimetres.
           This is the site's rule vocabulary in its simplest form. */}
       <div className="animate-rise flex items-center [animation-delay:80ms]">
-        <span className="h-px w-12 bg-accent md:w-16" />
+        <span className="h-px w-12 bg-accent md:w-16 lg:w-20" />
         <span className="h-px flex-1 bg-border" />
       </div>
 
@@ -36,7 +36,7 @@ export function Hero() {
           range: it binds between roughly 600px and 767px, and scales with the
           type so the line count stays stable rather than collapsing to one
           long line. */}
-      <h1 className="animate-rise mt-8 max-w-[16ch] text-display-xl [animation-delay:180ms] md:mt-10">
+      <h1 className="animate-rise mt-10 max-w-[16ch] text-display-xl [animation-delay:180ms] md:mt-12 lg:mt-14">
         <span className="md:block">Capital for </span>
         <span className="md:block">what comes next.</span>
       </h1>

@@ -88,7 +88,7 @@ export function PortfolioLedger() {
               href={company.url}
               target="_blank"
               rel="noreferrer"
-              className="group grid grid-cols-[auto_1fr] items-center gap-x-5 gap-y-3 py-6 transition-colors duration-swift ease-standard hover:bg-surface-sunken md:grid-cols-12 md:gap-x-8 md:py-7"
+              className="group grid grid-cols-[auto_1fr] items-center gap-x-5 gap-y-3 py-7 transition-colors duration-base ease-standard hover:bg-surface-sunken md:grid-cols-12 md:gap-x-8 md:py-8 lg:py-9"
             >
               {/* The supplied logos are opaque tiles with their own
                   backgrounds, so they are framed at a uniform size rather than
@@ -98,14 +98,14 @@ export function PortfolioLedger() {
                 alt=""
                 width={company.logo.width}
                 height={company.logo.height}
-                className="size-12 rounded-card border border-border bg-surface object-contain transition-colors duration-swift ease-standard group-hover:border-border-strong md:col-span-3 md:size-14"
+                className="size-12 rounded-card border border-border bg-surface object-contain transition-all duration-base ease-standard group-hover:border-border-strong group-hover:bg-surface-sunken md:col-span-3 md:size-14 lg:size-16"
               />
 
-              <h3 className="text-title-sm text-foreground transition-colors duration-swift ease-standard group-hover:text-accent md:col-span-4 md:col-start-4">
+              <h3 className="text-title-sm text-foreground transition-colors duration-base ease-standard group-hover:text-accent md:col-span-4 md:col-start-4 lg:text-title">
                 {company.name}
               </h3>
 
-              <p className="col-span-2 max-w-measure text-caption text-foreground-muted md:col-span-5 md:col-start-8">
+              <p className="col-span-2 max-w-measure text-caption text-foreground-muted transition-colors duration-base ease-standard group-hover:text-foreground-muted md:col-span-5 md:col-start-8">
                 {company.description}
               </p>
             </a>

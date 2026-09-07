@@ -36,44 +36,44 @@ export function Team() {
         </h2>
       </div>
 
-      <ul className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
+      <ul className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 md:mt-16 lg:grid-cols-3 lg:gap-y-16">
         {teamMembers.map((member) => (
-          <li key={member.name} className="reveal border-t border-border pt-6">
+          <li key={member.name} className="reveal border-t border-border pt-8">
             {member.image && (
               <Image
                 src={member.image.src}
                 alt={member.name}
                 width={member.image.width}
                 height={member.image.height}
-                className="mb-6 aspect-4/5 w-full rounded-media border border-border bg-surface object-cover"
+                className="mb-7 aspect-4/5 w-full rounded-media border border-border bg-surface object-cover"
               />
             )}
 
-            <h3 className="text-display-sm">{member.name}</h3>
+            <h3 className="text-display-sm font-display">{member.name}</h3>
 
             {member.role && (
-              <p className="eyebrow mt-3 text-foreground-muted">{member.role}</p>
+              <p className="eyebrow mt-4 text-foreground-muted">{member.role}</p>
             )}
 
             {/* The credential the owner asked to lead with, so it carries the
                 darkest ink under the name. */}
             {member.experience && (
-              <p className="mt-4 text-base text-foreground">{member.experience}</p>
+              <p className="mt-5 text-base text-foreground">{member.experience}</p>
             )}
 
             {member.description && (
-              <p className="mt-3 max-w-measure text-caption text-foreground-muted">
+              <p className="mt-4 max-w-measure text-caption text-foreground-muted">
                 {member.description}
               </p>
             )}
 
             {member.link && (
-              <p className="mt-4">
+              <p className="mt-5">
                 <a
                   href={member.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="eyebrow text-accent underline decoration-from-font underline-offset-4 transition-colors duration-swift ease-editorial hover:text-foreground"
+                  className="eyebrow text-accent underline decoration-from-font underline-offset-4 transition-colors duration-base ease-editorial hover:text-foreground"
                 >
                   Profile
                 </a>

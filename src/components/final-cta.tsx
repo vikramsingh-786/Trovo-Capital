@@ -17,24 +17,24 @@ const EMAIL = "trovecapital@partners.co";
 export function FinalCta() {
   return (
     <section id="contact" className="bg-surface">
-      <div className="shell py-section">
+      <div className="shell py-section-tight md:py-section">
         <div className="flex items-center">
-          <span className="h-px w-12 bg-accent md:w-16" />
+          <span className="h-px w-12 bg-accent md:w-16 lg:w-20" />
           <span className="h-px flex-1 bg-border" />
         </div>
 
-        <h2 className="reveal mt-10 max-w-[22ch] text-display-lg md:mt-14">
+        <h2 className="reveal mt-12 max-w-[22ch] text-display-lg font-display md:mt-14 lg:mt-16">
           Building a company ready to scale?
         </h2>
 
-        <p className="reveal mt-6 max-w-measure text-lead text-foreground-secondary">
+        <p className="reveal mt-8 max-w-measure text-lead text-foreground-secondary md:mt-10">
           Connect with Trove Capital Partners.
         </p>
 
-        <p className="reveal mt-10 md:mt-12">
+        <p className="reveal mt-12 md:mt-14">
           <a
             href={`mailto:${EMAIL}`}
-            className="font-sans text-title text-foreground underline decoration-from-font underline-offset-[0.3em] transition-colors duration-swift ease-editorial hover:text-accent"
+            className="font-sans text-title text-foreground underline decoration-from-font underline-offset-[0.3em] transition-colors duration-base ease-editorial hover:text-accent"
           >
             {EMAIL}
           </a>

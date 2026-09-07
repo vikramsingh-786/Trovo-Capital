@@ -19,6 +19,7 @@
   --color-ivory-100: oklch(0.955 0.01 85); /* #F3F0E9  alternating band     */
   --color-ivory-200: oklch(0.93 0.012 85); /* #EBE7DF  inset / hover fill   */
   --color-ivory-300: oklch(0.895 0.014 85); /* #E1DCD2  hairline rules      */
+  --color-ivory-250: oklch(0.918 0.011 85); /* #EDE9E0  refined hover fill  */
 
   /* --- Ink: warm near-black, never pure black --------------------------- */
   --color-ink-900: oklch(0.205 0.012 60); /* #1B1612  17.03 : AAA           */

@@ -44,6 +44,35 @@ npm run typecheck  # next typegen && tsc --noEmit
 npm run lint       # eslint
 ```
 
+## Deployment (for DevOps)
+
+```bash
+npm ci                 # or: npm install
+npm run build          # writes the complete static site to out/
+```
+
+Deploy the contents of **`out/`** to Cloudflare as a static site. There is no
+server, no API route, no database and no runtime environment variable — the
+build output is the whole application, so any static host serves it.
+
+Two things the hosting side must be told:
+
+1. **`out/_headers`** ships with the build and sets immutable caching for
+   `/_next/static/*` plus `nosniff`, `Referrer-Policy` and `X-Frame-Options`.
+   Cloudflare Pages and Workers Static Assets both read it from the deploy root.
+2. **`trailingSlash: true`**, so the export emits directory-style URLs
+   (`about/index.html`). On Cloudflare Pages this matches the default
+   behaviour. On **Workers Static Assets** the defaults do not match: set
+   `html_handling` to `auto-trailing-slash` or `force-trailing-slash`, and set
+   `not_found_handling` to `"404-page"` — otherwise the exported `404.html` is
+   never served.
+
+**Domain, DNS and TLS are DevOps'.** Nothing in the repo assumes a hostname.
+Note that `metadataBase` is deliberately unset, so canonical and Open Graph
+URLs cannot be emitted until a production domain is supplied.
+
+There is also a **lockfile caveat** — see "Known issue" below.
+
 ## Static export
 
 `next.config.ts` sets `output: "export"`, so `next build` writes a fully static
@@ -134,9 +163,10 @@ whenever a runtime dependency is added.
 ## Design system (Phase 2)
 
 Tokens live in `src/app/globals.css` as a Tailwind v4 `@theme` block; there is
-no `tailwind.config.js` (v4 is CSS-first). `/styleguide` renders the whole
-token layer and is **temporary** — Phase 18 deletes both the route and the link
-to it in `src/app/page.tsx`.
+no `tailwind.config.js` (v4 is CSS-first). A temporary `/styleguide` route
+documented the token layer during development and was removed at deployment
+prep; `git show 16f9c04:src/app/styleguide/page.tsx` still has it if a
+reference is ever wanted.
 
 - **Display:** Newsreader (variable, weight 200–800, latin)
 - **Text/UI:** Schibsted Grotesk (variable, weight 400–900, latin)

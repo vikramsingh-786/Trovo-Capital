@@ -110,14 +110,13 @@ function Section({
   title: string;
   children: React.ReactNode;
 }) {
-  const id = title.toLowerCase().replace(/[^a-z]+/g, "-").replace(/^-|-$/g, "");
   return (
-    <section aria-labelledby={id} className="border-t border-border pt-10 md:pt-14">
+    <section className="border-t border-border pt-10 md:pt-14">
       <div className="mb-8 flex items-baseline gap-4 md:mb-12">
-        <span aria-hidden className="font-sans text-caption text-foreground-muted tabular-nums">
+        <span className="font-sans text-caption text-foreground-muted tabular-nums">
           {index}
         </span>
-        <h2 id={id} className="text-title">
+        <h2 className="text-title">
           {title}
         </h2>
       </div>
@@ -146,7 +145,6 @@ function SwatchRow({ items }: { items: Swatch[] }) {
       {items.map((s) => (
         <li key={s.token} className="flex items-start gap-4">
           <span
-            aria-hidden
             className="mt-0.5 size-11 shrink-0 rounded-card border border-border"
             style={{ backgroundColor: `var(${s.token})` }}
           />
@@ -170,7 +168,7 @@ function SwatchRow({ items }: { items: Swatch[] }) {
 
 export default function StyleguidePage() {
   return (
-    <main id="main" tabIndex={-1} className="shell py-section-tight">
+    <main className="shell py-section-tight">
       <header className="mb-14 md:mb-20">
         <p className="eyebrow text-accent">Phase 2 · Internal reference</p>
         <h1 className="mt-5 text-display-lg">Design system</h1>
@@ -266,16 +264,8 @@ export default function StyleguidePage() {
             </div>
             <div>
               <h3 className="eyebrow mb-5 text-foreground-muted">Semantic aliases</h3>
-              <div
-                tabIndex={0}
-                role="region"
-                aria-label="Semantic colour tokens"
-                className="overflow-x-auto"
-              >
+              <div className="overflow-x-auto">
                 <table className="w-full min-w-narrow border-collapse text-left">
-                  <caption className="sr-only">
-                    Semantic colour tokens and the raw scale step each resolves to
-                  </caption>
                   <thead>
                     <tr className="border-b border-border">
                       <th scope="col" className="py-2 pr-6 font-sans text-caption font-medium text-foreground-muted">
@@ -339,7 +329,6 @@ export default function StyleguidePage() {
                   <span className="font-mono text-caption text-foreground-muted">{s.clamp}</span>
                 </div>
                 <div
-                  aria-hidden
                   className="mt-2 h-2 bg-accent-quiet"
                   style={{ width: `var(${s.token})` }}
                 />
@@ -360,7 +349,6 @@ export default function StyleguidePage() {
                   </span>
                 </div>
                 <div
-                  aria-hidden
                   className="mt-2 h-8 max-w-full border border-border-strong bg-surface"
                   style={{ width: `var(${c.token})` }}
                 />
@@ -391,9 +379,7 @@ export default function StyleguidePage() {
           <p className="mb-8 max-w-measure text-base text-foreground-secondary">
             Two easings only: <code className="font-mono">--ease-editorial</code> for
             anything the reader notices, <code className="font-mono">--ease-standard</code> for
-            small state changes. Hover a card below. Every transition is
-            neutralised globally under{" "}
-            <code className="font-mono">prefers-reduced-motion: reduce</code>.
+            small state changes. Hover a card below.
           </p>
           <ul className="grid gap-5 sm:grid-cols-3">
             {motion.map((m) => (
@@ -413,34 +399,6 @@ export default function StyleguidePage() {
           </ul>
         </Section>
 
-        <Section index="09" title="Focus states">
-          <p className="mb-8 max-w-measure text-base text-foreground-secondary">
-            A single 2px ring in <code className="font-mono">--color-foreground</code> at
-            17:1 contrast, offset by 2px, applied on{" "}
-            <code className="font-mono">:focus-visible</code> only. Tab through
-            these.
-          </p>
-          <div className="flex flex-wrap items-center gap-5">
-            <button
-              type="button"
-              className="rounded-card bg-inverse px-6 py-3 font-sans text-caption font-medium tracking-wide text-inverse-foreground uppercase transition-colors duration-swift ease-standard hover:bg-ink-800"
-            >
-              Primary action
-            </button>
-            <button
-              type="button"
-              className="rounded-card border border-border-strong px-6 py-3 font-sans text-caption font-medium tracking-wide uppercase transition-colors duration-swift ease-standard hover:bg-surface-sunken"
-            >
-              Secondary action
-            </button>
-            <Link
-              href="/styleguide"
-              className="text-accent underline decoration-from-font underline-offset-4 transition-colors duration-swift ease-editorial hover:text-foreground"
-            >
-              A text link
-            </Link>
-          </div>
-        </Section>
       </div>
     </main>
   );

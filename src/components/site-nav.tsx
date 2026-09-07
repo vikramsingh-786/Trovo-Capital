@@ -13,11 +13,9 @@ import { Wordmark } from "./wordmark";
  * `scroll-padding-top`, so an anchored section can never land underneath it.
  *
  * Active-section highlighting is deliberately absent: it needs a scroll
- * observer, and there are no sections to observe until later phases. Hover,
- * focus-visible and pressed states are all implemented. When it is added,
+ * observer. Hover and pressed states are implemented. When it is added,
  * extract just the <ul> into a client component so this stays a server
- * component, and drive the styling off `aria-current` so the accessible state
- * and the underline cannot diverge.
+ * component.
  *
  * DO NOT add `transform`, `filter`, `backdrop-filter`, `will-change` or
  * `contain` to the <header> below. MobileMenu's panel is `position: fixed`
@@ -30,13 +28,13 @@ export function SiteNav() {
       <div className="shell flex h-full items-center justify-between gap-8">
         <Wordmark />
 
-        <nav aria-label="Primary" className="hidden md:block">
+        <nav className="hidden md:block">
           <ul className="flex items-center gap-8 lg:gap-11">
             {navItems.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="eyebrow relative text-foreground-muted transition-colors duration-swift ease-standard after:absolute after:-bottom-2 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-base after:ease-editorial hover:text-foreground hover:after:scale-x-100 focus-visible:text-foreground focus-visible:after:scale-x-100 active:text-accent"
+                  className="eyebrow relative text-foreground-muted transition-colors duration-swift ease-standard after:absolute after:-bottom-2 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-base after:ease-editorial hover:text-foreground hover:after:scale-x-100 active:text-accent"
                 >
                   {item.label}
                 </a>

@@ -46,14 +46,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${newsreader.variable} ${schibstedGrotesk.variable}`}
     >
       <body className="antialiased">
-        {/* First focusable element on the page: lets keyboard and screen-reader
-            users jump the nav. Visible only while focused. */}
-        <a
-          href="#main"
-          className="eyebrow sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 focus:bg-inverse focus:px-4 focus:py-3 focus:text-inverse-foreground"
-        >
-          Skip to content
-        </a>
         <SiteNav />
         {children}
       </body>

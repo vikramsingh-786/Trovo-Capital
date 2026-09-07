@@ -21,7 +21,7 @@ const scaffold = [
 
 export default function Home() {
   return (
-    <main id="main" tabIndex={-1}>
+    <main>
       <Hero />
       <About />
       <InvestmentPerspectives />

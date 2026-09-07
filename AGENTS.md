@@ -109,10 +109,14 @@ Priorities instead: visual quality, premium design, responsiveness,
 performance, maintainability, functionality, and static-deployment
 compatibility.
 
-Existing accessibility code from earlier phases is **left in place** — it is
-already written and removing it would be churn and regression risk with no
-benefit. Simply do not extend it. Note that semantic HTML also serves SEO
-(in scope), so keep using it for that reason.
+Accessibility code written in earlier phases has since been **removed** at the
+owner's request: the skip link, all ARIA attributes and roles, `tabindex`,
+`inert`, screen-reader-only text, the custom focus ring, and the
+`prefers-reduced-motion` safety net. Do not reintroduce any of it.
+
+Two things that look adjacent but stay, for non-accessibility reasons:
+semantic HTML (it serves SEO, which is in scope) and `alt` on images (a
+required prop of `next/image` — the build fails without it).
 
 This applies until the owner explicitly asks for accessibility work.
 

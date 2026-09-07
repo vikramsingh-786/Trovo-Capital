@@ -23,7 +23,6 @@ export function Wordmark({ className = "" }: { className?: string }) {
   return (
     <Link
       href="/"
-      aria-label="Trove Capital, home"
       className={`inline-flex shrink-0 items-center transition-opacity duration-swift ease-standard hover:opacity-70 ${className}`}
     >
       <Image

@@ -185,19 +185,10 @@
   padding-inline: var(--spacing-gutter);
 }
 
-/* The inverted band (closing CTA, footer). Bundled with the ground it needs so
-   a focus ring inside it can never end up near-black on near-black.
-
-   BANDS AND CONTAINERS ONLY. Do not put this on a dark button that sits on the
-   ivory ground: it would swap the ring to ivory, and `outline-offset` draws the
-   ring OUTSIDE the element — ivory on ivory, 1:1. A dark button on light ground
-   wants `bg-inverse text-inverse-foreground` and the default near-black ring
-   (17.03 against the page ground). Inside this band, buttons inherit the ivory
-   ring correctly. */
+/* The inverted band (closing CTA, footer), bundled with the ground it needs. */
 @utility inverse-band {
   background-color: var(--color-inverse);
   color: var(--color-inverse-foreground);
-  --focus-ring: var(--color-inverse-foreground);
 }
 
 /* Small uppercase label used above headlines. */
@@ -219,11 +210,8 @@
     scroll-padding-top: var(--spacing-header);
   }
 
-  /* Smooth scrolling only for users who have not asked for less motion. */
-  @media (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
@@ -258,12 +246,6 @@
     text-wrap: pretty;
   }
 
-  /* Visible, high-contrast focus ring. `--focus-ring` lets an inverted
-     container swap it for a light one; the fallback is the 17:1 near-black. */
-  :focus-visible {
-    outline: 2px solid var(--focus-ring, var(--color-foreground));
-    outline-offset: 2px;
-  }
 
   ::selection {
     background-color: var(--color-accent-quiet);
@@ -271,21 +253,3 @@
   }
 }
 
-/* ===========================================================================
-   REDUCED MOTION
-   Global safety net: honours the OS setting even if a component forgets to.
-   Unlayered on purpose, so it outranks every @layer above.
-   =========================================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-delay: -1ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    transition-delay: 0s !important;
-    scroll-behavior: auto !important;
-  }
-}

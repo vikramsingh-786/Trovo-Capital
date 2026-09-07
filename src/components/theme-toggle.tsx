@@ -41,8 +41,9 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="eyebrow text-foreground-muted transition-colors duration-base ease-standard hover:text-foreground"
+      className="eyebrow text-foreground-muted transition-colors duration-base ease-standard hover:text-foreground active:text-accent"
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+      title={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
     >
       {theme === 'light' ? 'Dark' : 'Light'}
     </button>

@@ -66,7 +66,9 @@ export function MobileMenu({
       <button
         type="button"
         onClick={() => setOpen((wasOpen) => !wasOpen)}
-        className="-mr-3 flex size-11 items-center justify-center text-foreground transition-colors duration-swift ease-standard hover:text-accent"
+        className="flex size-11 items-center justify-center text-foreground transition-colors duration-base ease-standard hover:text-foreground-secondary active:text-accent"
+        aria-label="Toggle menu"
+        aria-expanded={open}
       >
         {open ? <CloseIcon /> : <MenuIcon />}
       </button>
@@ -76,22 +78,22 @@ export function MobileMenu({
           chaining into the page behind it. */}
       <div
         hidden={!open}
-        className="fixed inset-x-0 top-header z-40 max-h-[calc(100dvh-var(--spacing-header))] overflow-y-auto overscroll-contain bg-background"
+        className="fixed inset-x-0 top-header z-40 max-h-[calc(100dvh-var(--spacing-header))] overflow-y-auto overscroll-contain bg-background border-b border-border transition-colors duration-base"
       >
-        <nav className="shell py-2">
+        <nav className="shell py-4">
           <ul>
             {items.map((item) => (
-              <li key={item.href} className="border-b border-border">
+              <li key={item.href} className="border-b border-border last:border-b-0">
                 <a
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="block py-5 font-display text-title text-foreground transition-colors duration-swift ease-standard active:text-accent"
+                  className="block py-4 font-display text-title text-foreground transition-colors duration-base ease-standard hover:text-foreground-secondary active:text-accent"
                 >
                   {item.label}
                 </a>
               </li>
             ))}
-            <li className="border-b border-border py-5">
+            <li className="border-t border-border py-4">
               <ThemeToggle />
             </li>
           </ul>

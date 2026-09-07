@@ -25,29 +25,31 @@ import { ThemeToggle } from "./theme-toggle";
  */
 export function SiteNav() {
   return (
-    <header className="sticky top-0 z-50 h-header border-b border-border bg-background">
+    <header className="sticky top-0 z-50 h-header border-b border-border bg-background transition-colors duration-base">
       <div className="shell flex h-full items-center justify-between gap-8">
-        <Wordmark />
+        <div className="shrink-0">
+          <Wordmark />
+        </div>
 
         <nav className="hidden md:block">
-          <ul className="flex items-center gap-8 lg:gap-12">
+          <ul className="flex items-center gap-8 lg:gap-11">
             {navItems.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="eyebrow relative text-foreground-muted transition-colors duration-base ease-standard after:absolute after:-bottom-2.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-base after:ease-editorial hover:text-foreground hover:after:scale-x-100 active:text-accent"
+                  className="eyebrow relative inline-block text-foreground-muted transition-colors duration-base ease-standard after:absolute after:-bottom-2.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-base after:ease-editorial hover:text-foreground hover:after:scale-x-100 active:text-accent"
                 >
                   {item.label}
                 </a>
               </li>
             ))}
-            <li>
-              <ThemeToggle />
-            </li>
           </ul>
         </nav>
 
-        <MobileMenu items={navItems} className="md:hidden" />
+        <div className="flex items-center gap-6 lg:gap-8">
+          <ThemeToggle />
+          <MobileMenu items={navItems} className="md:hidden" />
+        </div>
       </div>
     </header>
   );

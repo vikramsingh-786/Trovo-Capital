@@ -27,10 +27,14 @@ export function About() {
 
       <div className="mt-10 grid gap-x-8 gap-y-6 md:mt-14 lg:grid-cols-12 lg:gap-y-0">
         {/* The rail. The label sets at 0.6875rem, so top-aligning it with a
-            ~52px heading would leave it floating above the heading's cap line;
-            `lg:pt-2` (8px) drops it onto that line. The 8px is an optical
-            judgement, not a computed value — worth a look in a browser. */}
-        <p className="eyebrow text-accent lg:col-span-3 lg:pt-2">
+            ~52px heading would leave it above the heading's cap line;
+            `lg:pt-0.5` drops it onto that line. Derived from font metrics
+            rather than eyeballed: Newsreader's cap sits 4.6-5.3px below its
+            line-box top across the clamp range and Schibsted Grotesk's marker
+            cap sits 2.82px below its own, leaving ~2px to close. Browsers
+            differ slightly in how they derive half-leading, so treat it as
+            accurate to about a pixel. */}
+        <p className="eyebrow text-accent lg:col-span-3 lg:pt-0.5">
           About Trove Capital
         </p>
 

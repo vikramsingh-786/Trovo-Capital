@@ -1,15 +1,16 @@
 import Link from "next/link";
 import { About } from "@/components/about";
 import { Hero } from "@/components/hero";
+import { InvestmentPerspectives } from "@/components/investment-perspectives";
 
 /**
  * The single long-form page.
  *
- * The Hero and About are real. The sections after them are deliberately
- * UNDESIGNED SCAFFOLDING: they exist so the sticky header and its anchor
- * offsets have real scroll targets, and each is replaced wholesale by its own
- * phase — the three investment blocks, Portfolio, Team, Founder Reviews, Final
- * CTA. Their ids must survive, because src/data/navigation.ts points at them.
+ * The Hero, About and investment perspectives are real. The sections after
+ * them are deliberately UNDESIGNED SCAFFOLDING: they exist so the sticky header
+ * and its anchor offsets have real scroll targets, and each is replaced
+ * wholesale by its own phase — Portfolio, Team, Founder Reviews, Final CTA.
+ * Their ids must survive, because src/data/navigation.ts points at them.
  */
 
 const scaffold = [
@@ -23,6 +24,7 @@ export default function Home() {
     <main id="main" tabIndex={-1}>
       <Hero />
       <About />
+      <InvestmentPerspectives />
 
       {scaffold.map(({ id, label, phase }) => (
         <section key={id} id={id} className="border-t border-border">

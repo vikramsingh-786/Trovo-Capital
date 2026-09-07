@@ -55,7 +55,7 @@ cover: code quality (TS correctness, React practice, component architecture,
 unnecessary complexity, duplication, bad abstractions, maintainability);
 Next.js (App Router patterns, server vs client components, unnecessary client
 components, metadata, images, static-export compatibility); UI (responsive
-behavior, layout, a11y, semantic HTML, keyboard nav, focus states, animation);
+behavior, layout, semantic HTML, visual polish, animation);
 performance (unnecessary JS/deps, images, layout shift, re-renders, bundle);
 security (unsafe patterns, secrets, dangerous HTML, external scripts); modernity
 (deprecated APIs, outdated patterns, wrong assumptions about framework behavior).
@@ -91,12 +91,30 @@ Reusable components only where reuse is real. Keep content/data separate from
 presentation: **portfolio companies, team members and founder testimonials live
 in maintainable data structures** so real content can be dropped in later.
 
-## 10. Accessibility is required
+## 10. Accessibility is OUT OF SCOPE
 
-Semantic HTML, correct heading hierarchy, accessible navigation, keyboard
-navigation, visible focus states, meaningful alt text, accessible buttons and
-mobile menus, reduced-motion support, sufficient contrast. Never trade a11y for
-a visual effect.
+The owner has explicitly placed accessibility outside this project's scope.
+**Spend no implementation, review, testing, design or architecture effort on
+it.** Specifically, do not optimise or audit for: WCAG compliance, ARIA
+attributes or roles, screen-reader behaviour, keyboard navigation,
+accessibility-specific focus states, accessibility colour-contrast
+requirements, reduced-motion accessibility, accessibility testing, or
+accessibility-specific semantic requirements.
+
+Do not add code, components, dependencies or design compromises solely for
+accessibility. Do not ask a review subagent to audit for it, and disregard
+accessibility-only findings if one raises them unprompted.
+
+Priorities instead: visual quality, premium design, responsiveness,
+performance, maintainability, functionality, and static-deployment
+compatibility.
+
+Existing accessibility code from earlier phases is **left in place** — it is
+already written and removing it would be churn and regression risk with no
+benefit. Simply do not extend it. Note that semantic HTML also serves SEO
+(in scope), so keep using it for that reason.
+
+This applies until the owner explicitly asks for accessibility work.
 
 ## 11. Responsive is required
 
@@ -165,7 +183,7 @@ The goal is exceptional polish, not more features.
 | 12 | Animation/polish | |
 | 13 | Real content/assets finalization | |
 | 14 | SEO | |
-| 15 | Accessibility | |
+| 15 | ~~Accessibility~~ | **out of scope** — skipped by owner decision |
 | 16 | Performance | |
 | 17 | Final QA | |
 | 18 | Static deployment preparation | |

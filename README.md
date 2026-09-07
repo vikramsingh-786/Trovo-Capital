@@ -21,7 +21,7 @@ on content repeatedly.
 1 Setup ✅ · 2 Design system ✅ · 3 Navigation · 4 Hero · 5 About ·
 6 Three buckets · 7 Portfolio architecture + filtering · 8 Portfolio
 assets/content · 9 Team · 10 Founder Reviews · 11 Final CTA + Footer ·
-12 Animation/polish · 13 Real content/assets · 14 SEO · 15 Accessibility ·
+12 Animation/polish · 13 Real content/assets · 14 SEO · ~~15 Accessibility~~ (out of scope) ·
 16 Performance · 17 Final QA · 18 Static deployment prep
 
 ## Stack
@@ -226,12 +226,10 @@ presentation, filename normalisation, and display names ("BlockScholes",
 
 ## Deferred deliberately
 
-- **`eslint-config-next` enables only 6 of ~30 `jsx-a11y` rules** (`alt-text`,
-  `aria-props`, `aria-proptypes`, `aria-unsupported-elements`,
-  `role-has-required-aria-props`, `role-supports-aria-props`). Rules like
-  `label-has-associated-control`, `anchor-is-valid` and
-  `click-events-have-key-events` are **off**. Turning them on requires adding
-  `eslint-plugin-jsx-a11y` as a direct devDependency — for the accessibility phase.
+- **Accessibility is out of scope** by owner decision (see AGENTS.md rule 10).
+  The stricter `jsx-a11y` ESLint rules are therefore deliberately left off, and
+  no accessibility auditing is performed. Accessibility code already written in
+  Phases 2-3 stays as-is rather than being torn out.
 - **`metadataBase` is unset** in `src/app/layout.tsx`. In Next 16 a relative URL
   in a metadata field is a hard *build error* without it, so the first
   `openGraph.images: "/og.png"` or `alternates.canonical: "/"` will fail the

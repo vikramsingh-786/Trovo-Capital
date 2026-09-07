@@ -3,19 +3,19 @@ import { About } from "@/components/about";
 import { Hero } from "@/components/hero";
 import { InvestmentPerspectives } from "@/components/investment-perspectives";
 import { Portfolio } from "@/components/portfolio";
+import { Team } from "@/components/team";
 
 /**
  * The single long-form page.
  *
- * The Hero, About, investment perspectives and Portfolio are real. The
+ * The Hero, About, investment perspectives, Portfolio and Team are real. The
  * sections after them are deliberately UNDESIGNED SCAFFOLDING: they exist so
  * the sticky header and its anchor offsets have real scroll targets, and each
- * is replaced wholesale by its own phase — Team, Founder Reviews, Final CTA.
+ * is replaced wholesale by its own phase — Founder Reviews, Final CTA.
  * Their ids must survive, because src/data/navigation.ts points at them.
  */
 
 const scaffold = [
-  { id: "team", label: "Team", phase: "Phase 9" },
   { id: "contact", label: "Contact", phase: "Phase 11" },
 ];
 
@@ -26,6 +26,7 @@ export default function Home() {
       <About />
       <InvestmentPerspectives />
       <Portfolio />
+      <Team />
 
       {scaffold.map(({ id, label, phase }) => (
         <section key={id} id={id} className="border-t border-border">

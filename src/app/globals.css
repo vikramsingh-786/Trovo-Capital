@@ -116,9 +116,10 @@
   --spacing-gutter: clamp(1.25rem, 3.5vw, 2.75rem);
   --spacing-section: clamp(4.5rem, 9vw, 8.5rem);
   --spacing-section-tight: clamp(3rem, 6vw, 5.5rem);
-  /* Shared by the sticky header's height and html's scroll-padding-top, so
-     anchored sections cannot drift out of sync with the nav. */
-  --spacing-header: 6rem;
+  /* Shared by the sticky header's height (`h-header`), the mobile menu's top
+     offset (`top-header`) and html's scroll-padding-top, so an anchored
+     section can never land underneath the bar. */
+  --spacing-header: clamp(4rem, 6vw, 5.5rem);
 
   /* --- Containers -------------------------------------------------------
      Named `measure` rather than `prose`: Tailwind ships a static

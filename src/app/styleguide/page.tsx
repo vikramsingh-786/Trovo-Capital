@@ -170,7 +170,7 @@ function SwatchRow({ items }: { items: Swatch[] }) {
 
 export default function StyleguidePage() {
   return (
-    <main className="shell py-section-tight">
+    <main id="main" tabIndex={-1} className="shell py-section-tight">
       <header className="mb-14 md:mb-20">
         <p className="eyebrow text-accent">Phase 2 · Internal reference</p>
         <h1 className="mt-5 text-display-lg">Design system</h1>

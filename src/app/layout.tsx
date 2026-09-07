@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Newsreader, Schibsted_Grotesk } from "next/font/google";
+import { SiteNav } from "@/components/site-nav";
 import "./globals.css";
 
 /* Both faces are variable and self-hosted by next/font at build time: no
@@ -26,15 +27,16 @@ const schibstedGrotesk = Schibsted_Grotesk({
   variable: "--font-schibsted-grotesk",
 });
 
-// PLACEHOLDER COPY — awaiting real content from Trove Capital Partners.
+// "Trove Capital" is the visual brand; "Trove Capital Partners" is used in
+// formal body copy. PLACEHOLDER description — awaiting real copy.
 // `metadataBase` is intentionally omitted until the production domain is
 // confirmed; it is required for absolute Open Graph / canonical URLs.
 export const metadata: Metadata = {
   title: {
-    default: "Trove Capital Partners",
-    template: "%s | Trove Capital Partners",
+    default: "Trove Capital",
+    template: "%s | Trove Capital",
   },
-  description: "Trove Capital Partners — venture capital. [PLACEHOLDER]",
+  description: "Trove Capital — venture capital. [PLACEHOLDER]",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -43,7 +45,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${newsreader.variable} ${schibstedGrotesk.variable}`}
     >
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {/* First focusable element on the page: lets keyboard and screen-reader
+            users jump the nav. Visible only while focused. */}
+        <a
+          href="#main"
+          className="eyebrow sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 focus:bg-inverse focus:px-4 focus:py-3 focus:text-inverse-foreground"
+        >
+          Skip to content
+        </a>
+        <SiteNav />
+        {children}
+      </body>
     </html>
   );
 }

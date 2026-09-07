@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { NavItem } from "@/data/navigation";
+import { ThemeToggle } from "./theme-toggle";
 
 /** Tailwind's `md` breakpoint, where the desktop nav takes over. */
 const DESKTOP_QUERY = "(min-width: 48rem)";
@@ -80,7 +81,7 @@ export function MobileMenu({
         <nav className="shell py-2">
           <ul>
             {items.map((item) => (
-              <li key={item.href} className="border-b border-border last:border-b-0">
+              <li key={item.href} className="border-b border-border">
                 <a
                   href={item.href}
                   onClick={() => setOpen(false)}
@@ -90,6 +91,9 @@ export function MobileMenu({
                 </a>
               </li>
             ))}
+            <li className="border-b border-border py-5">
+              <ThemeToggle />
+            </li>
           </ul>
         </nav>
       </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Newsreader, Schibsted_Grotesk } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 /* Both faces are variable and self-hosted by next/font at build time: no
@@ -62,6 +63,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${newsreader.variable} ${schibstedGrotesk.variable}`}
     >
+      <head>
+        <ThemeProvider />
+      </head>
       <body className="antialiased">
         <SiteNav />
         {children}

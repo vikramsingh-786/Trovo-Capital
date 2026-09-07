@@ -12,59 +12,57 @@
    =========================================================================== */
 
 @theme {
-  /* --- Surfaces: warm ivory, never pure white --------------------------- */
-  /* The 50 -> 100 step is 1.083:1 — deliberately perceptible, so alternating
-     sections read as bands rather than as accidental variation. */
+  /* --- Surfaces: warm ivory, never pure white (light theme) ------------- */
   --color-ivory-50: oklch(0.982 0.006 85); /* #FBF9F5  page ground          */
   --color-ivory-100: oklch(0.955 0.01 85); /* #F3F0E9  alternating band     */
   --color-ivory-200: oklch(0.93 0.012 85); /* #EBE7DF  inset / hover fill   */
   --color-ivory-300: oklch(0.895 0.014 85); /* #E1DCD2  hairline rules      */
   --color-ivory-250: oklch(0.918 0.011 85); /* #EDE9E0  refined hover fill  */
 
-  /* --- Ink: warm near-black, never pure black --------------------------- */
+  /* --- Ink: warm near-black, never pure black (light theme) ------------- */
   --color-ink-900: oklch(0.205 0.012 60); /* #1B1612  17.03 : AAA           */
   --color-ink-800: oklch(0.3 0.012 60); /* #322C28  12.98 : AAA             */
   --color-ink-700: oklch(0.4 0.011 60); /* #4C4642   8.77 : AAA             */
   --color-ink-600: oklch(0.5 0.01 60); /* #68625E   5.71 : AA               */
-  /* 400/500 are non-text on ivory (3.16 / 4.72). ink-400 IS text-safe on the
-     inverted ground, where it measures 5.39 against ink-900. */
   --color-ink-500: oklch(0.545 0.01 60); /* #756F6A                         */
   --color-ink-400: oklch(0.643 0.009 60); /* #918C88                        */
 
+  /* --- Dark theme surfaces ------------------------------------------------ */
+  --color-dark-50: oklch(0.105 0.008 60); /* #171411  primary dark          */
+  --color-dark-100: oklch(0.12 0.008 60); /* #1E1A16  secondary dark        */
+  --color-dark-200: oklch(0.145 0.008 60); /* #25201B  elevated dark        */
+  --color-dark-300: oklch(0.165 0.009 60); /* #2B261F  subtle surface       */
+
+  /* --- Dark theme text --------------------------------------------------- */
+  --color-light-50: oklch(0.945 0.007 85); /* #F1ECE3  primary light text    */
+  --color-light-100: oklch(0.78 0.008 85); /* #C8C0B5  secondary light text  */
+  --color-light-200: oklch(0.6 0.007 60); /* #958D83  muted light text      */
+
   /* --- Accent: single muted bronze. Restraint is the point. ------------- */
-  /* 700 for accent text on the page ground; 600 is darkened enough to hold
-     AA on every ivory surface (5.46 / 5.04 / 4.68); 500 is non-text. */
   --color-bronze-700: oklch(0.47 0.075 65); /* #78512A  6.60 : AA           */
   --color-bronze-600: oklch(0.515 0.085 65); /* #895D2E  5.46 : AA          */
-  /* Non-text on ivory (3.13), but text-safe on the inverted ground (5.44). */
   --color-bronze-500: oklch(0.65 0.09 65); /* #B58452                        */
 
-  /* --- Semantic aliases -------------------------------------------------
-     Components use these, never the raw steps above. Every alias below is
-     text-safe on the ground it is named for.                              */
+  /* --- Semantic aliases (light theme defaults) --------------------------
+     Dark theme variants are set via data-theme="dark" media query below.   */
   --color-background: var(--color-ivory-50);
   --color-surface: var(--color-ivory-100);
   --color-surface-sunken: var(--color-ivory-200);
   --color-foreground: var(--color-ink-900);
   --color-foreground-secondary: var(--color-ink-700);
-  /* AA on all three ivory surfaces: 5.71 / 5.28 / 4.89 */
   --color-foreground-muted: var(--color-ink-600);
   --color-foreground-on-tint: var(--color-ink-800);
   --color-border: var(--color-ivory-300);
-  /* 3.16 on the page ground, but 2.92 / 2.71 on ivory-100 / ivory-200 — so it
-     only satisfies non-text contrast (1.4.11) for interactive boundaries drawn
-     directly on the background. On a tint, use a darker step. */
   --color-border-strong: var(--color-ink-400);
   --color-accent: var(--color-bronze-700);
   --color-accent-on-tint: var(--color-bronze-600);
   --color-accent-quiet: var(--color-bronze-500);
 
-  /* Inverted ground (closing CTA, footer). Ratios here are against
-     --color-inverse, not the page ground. */
+  /* Inverted ground (closing CTA, footer) */
   --color-inverse: var(--color-ink-900);
-  --color-inverse-foreground: var(--color-ivory-50); /* 17.03 : AAA         */
-  --color-inverse-foreground-muted: var(--color-ink-400); /*  5.39 : AA     */
-  --color-inverse-border: var(--color-ink-700); /*  1.94 : hairline         */
+  --color-inverse-foreground: var(--color-ivory-50);
+  --color-inverse-foreground-muted: var(--color-ink-400);
+  --color-inverse-border: var(--color-ink-700);
 
   /* --- Responsive type scale -------------------------------------------
      Fluid via clamp(). The middle term keeps a rem component so text-only
@@ -288,6 +286,42 @@
   ::selection {
     background-color: var(--color-accent-quiet);
     color: var(--color-ink-900);
+  }
+}
+
+/* ===========================================================================
+   DARK THEME
+   =========================================================================== */
+
+@supports (selector(:root[data-theme="dark"])) {
+  :root[data-theme="dark"] {
+    --color-background: var(--color-dark-50);
+    --color-surface: var(--color-dark-100);
+    --color-surface-sunken: var(--color-dark-200);
+    --color-foreground: var(--color-light-50);
+    --color-foreground-secondary: var(--color-light-100);
+    --color-foreground-muted: var(--color-light-200);
+    --color-foreground-on-tint: var(--color-light-50);
+    --color-border: var(--color-dark-300);
+    --color-border-strong: var(--color-light-100);
+    --color-accent: var(--color-bronze-500);
+    --color-accent-on-tint: var(--color-bronze-500);
+    --color-inverse: var(--color-dark-50);
+    --color-inverse-foreground: var(--color-light-50);
+    --color-inverse-foreground-muted: var(--color-light-200);
+    --color-inverse-border: var(--color-dark-300);
+  }
+
+  :root[data-theme="dark"] body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    transition: background-color 200ms var(--ease-editorial),
+                color 200ms var(--ease-editorial);
+  }
+
+  :root[data-theme="dark"] ::selection {
+    background-color: var(--color-bronze-500);
+    color: var(--color-light-50);
   }
 }
 

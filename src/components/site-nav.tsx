@@ -1,6 +1,7 @@
 import { navItems } from "@/data/navigation";
 import { MobileMenu } from "./mobile-menu";
 import { Wordmark } from "./wordmark";
+import { ThemeToggle } from "./theme-toggle";
 
 /**
  * Sticky site header. Server-rendered apart from <MobileMenu>.
@@ -40,6 +41,9 @@ export function SiteNav() {
                 </a>
               </li>
             ))}
+            <li>
+              <ThemeToggle />
+            </li>
           </ul>
         </nav>
 

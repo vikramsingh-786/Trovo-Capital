@@ -81,8 +81,11 @@ Keep the hero minimal and premium.
 
 ## About Us
 
-- **Eyebrow:** ABOUT US
-- **Headline:** An investor's capital. An operator's perspective.
+- **Eyebrow:** About Trove Capital
+- **Headline:** An investor’s capital. An operator’s perspective.
+
+(Revised by the owner at the About phase — supersedes the earlier "ABOUT US"
+eyebrow. Typographic apostrophes are part of the supplied copy.)
 
 **Body:**
 

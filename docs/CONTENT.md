@@ -54,13 +54,14 @@ page-level branding. **Trove Capital Partners** is used where it appears
 naturally in formal body copy (About, CTA). Do not rewrite supplied copy to
 force either form.
 
-A brand lockup (icon + wordmark) **has now been supplied** as
-`public/logo/logo.jpg`, and the owner has approved using it in place of the
-text wordmark. It is served as `public/logo/trove-logo.png`, derived by
-`scripts/derive-logo.py`: the supplied file is an opaque JPEG on near-white
+A brand lockup (icon + wordmark) **has now been supplied** as a JPEG, kept
+unmodified at `assets/brand/logo.jpg`, and the owner has approved using it in place of the
+text wordmark. It is served as `public/logo/trove-logo.webp`, built by
+`scripts/build-assets.py`: the supplied file is an opaque JPEG on near-white
 paper, which would show as a white box on the ivory ground, so the paper is
-keyed out to transparency and the uneven padding trimmed. The original JPEG is
-kept unmodified as the source of record. Never invent or generate a graphical
+keyed out to transparency and the uneven padding trimmed. The original is kept
+unmodified in `assets/brand/` (outside `public/`, so it is not deployed) as the
+source of record. Never invent or generate a graphical
 logo; a vector version of this one would be preferable to any raster.
 
 ## Navigation (owner decision)
@@ -150,19 +151,19 @@ and "Stan" (not "Stan Labs"), per owner decision.
 
 | # | Company | Description | Website | Logo | Category |
 |---|---|---|---|---|---|
-| 1 | Tribe | 24/7 personal finance companion | https://www.tribemoney.ai/ | `tribe.jpg` | *unassigned* |
-| 2 | Crux | AI platform for performance-marketing | http://getcrux.ai/ | `crux.png` | *unassigned* |
-| 3 | Uniblock | Unified Web3 API layer | https://uniblock.dev/ | `uniblock.jpg` | *unassigned* |
-| 4 | Desyn | Decentralized Liquidity Infrastructure | https://desyn.io/#/ | `desyn.jpg` | *unassigned* |
-| 5 | YouSend | Stablecoin powered remittance platform | https://yousend.co/ | `yousend.jpg` | *unassigned* |
-| 6 | Deconflict | Verified Intelligence for Financial Crime | https://deconflict.com/law-enforcement/ | `deconflict.jpg` | *unassigned* |
-| 7 | Silence Labs | Institutional grade security platform | https://silencelaboratories.com/ | `silence-labs.jpg` | *unassigned* |
-| 8 | Kuru | Fully onchain order book DEX | https://www.kuru.io/ | `kuru.jpg` | *unassigned* |
-| 9 | Stan | Gaming & Creator Hub | https://getstan.app/ | `stan.jpg` | *unassigned* |
-| 10 | Shield | Cross Border Stablecoin Neo Bank | https://www.getshield.xyz/en | `shield.png` | *unassigned* |
-| 11 | Cysic | Full-Stack Compute Network | https://app.cysic.xyz/ | `cysic.jpg` | *unassigned* |
-| 12 | BlockScholes | Crypto Derivatives Intelligence | https://www.blockscholes.com/ | `blockscholes.png` | *unassigned* |
-| 13 | Kelp | Liquid Restaking Platform | https://kerneldao.com/kelp/ | `kelp.jpg` | *unassigned* |
+| 1 | Tribe | 24/7 personal finance companion | https://www.tribemoney.ai/ | `tribe.webp` | *unassigned* |
+| 2 | Crux | AI platform for performance-marketing | http://getcrux.ai/ | `crux.webp` | *unassigned* |
+| 3 | Uniblock | Unified Web3 API layer | https://uniblock.dev/ | `uniblock.webp` | *unassigned* |
+| 4 | Desyn | Decentralized Liquidity Infrastructure | https://desyn.io/#/ | `desyn.webp` | *unassigned* |
+| 5 | YouSend | Stablecoin powered remittance platform | https://yousend.co/ | `yousend.webp` | *unassigned* |
+| 6 | Deconflict | Verified Intelligence for Financial Crime | https://deconflict.com/law-enforcement/ | `deconflict.webp` | *unassigned* |
+| 7 | Silence Labs | Institutional grade security platform | https://silencelaboratories.com/ | `silence-labs.webp` | *unassigned* |
+| 8 | Kuru | Fully onchain order book DEX | https://www.kuru.io/ | `kuru.webp` | *unassigned* |
+| 9 | Stan | Gaming & Creator Hub | https://getstan.app/ | `stan.webp` | *unassigned* |
+| 10 | Shield | Cross Border Stablecoin Neo Bank | https://www.getshield.xyz/en | `shield.webp` | *unassigned* |
+| 11 | Cysic | Full-Stack Compute Network | https://app.cysic.xyz/ | `cysic.webp` | *unassigned* |
+| 12 | BlockScholes | Crypto Derivatives Intelligence | https://www.blockscholes.com/ | `blockscholes.webp` | *unassigned* |
+| 13 | Kelp | Liquid Restaking Platform | https://kerneldao.com/kelp/ | `kelp.webp` | *unassigned* |
 
 ### Portfolio presentation (owner decision)
 

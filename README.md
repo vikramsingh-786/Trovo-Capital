@@ -155,70 +155,52 @@ Two measured decisions worth keeping:
   synthesised oblique. When they are wanted, add a second Newsreader instance
   with `preload: false`.
 
-## Asset inventory — `public/logo/`
+## Assets
 
-13 files, one per supplied portfolio company. All map 1:1 by filename; nothing
-is unmatched or orphaned. Measured with PIL, not assumed:
+Owner-supplied originals live in **`assets/brand/`**, outside `public/`, so they
+are never deployed — `next build` copies `public/` verbatim and Next offers no
+exclude option. `public/logo/` contains only built output.
 
-| File | Real format | Pixels | Background |
-|---|---|---|---|
-| `tribe.jpg` | JPEG | 480×480 | coloured tile (yellow) |
-| `crux.png` | PNG | 400×400 | white tile |
-| `uniblock.jpg` | JPEG | 400×400 | white tile |
-| `desyn.jpg` | JPEG | 1164×1164 | white, non-uniform |
-| `yousend.jpg` | JPEG | 400×400 | dark tile |
-| `deconflict.jpg` | JPEG | 400×400 | dark tile |
-| `silence-labs.jpg` | JPEG | 400×400 | coloured tile (navy) |
-| `kuru.jpg` | JPEG | 1600×1600 | coloured, non-uniform |
-| `stan.jpg` | JPEG | 400×400 | dark tile |
-| `shield.png` | **PNG** | 240×206 | coloured, non-uniform |
-| `cysic.jpg` | JPEG | 400×400 | dark tile |
-| `blockscholes.png` | PNG | 400×400 | coloured tile (navy) |
-| `kelp.jpg` | JPEG | 400×400 | coloured tile (teal) |
+```
+assets/brand/logo.jpg             supplied Trove lockup (source of record)
+assets/brand/portfolio/*.jpg|png  the 13 supplied company logos
+        |
+        |  python3 scripts/build-assets.py
+        v
+public/logo/trove-logo.webp       336x128, lossless
+public/logo/<slug>.webp           13 tiles, 192x192
+```
 
-Filenames were normalised to URL-safe lowercase slugs (owner-approved). Each
-rename was verified byte-identical, and each new extension matches the file's
-real format — `shield.png` was `Shield Logo.jpg` but contained PNG data, which
-would have been served as `image/jpeg` under our `nosniff` header.
+Re-run `scripts/build-assets.py` whenever a supplied asset changes. It needs
+Pillow — a local tool dependency, deliberately not a project one.
 
-### Remaining problems with these assets
+### Why WebP
 
-1. **They are opaque app-style tiles, not transparent wordmarks.** Every file
-   has a solid or busy background — white, dark or brand-coloured. None can sit
-   directly on the ivory ground without showing its own box. Settled: the
-   portfolio uses a disciplined contained treatment (see `docs/CONTENT.md`).
-2. **Sizes range 240×206 → 1600×1600** (~376 KB total). Because static export
-   forces `images.unoptimized`, these must be pre-sized and compressed by hand
-   before Phase 8 — Kuru alone is 140 KB for a mark shown at ~120 px.
-3. **`shield.png` is 240×206**, the only non-square asset, so it needs its own
-   treatment in a uniform grid.
+Static export forces `images.unoptimized`, so the browser gets exactly the
+bytes we ship and format is the only lever. Measured on this set:
 
-`npm run build` runs `scripts/clean-export.mjs`, which strips `.DS_Store` and
-AppleDouble `._*` files from `out/` — Next copies `public/` verbatim and has no
-exclude option, so they are removed after the build rather than deleted from
-the working tree.
+| approach | total | note |
+|---|---|---|
+| supplied originals | 376 KB | Kuru 1600x1600 at 140 KB for a 56px tile |
+| resized, formats kept | 70.6 KB | makes 3 PNGs *larger* (crux 1.8 -> 4.8 KB) |
+| **resized + WebP** | **23.3 KB** | keeps Shield's alpha; 93.8% smaller |
 
-### Trove brand lockup
+Deployed image payload overall: **421 KB -> 48 KB** (the 24.7 KB wordmark is
+lossless, since lossy artefacts on the primary brand mark are not worth ~9 KB).
 
-`public/logo/logo.jpg` (559×216, opaque JPEG on near-white paper) is the
-owner-supplied brand file, kept unmodified as the source of record. The header
-serves `public/logo/trove-logo.png` (336×128, transparent), produced by
-`scripts/derive-logo.py` — re-run that script if a new brand file arrives.
+Tiles are padded to a uniform 192x192 square. The padding is transparent, so it
+renders exactly as letterboxing would inside the framed tile, but keeps one set
+of dimensions for all thirteen — Shield is the only non-square original
+(240x206). No logo was recreated, recoloured or redrawn.
 
-Two things worth improving when possible:
+### Still worth improving
 
-- **A vector (SVG) would beat any raster here.** The mark is effectively
-  monochrome line art; an SVG would be smaller than the current 36 KB, scale
-  perfectly, and need no white-keying step at all.
-- `public/logo/logo.jpg` is still inside `public/`, so the unused source file
-  ships to Cloudflare (10 KB) and is publicly reachable. Moving it outside
-  `public/` would keep it out of the deployment.
-
-`src/app/icon.svg` (the favicon) is still a labelled placeholder, not this mark.
-
-### Assets not supplied
-- **No team photographs** (Phase 9 needs five).
-- **No founder photographs** (Phase 10).
+- **A vector Trove mark would beat any raster**: the mark is monochrome line
+  art, so an SVG would be a few KB instead of 24.7, scale perfectly, and remove
+  the white-keying step entirely.
+- `src/app/icon.svg` (the favicon) is still a labelled placeholder, not the
+  Trove mark.
+- No team or founder photographs have been supplied.
 
 ## Open decisions
 

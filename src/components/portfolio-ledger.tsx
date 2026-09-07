@@ -75,11 +75,20 @@ export function PortfolioLedger() {
       <ul>
         {visible.map((company) => (
           <li key={company.name} className="border-b border-border last:border-b-0">
+            {/* The three-column split engages at `md`, not `lg`. Stacked rows
+                at tablet width were the densest on the site — 164px each
+                against 113px at laptop, because the tile and padding had
+                already grown while the description still sat below the name.
+                Measured with the real font metrics, the 279px description
+                column at 768px holds every supplied description on one line
+                (longest is 244px) and the 217px name column holds the longest
+                name at 105px, so the split is safe there and cuts the tablet
+                ledger from ~2130px to ~1470px. */}
             <a
               href={company.url}
               target="_blank"
               rel="noreferrer"
-              className="group grid grid-cols-[auto_1fr] items-center gap-x-5 gap-y-3 py-6 transition-colors duration-swift ease-standard hover:bg-surface-sunken md:py-7 lg:grid-cols-12 lg:gap-x-8"
+              className="group grid grid-cols-[auto_1fr] items-center gap-x-5 gap-y-3 py-6 transition-colors duration-swift ease-standard hover:bg-surface-sunken md:grid-cols-12 md:gap-x-8 md:py-7"
             >
               {/* The supplied logos are opaque tiles with their own
                   backgrounds, so they are framed at a uniform size rather than
@@ -89,14 +98,14 @@ export function PortfolioLedger() {
                 alt=""
                 width={company.logo.width}
                 height={company.logo.height}
-                className="size-12 rounded-card border border-border bg-surface object-contain md:size-14 lg:col-span-3"
+                className="size-12 rounded-card border border-border bg-surface object-contain md:col-span-3 md:size-14"
               />
 
-              <h3 className="text-title-sm text-foreground transition-colors duration-swift ease-standard group-hover:text-accent lg:col-span-4 lg:col-start-4">
+              <h3 className="text-title-sm text-foreground transition-colors duration-swift ease-standard group-hover:text-accent md:col-span-4 md:col-start-4">
                 {company.name}
               </h3>
 
-              <p className="col-span-2 max-w-measure text-caption text-foreground-muted lg:col-span-5 lg:col-start-8">
+              <p className="col-span-2 max-w-measure text-caption text-foreground-muted md:col-span-5 md:col-start-8">
                 {company.description}
               </p>
             </a>

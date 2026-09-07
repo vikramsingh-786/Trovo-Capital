@@ -13,9 +13,12 @@
  * `category` is `null` — never a guess. Filling this in is the only change
  * needed to activate filtering; see `portfolioCategories` below.
  *
- * Logo intrinsic sizes are recorded so images reserve their space without a
- * layout shift. They are the assets' real dimensions, several of which are far
- * larger than needed for a ~56px tile — resizing belongs to the assets phase.
+ * Logo paths point at BUILT assets, not the supplied originals. The originals
+ * live in assets/brand/portfolio/ (outside public/, so they are never
+ * deployed) and scripts/build-assets.py produces public/logo/*.webp from them:
+ * every tile is normalised to 192x192, which is why the dimensions below are
+ * uniform. Re-run that script after changing a supplied asset; if its TILE
+ * constant changes, update these dimensions to match.
  */
 
 export const portfolioCategories = [
@@ -42,91 +45,91 @@ export const portfolioCompanies: readonly PortfolioCompany[] = [
     name: "Tribe",
     description: "24/7 personal finance companion",
     url: "https://www.tribemoney.ai/",
-    logo: { src: "/logo/tribe.jpg", width: 480, height: 480 },
+    logo: { src: "/logo/tribe.webp", width: 192, height: 192 },
     category: null,
   },
   {
     name: "Crux",
     description: "AI platform for performance-marketing",
     url: "http://getcrux.ai/",
-    logo: { src: "/logo/crux.png", width: 400, height: 400 },
+    logo: { src: "/logo/crux.webp", width: 192, height: 192 },
     category: null,
   },
   {
     name: "Uniblock",
     description: "Unified Web3 API layer",
     url: "https://uniblock.dev/",
-    logo: { src: "/logo/uniblock.jpg", width: 400, height: 400 },
+    logo: { src: "/logo/uniblock.webp", width: 192, height: 192 },
     category: null,
   },
   {
     name: "Desyn",
     description: "Decentralized Liquidity Infrastructure",
     url: "https://desyn.io/#/",
-    logo: { src: "/logo/desyn.jpg", width: 1164, height: 1164 },
+    logo: { src: "/logo/desyn.webp", width: 192, height: 192 },
     category: null,
   },
   {
     name: "YouSend",
     description: "Stablecoin powered remittance platform",
     url: "https://yousend.co/",
-    logo: { src: "/logo/yousend.jpg", width: 400, height: 400 },
+    logo: { src: "/logo/yousend.webp", width: 192, height: 192 },
     category: null,
   },
   {
     name: "Deconflict",
     description: "Verified Intelligence for Financial Crime",
     url: "https://deconflict.com/law-enforcement/",
-    logo: { src: "/logo/deconflict.jpg", width: 400, height: 400 },
+    logo: { src: "/logo/deconflict.webp", width: 192, height: 192 },
     category: null,
   },
   {
     name: "Silence Labs",
     description: "Institutional grade security platform",
     url: "https://silencelaboratories.com/",
-    logo: { src: "/logo/silence-labs.jpg", width: 400, height: 400 },
+    logo: { src: "/logo/silence-labs.webp", width: 192, height: 192 },
     category: null,
   },
   {
     name: "Kuru",
     description: "Fully onchain order book DEX",
     url: "https://www.kuru.io/",
-    logo: { src: "/logo/kuru.jpg", width: 1600, height: 1600 },
+    logo: { src: "/logo/kuru.webp", width: 192, height: 192 },
     category: null,
   },
   {
     name: "Stan",
     description: "Gaming & Creator Hub",
     url: "https://getstan.app/",
-    logo: { src: "/logo/stan.jpg", width: 400, height: 400 },
+    logo: { src: "/logo/stan.webp", width: 192, height: 192 },
     category: null,
   },
   {
     name: "Shield",
     description: "Cross Border Stablecoin Neo Bank",
     url: "https://www.getshield.xyz/en",
-    logo: { src: "/logo/shield.png", width: 240, height: 206 },
+    logo: { src: "/logo/shield.webp", width: 192, height: 192 },
     category: null,
   },
   {
     name: "Cysic",
     description: "Full-Stack Compute Network",
     url: "https://app.cysic.xyz/",
-    logo: { src: "/logo/cysic.jpg", width: 400, height: 400 },
+    logo: { src: "/logo/cysic.webp", width: 192, height: 192 },
     category: null,
   },
   {
     name: "BlockScholes",
     description: "Crypto Derivatives Intelligence",
     url: "https://www.blockscholes.com/",
-    logo: { src: "/logo/blockscholes.png", width: 400, height: 400 },
+    logo: { src: "/logo/blockscholes.webp", width: 192, height: 192 },
     category: null,
   },
   {
     name: "Kelp",
     description: "Liquid Restaking Platform",
     url: "https://kerneldao.com/kelp/",
-    logo: { src: "/logo/kelp.jpg", width: 400, height: 400 },
+    logo: { src: "/logo/kelp.webp", width: 192, height: 192 },
     category: null,
   },
 ];

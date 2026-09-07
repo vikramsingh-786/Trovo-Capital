@@ -19,7 +19,14 @@ import Link from "next/link";
  * by static export) next/image emits a plain <img> with the intrinsic
  * dimensions, which is what keeps the bar from shifting as the logo loads.
  */
-export function Wordmark({ className = "" }: { className?: string }) {
+export function Wordmark({
+  className = "",
+  priority = true,
+}: {
+  className?: string;
+  /** The header instance is above the fold; the footer's is not. */
+  priority?: boolean;
+}) {
   return (
     <Link
       href="/"
@@ -30,7 +37,7 @@ export function Wordmark({ className = "" }: { className?: string }) {
         alt="Trove Capital"
         width={336}
         height={128}
-        priority
+        priority={priority}
         className="h-8 w-auto md:h-10"
       />
     </Link>

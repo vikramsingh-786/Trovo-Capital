@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { About } from "@/components/about";
+import { FinalCta } from "@/components/final-cta";
 import { FounderReviews } from "@/components/founder-reviews";
 import { Hero } from "@/components/hero";
 import { InvestmentPerspectives } from "@/components/investment-perspectives";
@@ -7,19 +8,12 @@ import { Portfolio } from "@/components/portfolio";
 import { Team } from "@/components/team";
 
 /**
- * The single long-form page.
+ * The single long-form page. Every section is now real; only the founder
+ * reviews carry temporary dummy data (see src/data/founder-reviews.ts).
  *
- * The Hero, About, investment perspectives, Portfolio, Team and founder
- * reviews are real (the last on temporary dummy data). The
- * sections after them are deliberately UNDESIGNED SCAFFOLDING: they exist so
- * the sticky header and its anchor offsets have real scroll targets, and each
- * is replaced wholesale by its own phase — the Final CTA.
- * Their ids must survive, because src/data/navigation.ts points at them.
+ * The `id`s on About, Portfolio, Team and the closing CTA must survive: both
+ * the header and footer navigation point at them via src/data/navigation.ts.
  */
-
-const scaffold = [
-  { id: "contact", label: "Contact", phase: "Phase 11" },
-];
 
 export default function Home() {
   return (
@@ -30,20 +24,7 @@ export default function Home() {
       <Portfolio />
       <Team />
       <FounderReviews />
-
-      {scaffold.map(({ id, label, phase }) => (
-        <section key={id} id={id} className="border-t border-border">
-          <div className="shell flex min-h-[60vh] flex-col justify-center py-section">
-            <p className="eyebrow text-foreground-muted">
-              {label} — scaffolding
-            </p>
-            <p className="mt-4 max-w-measure text-base text-foreground-muted">
-              Anchor target <code className="font-mono">#{id}</code>. Built in{" "}
-              {phase}.
-            </p>
-          </div>
-        </section>
-      ))}
+      <FinalCta />
 
       {/* Internal link, kept out of the Hero so that section carries approved
           copy only. Removed with the styleguide route at deployment prep. */}

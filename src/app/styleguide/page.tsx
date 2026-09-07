@@ -301,8 +301,9 @@ export default function StyleguidePage() {
               The same ink, used as ground.
             </p>
             <p className="mt-4 max-w-measure text-base text-inverse-foreground-muted">
-              Reserved for a closing call to action and the footer, so the dark
-              band stays an event rather than a texture.
+              Available but currently unused: the closing call to action sets
+              on the surface tint instead, so the dark band stays in reserve
+              rather than becoming a texture.
             </p>
             <p className="mt-6">
               <Link

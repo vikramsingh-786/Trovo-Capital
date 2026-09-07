@@ -147,12 +147,28 @@ Do not settle for the first acceptable design. Think about hierarchy, typography
 whitespace, composition, visual rhythm, consistency, interaction, responsiveness.
 The goal is exceptional polish, not more features.
 
-## 19. Phases
+## 19. Phases (revised by the owner — supersedes the original list)
 
-1 Project setup · 2 Design system · 3 Navigation · 4 Hero · 5 About ·
-6 Investment pillars · 7 Portfolio · 8 Founder reviews · 9 Team · 10 Final CTA ·
-11 Footer · 12 Animation/polish · 13 Real assets · 14 SEO · 15 Accessibility ·
-16 Performance · 17 Final QA · 18 Static deployment preparation
+| # | Phase | Status |
+|---|-------|--------|
+| 1 | Project setup | done |
+| 2 | Design system | done |
+| 3 | Navigation | next |
+| 4 | Hero | |
+| 5 | About | |
+| 6 | Three investment perspective buckets | |
+| 7 | Portfolio architecture + filtering | |
+| 8 | Portfolio assets/content | |
+| 9 | Team | |
+| 10 | Founder Reviews | lowest priority; after Portfolio and Team |
+| 11 | Final CTA + Footer | |
+| 12 | Animation/polish | |
+| 13 | Real content/assets finalization | |
+| 14 | SEO | |
+| 15 | Accessibility | |
+| 16 | Performance | |
+| 17 | Final QA | |
+| 18 | Static deployment preparation | |
 
 Complete and review each phase before starting the next. Never build the whole
 site in one step.
@@ -176,3 +192,47 @@ CURRENT OFFICIAL BEST PRACTICE over old familiar code.
 VERIFIED IMPLEMENTATION over assumption.
 SIMPLE MAINTAINABLE CODE over unnecessary complexity.
 Always: IMPLEMENT -> TEST -> SUBAGENT REVIEW -> FIX -> TEST.
+
+
+# Project content — read before any content phase
+
+**`docs/CONTENT.md` is the source of truth for all site copy**, supplied by the
+owner. Read it before Phases 3-11. Never edit supplied copy without approval,
+and never fill a gap in it by invention — render a labelled placeholder and ask.
+
+Structure is one long-form page: Navigation · Hero · About Us · Three investment
+perspective buckets · Portfolio · Founder Reviews · Meet the Team · Final CTA ·
+Footer.
+
+## Content architecture (hard requirement)
+
+The owner expects repeated content iterations. Portfolio companies, portfolio
+categories, team members and founder testimonials **must** come from
+data/configuration under `src/data/`, never hardcoded into JSX. A component that
+needs redesigning to change content is a defect, not a style preference.
+
+## Portfolio specifics
+
+Four categories: Consumer, Enterprise, Infrastructure, Digital Assets. **No
+company has a confirmed category** — assignments were never supplied. Build so a
+category can be attached per company later; never guess one. The portfolio is a
+polished interactive showcase, not a logo wall: filtering, logo, name, supplied
+description, external link. Avoid generic SaaS cards, heavy rounding, shadows and
+gratuitous animation.
+
+## Assets
+
+Real logos live in `public/logo/` (13 files, one per supplied company). Inspect
+them before Phases 7-8; see README.md for the inventory and its known problems.
+Do not replace them with invented logos, and do not rename or delete assets
+without first checking usage and asking. If a logo cannot be confidently mapped
+to a company, flag it rather than guessing.
+
+No Trove brand mark has been supplied. `src/app/icon.svg` is a labelled
+placeholder, not a Trove logo.
+
+## Reference sites
+
+inception.capital · maelstrom.fund · tritoncapital.xyz · cxpartners.in —
+inspiration for IA, typography, spacing and interaction only. Never copy their
+design, code, content, branding or assets.

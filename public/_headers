@@ -1,0 +1,14 @@
+# Cloudflare (Pages / Workers Static Assets) reads this file from the deploy root.
+# `output: "export"` cannot use next.config.ts `headers()`, so headers live here.
+# Everything in public/ is copied verbatim into out/, so this ships as out/_headers.
+
+# Build output is content-hashed, so it is safe to cache forever.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Conservative baseline. A Content-Security-Policy is deliberately deferred
+# until the font / analytics decisions are made (SEO + performance phases).
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY

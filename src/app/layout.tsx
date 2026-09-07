@@ -38,15 +38,22 @@ const schibstedGrotesk = Schibsted_Grotesk({
 });
 
 // "Trove Capital" is the visual brand; "Trove Capital Partners" is used in
-// formal body copy. PLACEHOLDER description — awaiting real copy.
-// `metadataBase` is intentionally omitted until the production domain is
-// confirmed; it is required for absolute Open Graph / canonical URLs.
+// formal body copy.
+//
+// The description is the approved About sentence verbatim, not marketing copy
+// written for the tag — it replaced a "[PLACEHOLDER]" string that was shipping
+// into search results.
+//
+// `metadataBase` is still intentionally omitted: it needs the production
+// domain, which has not been supplied, and it is required before any relative
+// Open Graph or canonical URL can be added.
 export const metadata: Metadata = {
   title: {
     default: "Trove Capital",
     template: "%s | Trove Capital",
   },
-  description: "Trove Capital — venture capital. [PLACEHOLDER]",
+  description:
+    "Trove Capital Partners invests in emerging technology companies with the potential to shape large, evolving markets.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

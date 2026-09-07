@@ -54,10 +54,14 @@ page-level branding. **Trove Capital Partners** is used where it appears
 naturally in formal body copy (About, CTA). Do not rewrite supplied copy to
 force either form.
 
-There is no supplied Trove wordmark or mark. Navigation and footer use
-**TROVE CAPITAL** set in the design system's typography, implemented so a real
-mark can replace it without touching layout. Never invent or generate a
-graphical logo.
+A brand lockup (icon + wordmark) **has now been supplied** as
+`public/logo/logo.jpg`, and the owner has approved using it in place of the
+text wordmark. It is served as `public/logo/trove-logo.png`, derived by
+`scripts/derive-logo.py`: the supplied file is an opaque JPEG on near-white
+paper, which would show as a white box on the ivory ground, so the paper is
+keyed out to transparency and the uneven padding trimmed. The original JPEG is
+kept unmodified as the source of record. Never invent or generate a graphical
+logo; a vector version of this one would be preferable to any raster.
 
 ## Navigation (owner decision)
 

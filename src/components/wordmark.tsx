@@ -1,23 +1,38 @@
+import Image from "next/image";
 import Link from "next/link";
 
 /**
  * Trove wordmark.
  *
- * NO GRAPHICAL MARK HAS BEEN SUPPLIED, so this is type — "TROVE CAPITAL" set in
- * the editorial display face, uppercase and widely tracked, like a masthead.
+ * Renders the supplied brand lockup (icon + wordmark). The asset at
+ * public/logo/trove-logo.png is derived from the owner-supplied
+ * public/logo/logo.jpg, which is an opaque JPEG on near-white paper: dropped
+ * straight onto the ivory ground it would show as a white box. The derived PNG
+ * keys the paper out to transparency, trims the uneven padding so CSS controls
+ * the optical alignment, and is sized for its largest on-screen use. The
+ * original JPEG is kept unmodified as the source of record.
  *
- * TO REPLACE WITH A REAL MARK: swap the inner <span> for an <Image> or inline
- * SVG. The link, sizing box and focus behaviour stay as they are, so no layout
- * or navigation change is needed.
+ * A vector version would be better than any raster here — see README.
+ *
+ * `priority` because this is above the fold; with `images.unoptimized` (forced
+ * by static export) next/image emits a plain <img> with the intrinsic
+ * dimensions, which is what keeps the bar from shifting as the logo loads.
  */
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
     <Link
       href="/"
       aria-label="Trove Capital, home"
-      className={`font-display whitespace-nowrap text-[0.9375rem] leading-none tracking-[0.2em] text-foreground uppercase transition-colors duration-swift ease-standard hover:text-accent md:text-base ${className}`}
+      className={`inline-flex shrink-0 items-center transition-opacity duration-swift ease-standard hover:opacity-70 ${className}`}
     >
-      <span>Trove Capital</span>
+      <Image
+        src="/logo/trove-logo.png"
+        alt="Trove Capital"
+        width={336}
+        height={128}
+        priority
+        className="h-8 w-auto md:h-10"
+      />
     </Link>
   );
 }

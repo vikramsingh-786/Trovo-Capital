@@ -198,10 +198,25 @@ AppleDouble `._*` files from `out/` — Next copies `public/` verbatim and has n
 exclude option, so they are removed after the build rather than deleted from
 the working tree.
 
-### Assets not supplied
+### Trove brand lockup
 
-- **No Trove brand mark or wordmark.** Navigation (Phase 3) and Footer
-  (Phase 11) both need one. `src/app/icon.svg` is a labelled placeholder.
+`public/logo/logo.jpg` (559×216, opaque JPEG on near-white paper) is the
+owner-supplied brand file, kept unmodified as the source of record. The header
+serves `public/logo/trove-logo.png` (336×128, transparent), produced by
+`scripts/derive-logo.py` — re-run that script if a new brand file arrives.
+
+Two things worth improving when possible:
+
+- **A vector (SVG) would beat any raster here.** The mark is effectively
+  monochrome line art; an SVG would be smaller than the current 36 KB, scale
+  perfectly, and need no white-keying step at all.
+- `public/logo/logo.jpg` is still inside `public/`, so the unused source file
+  ships to Cloudflare (10 KB) and is publicly reachable. Moving it outside
+  `public/` would keep it out of the deployment.
+
+`src/app/icon.svg` (the favicon) is still a labelled placeholder, not this mark.
+
+### Assets not supplied
 - **No team photographs** (Phase 9 needs five).
 - **No founder photographs** (Phase 10).
 

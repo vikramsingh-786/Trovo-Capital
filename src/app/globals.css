@@ -2,88 +2,108 @@
 
 /* ===========================================================================
    TROVE CAPITAL PARTNERS — DESIGN SYSTEM
-   Light / ivory editorial. Warm neutrals, near-black ink, one bronze accent.
+   Dark-first. Warm obsidian ground, one bronze accent, editorial serif display.
 
-   Contrast ratios in these comments are measured (WCAG 2.1 relative
-   luminance). They are GROUND-SPECIFIC: unless noted otherwise the figure is
-   against --color-ivory-50, the page ground. Where a token is meant for a
-   tinted surface, the ratio against that surface is given instead.
-   Thresholds: 4.5 = AA body text, 3.0 = AA large text / non-text UI, 7.0 = AAA.
+   The ground is DARK BY DEFAULT: the semantic aliases in @theme resolve to the
+   dark palette, and `[data-theme="light"]` is the opt-in inversion. This is the
+   reverse of the earlier ivory system — the whole page is composed against
+   black now, so black is what the tokens should mean by default.
+
+   Accessibility is explicitly out of scope for this project (AGENTS.md §10),
+   so there is no contrast auditing here. Values are chosen for how they look.
    =========================================================================== */
 
 @theme {
-  /* --- Surfaces: warm ivory, never pure white (light theme) ------------- */
-  --color-ivory-50: oklch(0.982 0.006 85); /* #FBF9F5  page ground          */
-  --color-ivory-100: oklch(0.955 0.01 85); /* #F3F0E9  alternating band     */
-  --color-ivory-200: oklch(0.93 0.012 85); /* #EBE7DF  inset / hover fill   */
-  --color-ivory-300: oklch(0.895 0.014 85); /* #E1DCD2  hairline rules      */
-  --color-ivory-250: oklch(0.918 0.011 85); /* #EDE9E0  refined hover fill  */
+  /* --- Dark palette: warm charcoal, never a blue-black, never #000 -------
+     Deliberately NOT a near-black. An earlier revision sat the ground at
+     L=0.125, which resolves to about #070605 — dark enough that every band,
+     card and hairline collapsed into one flat sheet and the photography had
+     nothing to sit against. The ground now starts just above #121212 (the
+     conventional floor for a dark UI) and the ladder climbs in even steps, so
+     surfaces are told apart by their own value rather than by a border.
 
-  /* --- Ink: warm near-black, never pure black (light theme) ------------- */
-  --color-ink-900: oklch(0.205 0.012 60); /* #1B1612  17.03 : AAA           */
-  --color-ink-800: oklch(0.3 0.012 60); /* #322C28  12.98 : AAA             */
-  --color-ink-700: oklch(0.4 0.011 60); /* #4C4642   8.77 : AAA             */
-  --color-ink-600: oklch(0.5 0.01 60); /* #68625E   5.71 : AA               */
-  --color-ink-500: oklch(0.545 0.01 60); /* #756F6A                         */
-  --color-ink-400: oklch(0.643 0.009 60); /* #918C88                        */
+     Chroma stays low but non-zero at hue 65: enough warmth that the ground
+     reads as ink on paper next to the bronze, not as a powered-off screen. */
+  --color-obsidian-950: oklch(0.205 0.006 65); /* page ground     ~#191715 */
+  --color-obsidian-900: oklch(0.235 0.007 65); /* alternating band ~#1f1d1a */
+  --color-obsidian-850: oklch(0.27 0.008 65); /* raised surface    ~#262320 */
+  --color-obsidian-800: oklch(0.31 0.009 65); /* hover fill        ~#2e2b27 */
+  --color-obsidian-700: oklch(0.37 0.01 65); /* hairline on dark   ~#3a3630 */
 
-  /* --- Dark theme surfaces ------------------------------------------------ */
-  --color-dark-50: oklch(0.105 0.008 60); /* #171411  primary dark          */
-  --color-dark-100: oklch(0.12 0.008 60); /* #1E1A16  secondary dark        */
-  --color-dark-200: oklch(0.145 0.008 60); /* #25201B  elevated dark        */
-  --color-dark-300: oklch(0.165 0.009 60); /* #2B261F  subtle surface       */
+  /* --- Warm whites ------------------------------------------------------ */
+  --color-bone-50: oklch(0.975 0.006 85); /* primary text                   */
+  --color-bone-100: oklch(0.885 0.007 85); /* secondary text                */
+  --color-bone-200: oklch(0.735 0.008 70); /* muted text                    */
+  --color-bone-300: oklch(0.6 0.008 65); /* quietest legible text           */
 
-  /* --- Dark theme text --------------------------------------------------- */
-  --color-light-50: oklch(0.945 0.007 85); /* #F1ECE3  primary light text    */
-  --color-light-100: oklch(0.78 0.008 85); /* #C8C0B5  secondary light text  */
-  --color-light-200: oklch(0.6 0.007 60); /* #958D83  muted light text      */
+  /* --- Ivory palette: the light theme's ground -------------------------
+     Warm paper, not white. #fff is the wrong ground for an editorial layout
+     set in a serif — it flattens the type and makes the bronze look orange.
+     Holding ~0.012 chroma at hue 88 lands on a parchment tone that keeps its
+     warmth as the ladder darkens, so a surface still reads as the same paper
+     under shade rather than as grey. */
+  --color-ivory-50: oklch(0.968 0.012 88); /* page ground        ~#f8f3ea */
+  --color-ivory-100: oklch(0.945 0.015 88); /* alternating band  ~#f2ebe0 */
+  --color-ivory-200: oklch(0.918 0.017 86); /* sunken / hover    ~#eae2d5 */
+  --color-ivory-300: oklch(0.888 0.019 84); /* deepest paper     ~#e1d8ca */
 
-  /* --- Accent: single muted bronze. Restraint is the point. ------------- */
-  --color-bronze-700: oklch(0.47 0.075 65); /* #78512A  6.60 : AA           */
-  --color-bronze-600: oklch(0.515 0.085 65); /* #895D2E  5.46 : AA          */
-  --color-bronze-500: oklch(0.65 0.09 65); /* #B58452                        */
+  --color-ink-900: oklch(0.205 0.012 60);
+  --color-ink-800: oklch(0.3 0.012 60);
+  --color-ink-700: oklch(0.4 0.011 60);
+  --color-ink-600: oklch(0.5 0.01 60);
+  --color-ink-400: oklch(0.643 0.009 60);
 
-  /* --- Semantic aliases (light theme defaults) --------------------------
-     Dark theme variants are set via data-theme="dark" media query below.   */
-  --color-background: var(--color-ivory-50);
-  --color-surface: var(--color-ivory-100);
-  --color-surface-sunken: var(--color-ivory-200);
-  --color-foreground: var(--color-ink-900);
-  --color-foreground-secondary: var(--color-ink-700);
-  --color-foreground-muted: var(--color-ink-600);
-  --color-foreground-on-tint: var(--color-ink-800);
-  --color-border: var(--color-ivory-300);
-  --color-border-strong: var(--color-ink-400);
-  --color-accent: var(--color-bronze-700);
-  --color-accent-on-tint: var(--color-bronze-600);
-  --color-accent-quiet: var(--color-bronze-500);
+  /* --- Accent: one bronze, tuned to glow on black rather than sit on it --
+     `bronze-400` is the working accent in the dark theme: light enough to
+     carry a hairline or a small cap against obsidian without shouting.     */
+  --color-bronze-300: oklch(0.82 0.075 72);
+  --color-bronze-400: oklch(0.745 0.098 68);
+  --color-bronze-500: oklch(0.655 0.105 65);
+  --color-bronze-600: oklch(0.545 0.09 65);
+  --color-bronze-700: oklch(0.47 0.075 65);
 
-  /* Inverted ground (closing CTA, footer) */
-  --color-inverse: var(--color-ink-900);
-  --color-inverse-foreground: var(--color-ivory-50);
-  --color-inverse-foreground-muted: var(--color-ink-400);
-  --color-inverse-border: var(--color-ink-700);
+  /* --- Semantic aliases. DARK IS THE DEFAULT. --------------------------
+     `[data-theme="light"]` below is the only place these are re-pointed.  */
+  --color-background: var(--color-obsidian-950);
+  --color-surface: var(--color-obsidian-900);
+  --color-surface-raised: var(--color-obsidian-850);
+  --color-surface-sunken: var(--color-obsidian-800);
 
-  /* --- Responsive type scale -------------------------------------------
+  --color-foreground: var(--color-bone-50);
+  --color-foreground-secondary: var(--color-bone-100);
+  --color-foreground-muted: var(--color-bone-200);
+  --color-foreground-faint: var(--color-bone-300);
+
+  --color-border: oklch(1 0 0 / 0.09);
+  --color-border-strong: oklch(1 0 0 / 0.2);
+
+  --color-accent: var(--color-bronze-400);
+  --color-accent-strong: var(--color-bronze-300);
+  --color-accent-quiet: var(--color-bronze-600);
+
+  /* Ground for text sitting ON a photograph. Fixed to the dark values in both
+     themes: the images are dark in either case, so this must not invert. */
+  --color-on-media: var(--color-bone-50);
+  --color-on-media-muted: var(--color-bone-200);
+
+  /* --- Type scale -------------------------------------------------------
      Fluid via clamp(). The middle term keeps a rem component so text-only
      zoom still changes the size (a pure-vw font-size would not).          */
 
   --text-eyebrow: 0.6875rem;
   --text-eyebrow--line-height: 1.2;
-  --text-eyebrow--letter-spacing: 0.14em;
+  --text-eyebrow--letter-spacing: 0.16em;
   --text-eyebrow--font-weight: 500;
 
   --text-caption: 0.8125rem;
-  --text-caption--line-height: 1.5;
+  --text-caption--line-height: 1.55;
 
-  /* Body copy is tuned like every other step rather than inheriting
-     Tailwind's stock 1rem/1.5 — it is the size readers spend longest in. */
   --text-base: 1.0625rem;
-  --text-base--line-height: 1.65;
+  --text-base--line-height: 1.7;
 
-  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.3125rem);
+  --text-lead: clamp(1.125rem, 1.02rem + 0.42vw, 1.4375rem);
   --text-lead--line-height: 1.55;
-  --text-lead--letter-spacing: -0.005em;
+  --text-lead--letter-spacing: -0.008em;
 
   --text-title-sm: clamp(1.125rem, 1.05rem + 0.35vw, 1.375rem);
   --text-title-sm--line-height: 1.3;
@@ -109,12 +129,21 @@
   --text-display-xl--line-height: 1.02;
   --text-display-xl--letter-spacing: -0.028em;
 
+  /* Hero only. Larger than anything else on the page by a clear margin, so
+     the opening reads as a title page rather than as the first heading. */
+  --text-display-2xl: clamp(3rem, 1.9rem + 5.4vw, 8.25rem);
+  --text-display-2xl--line-height: 0.96;
+  --text-display-2xl--letter-spacing: -0.032em;
+
   /* --- Spacing rhythm ---------------------------------------------------
-     Tailwind's 0.25rem step scale is kept. These add the page-level rhythm
-     so sections stay consistent without repeating clamp() everywhere.     */
+     `section` is applied as `py-section`, so it is paid TWICE per band and is
+     by far the biggest lever on overall page height. It was tuned down at the
+     owner's request: the sections read as too tall at 10vw, which spent about
+     290px of a 1440px viewport on padding alone between one band's content and
+     the next. */
   --spacing-gutter: clamp(1.25rem, 3.5vw, 2.75rem);
-  --spacing-section: clamp(4.5rem, 9vw, 8.5rem);
-  --spacing-section-tight: clamp(3rem, 6vw, 5.5rem);
+  --spacing-section: clamp(3.5rem, 6.5vw, 6.5rem);
+  --spacing-section-tight: clamp(2.5rem, 4.5vw, 4rem);
   /* Shared by the sticky header's height (`h-header`), the mobile menu's top
      offset (`top-header`) and html's scroll-padding-top, so an anchored
      section can never land underneath the bar. */
@@ -123,19 +152,52 @@
   /* --- Containers -------------------------------------------------------
      Named `measure` rather than `prose`: Tailwind ships a static
      `max-w-prose` (65ch) that would shadow a --container-prose token. */
-  --container-shell: 84rem; /* standard page frame                         */
-  --container-wide: 96rem; /* full-bleed-ish editorial spreads             */
-  --container-measure: 42rem; /* running text                              */
+  --container-shell: 84rem;
+  --container-wide: 96rem;
+  --container-measure: 42rem;
   --container-narrow: 32rem;
 
-  /* --- Radii: minimal. Sharp corners read as editorial, not SaaS. ------- */
-  --radius-card: 0.1875rem;
+  /* --- Radii -------------------------------------------------------------
+     Mostly minimal: sharp corners read as editorial rather than SaaS. The
+     card step is the deliberate exception, raised to 1rem at the owner's
+     request. Only the portfolio cards consume it; inner corners stay at
+     `media`, which keeps a logo tile tighter than the plate holding it. */
+  --radius-card: 1rem;
   --radius-media: 0.25rem;
   --radius-pill: 9999px;
+
+  /* --- Elevation: the key -----------------------------------------------
+     A raised physical key, shared by the nav links, the theme toggle and the
+     portfolio filter chips. Inset only: an outer drop shadow reads as dirt on
+     a near-black ground, so the dimension comes from a lit top edge and a
+     shaded bottom one.
+
+     These are tokens rather than inline arbitrary values because the highlight
+     and the shade have to SWAP with the theme — the hardcoded white-on-black
+     the nav started with was simply invisible on ivory — and because three
+     call sites would otherwise repeat the same long string.
+
+     DELIBERATELY NOT NAMED `--shadow-*`. That is a Tailwind namespace, and a
+     `shadow-*` utility generated from it INLINES the value into the rule
+     instead of referencing the variable — verified in the compiled output — so
+     the `[data-theme="light"]` override below would never be read and light
+     mode would silently wear the dark shadows. The `keycap` utilities further
+     down consume these through `var()`, which does follow the theme. */
+  --keycap-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.1),
+    inset 0 -2px 4px 0 oklch(0 0 0 / 0.34);
+  --keycap-shadow-pressed: inset 0 1px 0 0 oklch(1 0 0 / 0.03),
+    inset 0 2px 5px 0 oklch(0 0 0 / 0.5);
 
   /* --- Motion ----------------------------------------------------------
      `--transition-duration-*` is the namespace Tailwind reads for
      `duration-*` utilities; `--duration-*` would generate nothing.        */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-standard: cubic-bezier(0.4, 0.14, 0.3, 1);
+  --transition-duration-swift: 160ms;
+  --transition-duration-base: 240ms;
+  --transition-duration-slow: 480ms;
+  --transition-duration-slower: 900ms;
+
   /* Hero entrance. `both` fill so the element starts from the `from` state
      rather than flashing at full opacity before the delay elapses. Animates
      `translate`, not `transform`, so it cannot collide with Tailwind's
@@ -146,6 +208,9 @@
   /* Used when a filtered list is replaced, so the swap reads as a change of
      content rather than a flicker. */
   --animate-fade: fade var(--transition-duration-base) var(--ease-standard) both;
+
+  /* The hero's background plate, held back so the headline lands first. */
+  --animate-plate: plate 1.6s var(--ease-editorial) both;
 
   @keyframes rise {
     from {
@@ -167,11 +232,16 @@
     }
   }
 
-  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-standard: cubic-bezier(0.4, 0.14, 0.3, 1);
-  --transition-duration-swift: 160ms;
-  --transition-duration-base: 240ms;
-  --transition-duration-slow: 480ms;
+  @keyframes plate {
+    from {
+      opacity: 0;
+      scale: 1.06;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
 }
 
 /* `inline` because these resolve CSS variables that next/font defines on
@@ -183,6 +253,7 @@
   --font-display: var(--font-newsreader), ui-serif, Georgia, "Times New Roman",
     serif;
 }
+
 
 /* ===========================================================================
    CUSTOM UTILITIES
@@ -204,10 +275,31 @@
   }
 }
 
-/* The inverted band (closing CTA, footer), bundled with the ground it needs. */
-@utility inverse-band {
-  background-color: var(--color-inverse);
-  color: var(--color-inverse-foreground);
+/* Small uppercase label used above headlines. */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--text-eyebrow--font-weight);
+  line-height: var(--text-eyebrow--line-height);
+  letter-spacing: var(--text-eyebrow--letter-spacing);
+  text-transform: uppercase;
+}
+
+/* The keycap pair. A hand-written utility rather than a `--shadow-*` token,
+   because Tailwind's generated shadow utilities inline their value and would
+   strand the light theme on the dark shadows — see the note by
+   `--keycap-shadow`. Reading through `var()` here is what lets one class
+   follow the theme.
+
+   `keycap-pressed` is both the hover state of a raised key and the resting
+   state of a selected one, which is how the portfolio filter marks its active
+   chip. */
+@utility keycap {
+  box-shadow: var(--keycap-shadow);
+}
+
+@utility keycap-pressed {
+  box-shadow: var(--keycap-shadow-pressed);
 }
 
 /* Reveal a block as it scrolls into view.
@@ -227,14 +319,169 @@
   }
 }
 
-/* Small uppercase label used above headlines. */
-@utility eyebrow {
-  font-family: var(--font-sans);
-  font-size: var(--text-eyebrow);
-  font-weight: var(--text-eyebrow--font-weight);
-  line-height: var(--text-eyebrow--line-height);
-  letter-spacing: var(--text-eyebrow--letter-spacing);
-  text-transform: uppercase;
+/* ===========================================================================
+   MOTION LAYER (GSAP)
+
+   The CSS half of src/components/motion/choreography.tsx. That file owns the
+   timing; this owns the resting state and the painting.
+   =========================================================================== */
+
+/* Pre-reveal hidden state. Gated on `data-anim`, which the pre-paint script in
+   theme-provider.tsx sets — so if JavaScript never runs, this never matches and
+   the page renders fully visible rather than as a column of invisible sections.
+   GSAP overrides it with an inline opacity, then clears it on arrival.
+
+   Opacity only, deliberately: the offset each entrance starts from varies by
+   variant and is applied by GSAP's `fromTo`. Duplicating it here would fight
+   the tween on its first frame. */
+[data-anim="on"] [data-reveal] {
+  opacity: 0;
+}
+
+/* Registered so the glare centre interpolates as a length instead of flipping
+   between discrete strings — GSAP rewrites these every frame, and an
+   unregistered custom property has no type for the compositor to work with. */
+@property --glare-x {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+
+@property --glare-y {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+
+/* A tilting card. `preserve-3d` is what lets [data-tilt-layer] children lift on
+   translateZ; without it they flatten onto the card and the depth reads as a
+   plain scale.
+
+   Do NOT add `overflow: hidden` to the same element — it forces the used value
+   of transform-style back to `flat`. Clip on an inner wrapper instead. */
+@utility tilt-card {
+  transform-style: preserve-3d;
+}
+
+/* The travelling highlight. Opacity is driven by GSAP (0 at rest), so this only
+   describes how the light is painted. `soft-light` keeps it reading as a sheen
+   across the photograph rather than a white blob on top of it. */
+@utility tilt-glare {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  background-image: radial-gradient(
+    circle at var(--glare-x) var(--glare-y),
+    oklch(1 0 0 / 0.7) 0%,
+    oklch(1 0 0 / 0.15) 35%,
+    transparent 60%
+  );
+}
+
+/* Film grain. A single tiling SVG turbulence, painted as a pseudo-element so
+   it can sit over a photograph without touching the image element itself.
+   `mix-blend-overlay` lets the grain read in both the lit and crushed parts of
+   a frame instead of just greying it down.
+
+   Purely decorative and never interactive, so it is taken out of the layout
+   and pointer flow entirely. */
+@utility grain {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.35;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+  }
+}
+
+/* A single bronze bloom, used to lift one corner of an otherwise black plate.
+   Kept very low in opacity: it should register as depth, not as a gradient. */
+@utility glow {
+  background-image: radial-gradient(
+    60% 60% at 12% 88%,
+    color-mix(in oklab, var(--color-bronze-500) 26%, transparent) 0%,
+    transparent 72%
+  );
+}
+
+/* Standard treatment for every photograph on the page: desaturated and sunk
+   into the ground, recovering colour and contrast on hover. Applied to the
+   <img>; the parent supplies `group`.
+
+   FILTER ONLY — this rule must not touch `scale`. It used to push the image to
+   `scale: 1.03` on hover, which broke once the images gained a resting
+   overscale for the parallax to travel inside: `.group:hover &` has
+   specificity (0,2,0) and Tailwind's `scale-110` has (0,1,0), so hovering
+   *shrank* the plate from 110% to 103% and exposed a bare edge inside the
+   clip. The zoom is not missed — every plate that had it is now a [data-tilt]
+   card, and the 3D lift is the hover gesture. */
+@utility media-plate {
+  filter: grayscale(1) contrast(1.08) brightness(0.82);
+  transition: filter var(--transition-duration-slower) var(--ease-editorial);
+
+  .group:hover & {
+    filter: grayscale(0.55) contrast(1.02) brightness(0.95);
+  }
+}
+
+/* The supplied brand lockup is near-black ink keyed out to transparency — it
+   was built for the old ivory ground and is effectively invisible on the dark
+   one. The artwork is monochrome, so inverting it yields a clean white mark
+   with the transparency intact, which is cheaper and less error-prone than
+   maintaining a second asset that has to be regenerated whenever the source
+   changes. The small `sepia` pass pulls the result back off pure cyan-white
+   towards the warm bone the rest of the type uses.
+
+   If a proper light-on-dark (ideally vector) lockup is ever supplied, drop
+   this utility and point <Wordmark> at the two files instead. */
+@utility brandmark {
+  filter: invert(1) sepia(0.18) saturate(0.6) brightness(1.05);
+
+  :root[data-theme="light"] & {
+    filter: none;
+  }
+}
+
+/* The hairline that opens every section: a short bronze tick running into a
+   full-width rule. Was repeated verbatim in seven components. */
+@utility section-rule {
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: "";
+    height: 1px;
+    width: 3rem;
+    background-color: var(--color-accent);
+  }
+
+  &::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background-image: linear-gradient(
+      to right,
+      var(--color-border-strong),
+      var(--color-border) 40%,
+      transparent
+    );
+  }
+
+  @media (width >= 48rem) {
+    &::before {
+      width: 5rem;
+    }
+  }
 }
 
 /* ===========================================================================
@@ -244,10 +491,14 @@
 @layer base {
   html {
     scroll-padding-top: var(--spacing-header);
+    scroll-behavior: smooth;
+    /* Tells the UA to paint form controls, scrollbars and the overscroll
+       gutter dark, so the chrome around the page matches the page. */
+    color-scheme: dark;
   }
 
-  html {
-    scroll-behavior: smooth;
+  :root[data-theme="light"] {
+    color-scheme: light;
   }
 
   body {
@@ -262,6 +513,9 @@
        note in layout.tsx) but never a synthesised bold: both families carry
        a real weight axis. */
     font-synthesis: style;
+    transition: background-color var(--transition-duration-base)
+        var(--ease-editorial),
+      color var(--transition-duration-base) var(--ease-editorial);
   }
 
   /* Headlines are the editorial serif by default; opt out with `font-sans`.
@@ -282,46 +536,8 @@
     text-wrap: pretty;
   }
 
-
   ::selection {
-    background-color: var(--color-accent-quiet);
-    color: var(--color-ink-900);
+    background-color: var(--color-accent);
+    color: var(--color-obsidian-950);
   }
 }
-
-/* ===========================================================================
-   DARK THEME
-   =========================================================================== */
-
-@supports (selector(:root[data-theme="dark"])) {
-  :root[data-theme="dark"] {
-    --color-background: var(--color-dark-50);
-    --color-surface: var(--color-dark-100);
-    --color-surface-sunken: var(--color-dark-200);
-    --color-foreground: var(--color-light-50);
-    --color-foreground-secondary: var(--color-light-100);
-    --color-foreground-muted: var(--color-light-200);
-    --color-foreground-on-tint: var(--color-light-50);
-    --color-border: var(--color-dark-300);
-    --color-border-strong: var(--color-light-100);
-    --color-accent: var(--color-bronze-500);
-    --color-accent-on-tint: var(--color-bronze-500);
-    --color-inverse: var(--color-dark-50);
-    --color-inverse-foreground: var(--color-light-50);
-    --color-inverse-foreground-muted: var(--color-light-200);
-    --color-inverse-border: var(--color-dark-300);
-  }
-
-  :root[data-theme="dark"] body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    transition: background-color 200ms var(--ease-editorial),
-                color 200ms var(--ease-editorial);
-  }
-
-  :root[data-theme="dark"] ::selection {
-    background-color: var(--color-bronze-500);
-    color: var(--color-light-50);
-  }
-}
-

@@ -39,6 +39,17 @@ export function SiteNav() {
         after:absolute after:inset-x-0 after:bottom-0 after:h-px
         after:bg-linear-to-r after:from-transparent after:via-border-strong after:to-transparent"
     >
+      {/* Reading progress, riding the hairline above rather than floating as a
+          second bar: the foot of the header is already the line between the
+          chrome and the page, so the fill reads as that line filling in.
+
+          `z-10` because the hairline is an ::after on the header, which paints
+          after its children — without it the rule would sit on top of the
+          bronze. The `scale` this animates is on THIS element, never on the
+          <header>: a transform there would make the header a containing block
+          and collapse MobileMenu's fixed panel, as the note above warns. */}
+      <span className="scroll-progress absolute inset-x-0 bottom-0 z-10 h-0.5 bg-accent" />
+
       <div className="shell flex h-full items-center justify-between gap-6">
         <div className="md:hidden">
           <MobileMenu items={navItems} />

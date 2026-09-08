@@ -7,8 +7,10 @@ import { Portfolio } from "@/components/portfolio";
 import { Team } from "@/components/team";
 
 /**
- * The single long-form page. Every section is now real; only the founder
- * reviews carry temporary dummy data (see src/data/founder-reviews.ts).
+ * The single long-form page. Every section carries real, owner-supplied
+ * content. The one outstanding gap is the Uniblock founder quote, which is
+ * held as `null` and rendered as a labelled placeholder — see
+ * src/data/founder-reviews.ts.
  *
  * The `id`s on About, Portfolio, Team and the closing CTA must survive: both
  * the header and footer navigation point at them via src/data/navigation.ts.

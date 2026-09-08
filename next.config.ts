@@ -10,8 +10,17 @@ const nextConfig: NextConfig = {
   // Required by `output: "export"`: the built-in Image Optimization API needs
   // a server at runtime. Images are served as-is, so we must ship correctly
   // sized/compressed assets ourselves (revisit in the assets/performance phases).
+  //
+  // `remotePatterns` is therefore not enforced today — `unoptimized` makes
+  // next/image emit a plain <img> and skip the allow-list check entirely. It is
+  // declared anyway so that turning the optimizer back on (moving off static
+  // export, or adding a custom loader) does not silently break every remote
+  // image. See src/data/media.ts for what is hosted there and why.
   images: {
     unoptimized: true,
+    remotePatterns: [
+      { protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
+    ],
   },
 
   // Statically type every internal `href`, so a broken <Link> is a build

@@ -142,8 +142,8 @@
      290px of a 1440px viewport on padding alone between one band's content and
      the next. */
   --spacing-gutter: clamp(1.25rem, 3.5vw, 2.75rem);
-  --spacing-section: clamp(3.5rem, 6.5vw, 6.5rem);
-  --spacing-section-tight: clamp(2.5rem, 4.5vw, 4rem);
+  --spacing-section: clamp(2rem, 4vw, 4rem);
+  --spacing-section-tight: clamp(1.5rem, 3vw, 2.5rem);
   /* Shared by the sticky header's height (`h-header`), the mobile menu's top
      offset (`top-header`) and html's scroll-padding-top, so an anchored
      section can never land underneath the bar. */
@@ -167,26 +167,39 @@
   --radius-pill: 9999px;
 
   /* --- Elevation: the key -----------------------------------------------
-     A raised physical key, shared by the nav links, the theme toggle and the
-     portfolio filter chips. Inset only: an outer drop shadow reads as dirt on
-     a near-black ground, so the dimension comes from a lit top edge and a
-     shaded bottom one.
+     A raised physical key, shared by the nav links and the portfolio filter
+     chips. Inset only: an outer drop shadow reads as dirt on a dark ground, so
+     the dimension comes from a lit top edge and a shaded bottom one.
 
-     These are tokens rather than inline arbitrary values because the highlight
-     and the shade have to SWAP with the theme — the hardcoded white-on-black
-     the nav started with was simply invisible on ivory — and because three
-     call sites would otherwise repeat the same long string.
+     Tokens rather than inline arbitrary values, because the call sites would
+     otherwise each repeat the same long string — the nav started out with two
+     hardcoded copies of it.
 
      DELIBERATELY NOT NAMED `--shadow-*`. That is a Tailwind namespace, and a
-     `shadow-*` utility generated from it INLINES the value into the rule
-     instead of referencing the variable — verified in the compiled output — so
-     the `[data-theme="light"]` override below would never be read and light
-     mode would silently wear the dark shadows. The `keycap` utilities further
-     down consume these through `var()`, which does follow the theme. */
-  --keycap-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.1),
+     `shadow-*` utility generated from it INLINES its value into the rule
+     rather than referencing the variable (verified in the compiled output),
+     which makes the value impossible to re-point from a scoped block. Reading
+     these through `var()` in the `keycap` utilities below keeps that door open
+     — relevant if the light theme is reinstated, since it would need its own
+     highlight and shade rather than a dimmed copy of these.
+
+     The highlight is 0.14 rather than the 0.1 it started at: the ground was
+     raised from L=0.125 to L=0.205, and at 0.1 alpha the lit edge had dropped
+     to about ΔL +0.06 over `surface-raised` — visible, but well under the
+     intended read. The shade needed no change; it works better on the lighter
+     ground than it did on near-black. */
+  --keycap-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.14),
     inset 0 -2px 4px 0 oklch(0 0 0 / 0.34);
   --keycap-shadow-pressed: inset 0 1px 0 0 oklch(1 0 0 / 0.03),
     inset 0 2px 5px 0 oklch(0 0 0 / 0.5);
+
+  /* The pressed key on a BRONZE fill. The shade above is tuned for a dark
+     surface; at 0.5 alpha over `accent` (L 0.745) it drops the lower edge by
+     about ΔL 0.32 and reads as grime on the metal rather than as depth. This
+     is the same gesture at a fraction of the weight, and it drops the white
+     highlight, which is invisible on bronze anyway. */
+  --keycap-shadow-pressed-accent: inset 0 2px 4px 0 oklch(0 0 0 / 0.18),
+    inset 0 1px 0 0 oklch(0 0 0 / 0.08);
 
   /* --- Motion ----------------------------------------------------------
      `--transition-duration-*` is the namespace Tailwind reads for
@@ -211,6 +224,11 @@
 
   /* The hero's background plate, held back so the headline lands first. */
   --animate-plate: plate 1.6s var(--ease-editorial) both;
+
+  /* Reading progress. `linear` and no duration: the timeline supplies the
+     progress, so an eased or timed animation would fight the scroll position
+     instead of tracking it. */
+  --animate-scroll-progress: scroll-progress linear;
 
   @keyframes rise {
     from {
@@ -240,6 +258,18 @@
     to {
       opacity: 1;
       scale: 1;
+    }
+  }
+
+  /* `scale`, not `width`: a width animation lays out on every frame of every
+     scroll, whereas scale is composited off the main thread. Only the x axis
+     moves, so the bar's 1px height is unaffected. */
+  @keyframes scroll-progress {
+    from {
+      scale: 0 1;
+    }
+    to {
+      scale: 1 1;
     }
   }
 }
@@ -285,21 +315,25 @@
   text-transform: uppercase;
 }
 
-/* The keycap pair. A hand-written utility rather than a `--shadow-*` token,
-   because Tailwind's generated shadow utilities inline their value and would
-   strand the light theme on the dark shadows — see the note by
-   `--keycap-shadow`. Reading through `var()` here is what lets one class
-   follow the theme.
+/* The keycap set. Hand-written utilities rather than `--shadow-*` tokens,
+   because Tailwind's generated shadow utilities inline their value and so
+   cannot be re-pointed from a scoped block — see the note by `--keycap-shadow`.
 
    `keycap-pressed` is both the hover state of a raised key and the resting
    state of a selected one, which is how the portfolio filter marks its active
-   chip. */
+   chip. Use `keycap-pressed-accent` for that instead wherever the key is
+   filled with the bronze: the standard shade is weighted for a dark surface
+   and turns to grime on the accent. */
 @utility keycap {
   box-shadow: var(--keycap-shadow);
 }
 
 @utility keycap-pressed {
   box-shadow: var(--keycap-shadow-pressed);
+}
+
+@utility keycap-pressed-accent {
+  box-shadow: var(--keycap-shadow-pressed-accent);
 }
 
 /* Reveal a block as it scrolls into view.
@@ -316,6 +350,33 @@
     /* Finish well before the element is centred, so reading is never waiting
        on motion. */
     animation-range: entry 8% cover 26%;
+  }
+}
+
+/* Reading progress: the bar along the foot of the sticky header, filling left
+   to right as the document scrolls.
+
+   Scroll-DRIVEN, not scroll-listened. `animation-timeline: scroll(root block)`
+   binds the keyframes to the root scroller's own position, so there is no
+   scroll handler, no rAF loop, no client component and nothing to hydrate —
+   the same technique `reveal` above uses, pointed at the document instead of
+   the element. `root` explicitly, because the nearest scroller would otherwise
+   be resolved per-element; `body` carries `overflow-x: clip`, which does NOT
+   make it a scroll container, so the document scroller is still the right
+   target.
+
+   `scale: 0 1` sits OUTSIDE the @supports on purpose. Everything else could
+   live inside it, but then a browser with no scroll-driven animation support
+   would paint an unscaled, unanimated bar — a bronze rule sitting at 100%
+   across the header, permanently claiming the page was fully read. Collapsed
+   by default, it degrades to nothing instead. */
+@utility scroll-progress {
+  transform-origin: left;
+  scale: 0 1;
+
+  @supports (animation-timeline: scroll()) {
+    animation: var(--animate-scroll-progress);
+    animation-timeline: scroll(root block);
   }
 }
 
@@ -411,6 +472,20 @@
     60% 60% at 12% 88%,
     color-mix(in oklab, var(--color-bronze-500) 26%, transparent) 0%,
     transparent 72%
+  );
+}
+
+/* The footer's warm floor. Same bronze as `glow` but a different shape: broad
+   and centred below the foot of the page rather than a corner bloom, so the
+   colour rises evenly behind the oversized wordmark instead of leaning to one
+   side. Two stops rather than one, because a single stop fell off too fast and
+   left a visible ring where the bloom ended. */
+@utility footer-bloom {
+  background-image: radial-gradient(
+    115% 78% at 50% 120%,
+    color-mix(in oklab, var(--color-bronze-500) 30%, transparent) 0%,
+    color-mix(in oklab, var(--color-bronze-700) 13%, transparent) 40%,
+    transparent 74%
   );
 }
 
@@ -516,6 +591,18 @@
     transition: background-color var(--transition-duration-base)
         var(--ease-editorial),
       color var(--transition-duration-base) var(--ease-editorial);
+
+    /* The horizontal-entrance reveals ("left"/"right") park their element at
+       x: ±64px from mount until it scrolls into view, which pushes the page
+       9-28px wider than the viewport between roughly 1024px and 1384px — a
+       scrollbar that sits there for most of the visit, since three of those
+       entrances are waiting further down the page.
+
+       `clip`, NOT `hidden`: `overflow: hidden` on the body would make it a
+       scroll container, which breaks `position: sticky` on the header and
+       `scroll-padding-top` on html. `clip` just clips. Only the x axis is
+       touched, so vertical scrolling is untouched. */
+    overflow-x: clip;
   }
 
   /* Headlines are the editorial serif by default; opt out with `font-sans`.

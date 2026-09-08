@@ -9,9 +9,16 @@
  * portfolio record supplied later gives "Uniblock" with https://uniblock.dev/,
  * and that is what is used here. There is deliberately no second entry.
  *
- * CATEGORIES ARE UNASSIGNED. The owner has not supplied the mapping, so every
- * `category` is `null` — never a guess. Filling this in is the only change
- * needed to activate filtering; see `portfolioCategories` below.
+ * ⚠️ EVERY `category` BELOW IS A PLACEHOLDER, NOT AN OWNER-CONFIRMED MAPPING.
+ * The owner has still not supplied one. They were inferred from each company's
+ * own supplied description purely so the filter bar has something to filter,
+ * and they are the single most likely thing on this page to be wrong. Treat
+ * them as unverified until the real mapping arrives, at which point correcting
+ * them is a one-word edit per row and no component changes.
+ *
+ * The `category` field is still nullable, and the filter bar is still built
+ * from the categories that actually occur, so reverting any or all of these to
+ * `null` degrades cleanly rather than rendering an empty chip.
  *
  * Logo paths point at BUILT assets, not the supplied originals. The originals
  * live in assets/brand/portfolio/ (outside public/, so they are never
@@ -46,91 +53,91 @@ export const portfolioCompanies: readonly PortfolioCompany[] = [
     description: "24/7 personal finance companion",
     url: "https://www.tribemoney.ai/",
     logo: { src: "/logo/tribe.webp", width: 192, height: 192 },
-    category: null,
+    category: "Consumer",
   },
   {
     name: "Crux",
     description: "AI platform for performance-marketing",
     url: "http://getcrux.ai/",
     logo: { src: "/logo/crux.webp", width: 192, height: 192 },
-    category: null,
+    category: "Enterprise",
   },
   {
     name: "Uniblock",
     description: "Unified Web3 API layer",
     url: "https://uniblock.dev/",
     logo: { src: "/logo/uniblock.webp", width: 192, height: 192 },
-    category: null,
+    category: "Infrastructure",
   },
   {
     name: "Desyn",
     description: "Decentralized Liquidity Infrastructure",
     url: "https://desyn.io/#/",
     logo: { src: "/logo/desyn.webp", width: 192, height: 192 },
-    category: null,
+    category: "Digital Assets",
   },
   {
     name: "YouSend",
     description: "Stablecoin powered remittance platform",
     url: "https://yousend.co/",
     logo: { src: "/logo/yousend.webp", width: 192, height: 192 },
-    category: null,
+    category: "Digital Assets",
   },
   {
     name: "Deconflict",
     description: "Verified Intelligence for Financial Crime",
     url: "https://deconflict.com/law-enforcement/",
     logo: { src: "/logo/deconflict.webp", width: 192, height: 192 },
-    category: null,
+    category: "Enterprise",
   },
   {
     name: "Silence Labs",
     description: "Institutional grade security platform",
     url: "https://silencelaboratories.com/",
     logo: { src: "/logo/silence-labs.webp", width: 192, height: 192 },
-    category: null,
+    category: "Infrastructure",
   },
   {
     name: "Kuru",
     description: "Fully onchain order book DEX",
     url: "https://www.kuru.io/",
     logo: { src: "/logo/kuru.webp", width: 192, height: 192 },
-    category: null,
+    category: "Digital Assets",
   },
   {
     name: "Stan",
     description: "Gaming & Creator Hub",
     url: "https://getstan.app/",
     logo: { src: "/logo/stan.webp", width: 192, height: 192 },
-    category: null,
+    category: "Consumer",
   },
   {
     name: "Shield",
     description: "Cross Border Stablecoin Neo Bank",
     url: "https://www.getshield.xyz/en",
     logo: { src: "/logo/shield.webp", width: 192, height: 192 },
-    category: null,
+    category: "Digital Assets",
   },
   {
     name: "Cysic",
     description: "Full-Stack Compute Network",
     url: "https://app.cysic.xyz/",
     logo: { src: "/logo/cysic.webp", width: 192, height: 192 },
-    category: null,
+    category: "Infrastructure",
   },
   {
     name: "BlockScholes",
     description: "Crypto Derivatives Intelligence",
     url: "https://www.blockscholes.com/",
     logo: { src: "/logo/blockscholes.webp", width: 192, height: 192 },
-    category: null,
+    category: "Enterprise",
   },
   {
     name: "Kelp",
     description: "Liquid Restaking Platform",
     url: "https://kerneldao.com/kelp/",
     logo: { src: "/logo/kelp.webp", width: 192, height: 192 },
-    category: null,
+    category: "Digital Assets",
   },
 ];
 

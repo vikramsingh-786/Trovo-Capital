@@ -1,66 +1,92 @@
+import Image from "next/image";
+
+import { perspectiveMedia, unsplash } from "@/data/media";
 import { perspectives } from "@/data/perspectives";
 
 /**
- * The three investment perspectives, set as an editorial ledger rather than
- * three feature cards.
+ * The three investment perspectives.
  *
- * Each perspective is a full-width row: a numbered marker out in the same
- * marginal rail the About section uses, the title as a serif statement, and the
- * approved paragraph as its annotation. Full-width hairlines between rows do
- * the separating, so nothing needs a box, a shadow or an icon — and there are
- * no approved icons for these three ideas in any case.
+ * Set as three tall plates rather than three feature cards: a photograph, a
+ * bronze ordinal on a hairline, the title as a serif statement and the approved
+ * paragraph beneath it. No icons — there are no approved icons for these three
+ * ideas, and inventing a glyph for "a network built to compound" would be
+ * decoration pretending to be meaning.
  *
  * The numbering carries the progression the section is meant to communicate
  * (operator understanding, then network, then scaling partnership) without
  * adding a word of unapproved copy.
  *
- * NO SECTION HEADING OR EYEBROW: none has been supplied for this section, and
- * inventing one is out of scope. The bronze tick on the opening hairline marks
- * the section the way it does in the Hero and About.
+ * NO SECTION HEADING OR EYEBROW: none has been supplied for this section. The
+ * bronze tick on the opening rule marks the section the way it does elsewhere.
+ *
+ * Photography is decorative placeholder stock — see src/data/media.ts. Each
+ * plate is paired by position, and renders without one if the array is ever
+ * shortened.
  */
 export function InvestmentPerspectives() {
   return (
     <section className="shell py-section">
-      {/* Same rule vocabulary as the Hero and About. */}
-      <div className="flex items-center">
-        <span className="h-px w-12 bg-accent md:w-16" />
-        <span className="h-px flex-1 bg-border" />
-      </div>
+      <div className="section-rule" />
 
-      <ol>
-        {perspectives.map((perspective) => (
-          <li
-            key={perspective.marker}
-            className="reveal border-b border-border py-12 last:border-b-0 md:py-16 lg:py-18"
-          >
-            <div className="grid gap-x-8 gap-y-4 lg:grid-cols-12">
-              {/* `lg:pt-0.5` drops the marker's cap onto the title's cap line.
-                  The 2px is derived, not eyeballed: with Newsreader's
-            hhea metrics (asc 1470, desc 530, cap 1340 per 2000 upem) and
-            Schibsted Grotesk's (asc 2000, desc 528, cap 1440 per 2048), the
-            marker's cap sits 2.82px below its line-box top and the heading's
-            sits 4.6-5.3px below its own, so ~2px closes the gap at every width
-            in the clamp range. Browsers vary slightly in how they derive
-            half-leading, so treat it as accurate to about a pixel. */}
-              <p className="eyebrow text-accent tabular-nums font-medium tracking-tight lg:col-span-3 lg:pt-0.5">
-                {perspective.marker}
-              </p>
+      {/* Three columns straight from `md`, with no two-column step. Three
+          items in a two-column band always strand the third in a half-empty
+          row, and the approved copy is short enough to hold a ~230px column at
+          768px. Below `md` they stack. */}
+      <ol
+        data-reveal-group
+        className="mt-14 grid gap-x-8 gap-y-16 md:mt-18 md:grid-cols-3 lg:gap-x-10"
+      >
+        {perspectives.map((perspective, index) => {
+          const media = perspectiveMedia[index];
 
-              {/* At `lg` this holds the rail's 9 columns with the title above
-                  its paragraph, matching About's grid exactly. The title and
-                  paragraph only separate into their own columns at `xl`:
-                  measured against the real Newsreader advances, a 4-of-12
-                  title column strands a single word ("...runs / deep") at
-                  1024px but holds every title on one line from 1280px up. */}
-              <div className="lg:col-span-9 lg:col-start-4 xl:grid xl:grid-cols-9 xl:gap-x-8">
-                <h2 className="text-title font-display xl:col-span-4">{perspective.title}</h2>
-                <p className="mt-5 max-w-measure text-base text-foreground-muted xl:col-span-5 xl:mt-0">
-                  {perspective.description}
-                </p>
+          return (
+            <li
+              key={perspective.marker}
+              data-reveal
+              data-tilt
+              className="group tilt-card max-md:max-w-measure"
+            >
+              {media && (
+                /* The clip lives here, not on the tilting <li>: `overflow:
+                   hidden` forces `transform-style` back to flat. That is also
+                   why this element is itself the lifted layer — anything nested
+                   *inside* it would have its translateZ flattened away. */
+                <div
+                  data-tilt-layer="45"
+                  className="grain relative mb-6 overflow-hidden rounded-media border border-border"
+                >
+                  <Image
+                    src={unsplash(media, 800)}
+                    alt={media.alt}
+                    width={media.width}
+                    height={media.height}
+                    sizes="(min-width: 48rem) 32vw, 100vw"
+                    className="media-plate aspect-square w-full object-cover"
+                  />
+                  <span data-tilt-glare className="tilt-glare" />
+                </div>
+              )}
+
+              <div data-tilt-layer="35" className="flex items-center gap-4">
+                <span className="eyebrow tabular-nums text-accent">
+                  {perspective.marker}
+                </span>
+                <span className="h-px flex-1 bg-border" />
               </div>
-            </div>
-          </li>
-        ))}
+
+              <h2 data-tilt-layer="55" className="mt-6 text-title">
+                {perspective.title}
+              </h2>
+
+              <p
+                data-tilt-layer="25"
+                className="mt-5 max-w-measure text-base text-foreground-muted"
+              >
+                {perspective.description}
+              </p>
+            </li>
+          );
+        })}
       </ol>
     </section>
   );

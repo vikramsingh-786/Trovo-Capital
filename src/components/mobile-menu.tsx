@@ -3,7 +3,6 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { NavItem } from "@/data/navigation";
-import { ThemeToggle } from "./theme-toggle";
 
 /** Tailwind's `md` breakpoint, where the desktop nav takes over. */
 const DESKTOP_QUERY = "(min-width: 48rem)";
@@ -75,10 +74,14 @@ export function MobileMenu({
 
       {/* Sized to its content rather than the viewport, so no body scroll lock
           is needed. `overscroll-contain` stops the panel's scroll from
-          chaining into the page behind it. */}
+          chaining into the page behind it. Smooth open/close animation via
+          opacity and transform. */}
       <div
-        hidden={!open}
-        className="fixed inset-x-0 top-header z-40 max-h-[calc(100dvh-var(--spacing-header))] overflow-y-auto overscroll-contain bg-background border-b border-border transition-colors duration-base"
+        className={`fixed inset-x-0 top-header z-40 max-h-[calc(100dvh-var(--spacing-header))] overflow-y-auto overscroll-contain bg-background border-b border-border transition-[opacity,transform] duration-swift ease-standard ${
+          open
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0 -translate-y-2"
+        }`}
       >
         <nav className="shell py-4">
           <ul>
@@ -93,9 +96,6 @@ export function MobileMenu({
                 </a>
               </li>
             ))}
-            <li className="border-t border-border py-4">
-              <ThemeToggle />
-            </li>
           </ul>
         </nav>
       </div>

@@ -39,7 +39,11 @@ export function SiteNav() {
         after:absolute after:inset-x-0 after:bottom-0 after:h-px
         after:bg-linear-to-r after:from-transparent after:via-border-strong after:to-transparent"
     >
-      <div className="shell grid h-full grid-cols-[1fr_auto] items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
+      <div className="shell flex h-full items-center justify-between gap-6">
+        <div className="md:hidden">
+          <MobileMenu items={navItems} />
+        </div>
+
         <Wordmark />
 
         <nav className="hidden md:block">
@@ -56,13 +60,6 @@ export function SiteNav() {
             ))}
           </ul>
         </nav>
-
-        {/* `justify-self-end` rather than a flex spacer: the third grid column
-            is the same 1fr as the first, so the capsule stays centred no matter
-            how wide the wordmark or this cluster becomes. */}
-        <div className="flex items-center gap-2 justify-self-end md:gap-3">
-          <MobileMenu items={navItems} className="md:hidden" />
-        </div>
       </div>
     </header>
   );

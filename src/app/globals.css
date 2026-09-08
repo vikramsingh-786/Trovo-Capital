@@ -5,9 +5,8 @@
    Dark-first. Warm obsidian ground, one bronze accent, editorial serif display.
 
    The ground is DARK BY DEFAULT: the semantic aliases in @theme resolve to the
-   dark palette, and `[data-theme="light"]` is the opt-in inversion. This is the
-   reverse of the earlier ivory system — the whole page is composed against
-   black now, so black is what the tokens should mean by default.
+   dark palette. The whole page is composed against black, so black is what the
+   tokens should mean by default.
 
    Accessibility is explicitly out of scope for this project (AGENTS.md §10),
    so there is no contrast auditing here. Values are chosen for how they look.
@@ -36,22 +35,6 @@
   --color-bone-200: oklch(0.735 0.008 70); /* muted text                    */
   --color-bone-300: oklch(0.6 0.008 65); /* quietest legible text           */
 
-  /* --- Ivory palette: the light theme's ground -------------------------
-     Warm paper, not white. #fff is the wrong ground for an editorial layout
-     set in a serif — it flattens the type and makes the bronze look orange.
-     Holding ~0.012 chroma at hue 88 lands on a parchment tone that keeps its
-     warmth as the ladder darkens, so a surface still reads as the same paper
-     under shade rather than as grey. */
-  --color-ivory-50: oklch(0.968 0.012 88); /* page ground        ~#f8f3ea */
-  --color-ivory-100: oklch(0.945 0.015 88); /* alternating band  ~#f2ebe0 */
-  --color-ivory-200: oklch(0.918 0.017 86); /* sunken / hover    ~#eae2d5 */
-  --color-ivory-300: oklch(0.888 0.019 84); /* deepest paper     ~#e1d8ca */
-
-  --color-ink-900: oklch(0.205 0.012 60);
-  --color-ink-800: oklch(0.3 0.012 60);
-  --color-ink-700: oklch(0.4 0.011 60);
-  --color-ink-600: oklch(0.5 0.01 60);
-  --color-ink-400: oklch(0.643 0.009 60);
 
   /* --- Accent: one bronze, tuned to glow on black rather than sit on it --
      `bronze-400` is the working accent in the dark theme: light enough to
@@ -62,8 +45,7 @@
   --color-bronze-600: oklch(0.545 0.09 65);
   --color-bronze-700: oklch(0.47 0.075 65);
 
-  /* --- Semantic aliases. DARK IS THE DEFAULT. --------------------------
-     `[data-theme="light"]` below is the only place these are re-pointed.  */
+  /* --- Semantic aliases: dark theme only -------------------------------- */
   --color-background: var(--color-obsidian-950);
   --color-surface: var(--color-obsidian-900);
   --color-surface-raised: var(--color-obsidian-850);
@@ -179,9 +161,8 @@
      `shadow-*` utility generated from it INLINES its value into the rule
      rather than referencing the variable (verified in the compiled output),
      which makes the value impossible to re-point from a scoped block. Reading
-     these through `var()` in the `keycap` utilities below keeps that door open
-     — relevant if the light theme is reinstated, since it would need its own
-     highlight and shade rather than a dimmed copy of these.
+     these through `var()` in the `keycap` utilities below allows for
+     re-pointing if needed.
 
      The highlight is 0.14 rather than the 0.1 it started at: the ground was
      raised from L=0.125 to L=0.205, and at 0.1 alpha the lit edge had dropped
@@ -521,10 +502,6 @@
    this utility and point <Wordmark> at the two files instead. */
 @utility brandmark {
   filter: invert(1) sepia(0.18) saturate(0.6) brightness(1.05);
-
-  :root[data-theme="light"] & {
-    filter: none;
-  }
 }
 
 /* The hairline that opens every section: a short bronze tick running into a
@@ -570,10 +547,6 @@
     /* Tells the UA to paint form controls, scrollbars and the overscroll
        gutter dark, so the chrome around the page matches the page. */
     color-scheme: dark;
-  }
-
-  :root[data-theme="light"] {
-    color-scheme: light;
   }
 
   body {

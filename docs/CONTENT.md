@@ -221,11 +221,29 @@ founder/operator/startup experience. Not a generic employee directory.
 
 ## Founder Reviews
 
-Lower priority; built after Portfolio and Team.
+Three founders have now been SUPPLIED, with photographs and credential lines:
 
-> **Founder list, photographs and quotes have NOT been supplied.** Do not invent
-> quotes, names, photos or company claims. Build reusable architecture with
-> clearly-labelled placeholders.
+| Founder | Company | Credential line (as supplied) | Quote |
+|---|---|---|---|
+| Mudassar Malik | Deconflict | 22 years US Secret Service, MIT, Harvard University | supplied |
+| Adeoye Ojo | YouSend | 2x founder, Jumia, Oxford University | supplied |
+| Kevin Callahan | Uniblock | Headed global expansion for Twitter and Coinbase | **NOT SUPPLIED** |
+
+> **The Uniblock quote is still outstanding.** The owner sent placeholder
+> characters for it and said Uniblock would provide the real text after this
+> draft. It is held as `quote: null` and the section renders a labelled
+> "awaiting approved quote" line. **Do not invent it**, and do not fill it from
+> anything Uniblock has published elsewhere.
+
+The two supplied quotes are held VERBATIM in `src/data/founder-reviews.ts`
+rather than duplicated here, so there is exactly one copy of the wording to
+keep correct. Do not reword, shorten or re-punctuate either one: the owner has
+noted some run long and said shortening them is a separate, explicit decision.
+
+Photographs are in `public/founders/`, used as supplied. They are not uniform
+or web-weight (2400x3000 / 400x400 / 944x1120; 1255 KB / 28 KB / 262 KB) and
+`images.unoptimized` is on, so they currently ship byte-for-byte. Normalising
+them the way `scripts/build-assets.py` normalises portfolio tiles is pending.
 
 ---
 

@@ -81,7 +81,7 @@ export const portfolioCompanies: readonly PortfolioCompany[] = [
     description: "Stablecoin powered remittance platform",
     url: "https://yousend.co/",
     logo: { src: "/logo/yousend.webp", width: 192, height: 192 },
-    category: "Digital Assets",
+    category: "Consumer",
   },
   {
     name: "Deconflict",
@@ -116,7 +116,7 @@ export const portfolioCompanies: readonly PortfolioCompany[] = [
     description: "Cross Border Stablecoin Neo Bank",
     url: "https://www.getshield.xyz/en",
     logo: { src: "/logo/shield.webp", width: 192, height: 192 },
-    category: "Digital Assets",
+    category: "Enterprise",
   },
   {
     name: "Cysic",

@@ -2,6 +2,13 @@
 
 # dependencies
 /node_modules
+
+# Never commit an npm config. Development here runs behind an internal registry
+# proxy (pkgproxy-uat.coinswitch.co) that CI cannot reach, so a committed
+# .npmrc pointing at it fails the Vercel build with E403 on the first tarball.
+# For the same reason, check `git diff package-lock.json` before committing
+# after an `npm install` — the proxy rewrites every `resolved` URL to itself.
+.npmrc
 /.pnp
 .pnp.*
 .yarn/*

@@ -37,7 +37,7 @@ export const portfolioCategories = [
 
 export type PortfolioCategory = (typeof portfolioCategories)[number];
 
-export type PortfolioCompany = {
+type PortfolioCompany = {
   name: string;
   description: string;
   /** External destination, exactly as supplied. */

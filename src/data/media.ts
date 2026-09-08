@@ -23,7 +23,7 @@
 
 const UNSPLASH_CDN = "https://images.unsplash.com";
 
-export type Media = {
+type Media = {
   /** Unsplash photo id, i.e. the `photo-…` path segment. */
   id: string;
   /** Intrinsic aspect ratio used to reserve layout space. */

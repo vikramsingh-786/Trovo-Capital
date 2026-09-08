@@ -24,7 +24,7 @@
  * Real quotes vary a lot in length; the grid aligns cells to the top so uneven
  * quotes sit correctly rather than stretching to match.
  */
-export type FounderReview = {
+type FounderReview = {
   name: string;
   /** Company the founder is speaking as. */
   company: string;

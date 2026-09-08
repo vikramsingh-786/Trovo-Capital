@@ -33,7 +33,7 @@
  *               intrinsic size so it reserves space
  *   link        profile or external page
  */
-export type TeamMember = {
+type TeamMember = {
   name: string;
   role?: string;
   experience?: string;

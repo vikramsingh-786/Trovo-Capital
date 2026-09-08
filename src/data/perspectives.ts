@@ -8,7 +8,7 @@
  * `marker` is a typographic device, not a claim: it numbers the perspectives
  * so they read as one sequence rather than three unrelated statements.
  */
-export type Perspective = {
+type Perspective = {
   marker: string;
   title: string;
   description: string;

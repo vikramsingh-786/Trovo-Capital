@@ -50,6 +50,7 @@ export const teamMembers: readonly TeamMember[] = [
     description:
       "A BUIDLer focused on simplicity and user satisfaction, Ashish believes in the transformative power of blockchain-based solutions and their potential to revolutionize India's tech industry.",
     image: { src: "/team/ashish.png", width: 1268, height: 1241 },
+    link: "https://www.linkedin.com/in/ashish-singhal-peepalco/",
   },
   {
     name: "Sagar Vimal Tiwari",
@@ -58,6 +59,7 @@ export const teamMembers: readonly TeamMember[] = [
     description:
       "An alumnus of Jaypee Institute of Information Technology and a product builder at heart, Vimal is focused on implementing strategies to meet CoinSwitch's organizational objectives.",
     image: { src: "/team/vimal.png", width: 1152, height: 1365 },
+    link: "https://www.linkedin.com/in/sagarvimal/",
   },
   {
     name: "Siva Venkataraman",
@@ -66,6 +68,7 @@ export const teamMembers: readonly TeamMember[] = [
     description:
       "An alumnus of the ISB and a CFA charter holder, Siva is currently the Head of Finance at CoinSwitch, leveraging his expertise in business finance, fundraising, and investor relations to drive strategic initiatives.",
     image: { src: "/team/siva.png", width: 1231, height: 1277 },
+    link: "https://www.linkedin.com/in/siva1982/",
   },
   {
     name: "Pratyush Shah",
@@ -74,6 +77,7 @@ export const teamMembers: readonly TeamMember[] = [
     description:
       "An early-stage investor with a deep interest in emerging technologies, Pratyush leads tech and Web3 investments at CoinSwitch Ventures, backing founders building across sectors shaping the future of the digital economy.",
     image: { src: "/team/pratyush.png", width: 1121, height: 1403 },
+    link: "https://www.linkedin.com/in/pratyush-shah-8b104029/",
   },
   {
     name: "Team Member",

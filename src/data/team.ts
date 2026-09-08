@@ -6,26 +6,20 @@
  * and no real person is implied. Do not fill them in from a web search or an
  * assumption: a similarly named person is not evidence about this team.
  *
- * ⚠️ THREE OF THE FOUR PORTRAIT FILENAMES CARRY NO IDENTITY. They arrived as
- * `image.png`, `image (1).png` and `image (2).png` — generic browser-download
- * names — so the person each belongs to is an INFERENCE, not something the
- * filename states. It was made by matching each frame against two independent
- * earlier sources: the previously rendered team grid, and a set of cut-out
- * tiles that had been supplied under real names. The matches are on clothing
- * and eyewear:
+ * PORTRAITS ARE CUT OUT ONTO PLAIN WHITE. The owner replaced the original
+ * location photographs — each shot against a different daylight background,
+ * one of them against a poster — with the subject masked onto one flat white
+ * ground, and named each file after the person. Two things follow:
  *
- *   image.png            cream linen suit, greenery        Ashish Singhal
- *   image (2).png        navy blazer, green shirt, rimless Sagar Vimal Tiwari
- *   image (1).png        black polo, dark frames, beard    Siva Venkataraman
- *   Pratyush Shah 2.jpg  (named in the file)               Pratyush Shah
+ *   The set is now unified in the ARTWORK, not by CSS. `media-plate` still
+ *     desaturates in the component, which over a white ground yields exactly
+ *     the monochrome-portrait-on-plain-backdrop look the owner asked for.
+ *   The subject sits high in the frame and the aspect ratios still differ
+ *     (1.02 / 0.84 / 0.96 / 0.80), so the component anchors the square crop to
+ *     the TOP. Centred, the tallest frames lost around a tenth of their height
+ *     off the top and clipped hair.
  *
- * If any of those is wrong it publishes a real person's face under another
- * person's name, so it is worth an eyeball before this ships. Renaming the
- * files after the person would remove the ambiguity permanently — the paths
- * below are the only references, so it is a four-line change.
- *
- * Paths are reproduced EXACTLY, spaces and parentheses included: the
- * production host serves them literally and a "tidied" path 404s.
+ * Filenames now identify the person, so nothing here depends on inference.
  *
  * The component renders only the fields that exist, so supplying any of them
  * later is a data edit with no layout work:
@@ -55,7 +49,7 @@ export const teamMembers: readonly TeamMember[] = [
     experience: "CoinSwitch & Lemonn",
     description:
       "A BUIDLer focused on simplicity and user satisfaction, Ashish believes in the transformative power of blockchain-based solutions and their potential to revolutionize India's tech industry.",
-    image: { src: "/team/image.png", width: 2045, height: 2005 },
+    image: { src: "/team/ashish.png", width: 1268, height: 1241 },
   },
   {
     name: "Sagar Vimal Tiwari",
@@ -63,7 +57,7 @@ export const teamMembers: readonly TeamMember[] = [
     experience: "CoinSwitch & Lemonn",
     description:
       "An alumnus of Jaypee Institute of Information Technology and a product builder at heart, Vimal is focused on implementing strategies to meet CoinSwitch's organizational objectives.",
-    image: { src: "/team/image (2).png", width: 1809, height: 2141 },
+    image: { src: "/team/vimal.png", width: 1152, height: 1365 },
   },
   {
     name: "Siva Venkataraman",
@@ -71,7 +65,7 @@ export const teamMembers: readonly TeamMember[] = [
     experience: "CoinSwitch",
     description:
       "An alumnus of the ISB and a CFA charter holder, Siva is currently the Head of Finance at CoinSwitch, leveraging his expertise in business finance, fundraising, and investor relations to drive strategic initiatives.",
-    image: { src: "/team/image (1).png", width: 189, height: 196 },
+    image: { src: "/team/siva.png", width: 1231, height: 1277 },
   },
   {
     name: "Pratyush Shah",
@@ -79,7 +73,7 @@ export const teamMembers: readonly TeamMember[] = [
     experience: "CoinSwitch Ventures",
     description:
       "An early-stage investor with a deep interest in emerging technologies, Pratyush leads tech and Web3 investments at CoinSwitch Ventures, backing founders building across sectors shaping the future of the digital economy.",
-    image: { src: "/team/Pratyush Shah 2.jpg", width: 670, height: 838 },
+    image: { src: "/team/pratyush.png", width: 1121, height: 1403 },
   },
   {
     name: "Team Member",

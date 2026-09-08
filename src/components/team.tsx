@@ -77,7 +77,12 @@ export function Team() {
                     width={member.image.width}
                     height={member.image.height}
                     sizes="6rem"
-                    className="media-plate size-full object-cover"
+                    // `object-top`, not the default centre: the four frames
+                    // range from 1.02 to 0.80 in aspect, so a square crop
+                    // takes up to a tenth of the height off a tall one. From
+                    // the centre that comes half off the top and clips hair;
+                    // anchored to the top it all comes off the shoulders.
+                    className="media-plate size-full object-cover object-top"
                   />
                 ) : (
                   /* Awaiting a photograph. A tinted plate carrying the bronze

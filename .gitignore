@@ -49,3 +49,9 @@ next-env.d.ts
 
 # keep a committed template for env vars (secrets stay in .env.local)
 !.env.example
+
+# local-only asset tooling: never deployed (assets/brand/ is outside public/,
+# and build-assets.py isn't invoked by `next build`), so kept local rather
+# than pushed. Untracked, not deleted — see README.md for what it does.
+/assets/brand/
+/scripts/build-assets.py

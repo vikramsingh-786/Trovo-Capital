@@ -1,51 +1,23 @@
 @import "tailwindcss";
 
-/* ===========================================================================
-   TROVE CAPITAL PARTNERS — DESIGN SYSTEM
-   Dark-first. Warm obsidian ground, one bronze accent, editorial serif display.
-
-   The ground is DARK BY DEFAULT: the semantic aliases in @theme resolve to the
-   dark palette. The whole page is composed against black, so black is what the
-   tokens should mean by default.
-
-   Accessibility is explicitly out of scope for this project (AGENTS.md §10),
-   so there is no contrast auditing here. Values are chosen for how they look.
-   =========================================================================== */
-
 @theme {
-  /* --- Dark palette: warm charcoal, never a blue-black, never #000 -------
-     Deliberately NOT a near-black. An earlier revision sat the ground at
-     L=0.125, which resolves to about #070605 — dark enough that every band,
-     card and hairline collapsed into one flat sheet and the photography had
-     nothing to sit against. The ground now starts just above #121212 (the
-     conventional floor for a dark UI) and the ladder climbs in even steps, so
-     surfaces are told apart by their own value rather than by a border.
+  --color-obsidian-950: oklch(0.205 0.006 65);
+  --color-obsidian-900: oklch(0.235 0.007 65);
+  --color-obsidian-850: oklch(0.27 0.008 65);
+  --color-obsidian-800: oklch(0.31 0.009 65);
+  --color-obsidian-700: oklch(0.37 0.01 65);
 
-     Chroma stays low but non-zero at hue 65: enough warmth that the ground
-     reads as ink on paper next to the bronze, not as a powered-off screen. */
-  --color-obsidian-950: oklch(0.205 0.006 65); /* page ground     ~#191715 */
-  --color-obsidian-900: oklch(0.235 0.007 65); /* alternating band ~#1f1d1a */
-  --color-obsidian-850: oklch(0.27 0.008 65); /* raised surface    ~#262320 */
-  --color-obsidian-800: oklch(0.31 0.009 65); /* hover fill        ~#2e2b27 */
-  --color-obsidian-700: oklch(0.37 0.01 65); /* hairline on dark   ~#3a3630 */
+  --color-bone-50: oklch(0.975 0.006 85);
+  --color-bone-100: oklch(0.885 0.007 85);
+  --color-bone-200: oklch(0.735 0.008 70);
+  --color-bone-300: oklch(0.6 0.008 65);
 
-  /* --- Warm whites ------------------------------------------------------ */
-  --color-bone-50: oklch(0.975 0.006 85); /* primary text                   */
-  --color-bone-100: oklch(0.885 0.007 85); /* secondary text                */
-  --color-bone-200: oklch(0.735 0.008 70); /* muted text                    */
-  --color-bone-300: oklch(0.6 0.008 65); /* quietest legible text           */
-
-
-  /* --- Accent: one bronze, tuned to glow on black rather than sit on it --
-     `bronze-400` is the working accent in the dark theme: light enough to
-     carry a hairline or a small cap against obsidian without shouting.     */
   --color-bronze-300: oklch(0.82 0.075 72);
   --color-bronze-400: oklch(0.745 0.098 68);
   --color-bronze-500: oklch(0.655 0.105 65);
   --color-bronze-600: oklch(0.545 0.09 65);
   --color-bronze-700: oklch(0.47 0.075 65);
 
-  /* --- Semantic aliases: dark theme only -------------------------------- */
   --color-background: var(--color-obsidian-950);
   --color-surface: var(--color-obsidian-900);
   --color-surface-raised: var(--color-obsidian-850);
@@ -63,14 +35,8 @@
   --color-accent-strong: var(--color-bronze-300);
   --color-accent-quiet: var(--color-bronze-600);
 
-  /* Ground for text sitting ON a photograph. Fixed to the dark values in both
-     themes: the images are dark in either case, so this must not invert. */
   --color-on-media: var(--color-bone-50);
   --color-on-media-muted: var(--color-bone-200);
-
-  /* --- Type scale -------------------------------------------------------
-     Fluid via clamp(). The middle term keeps a rem component so text-only
-     zoom still changes the size (a pure-vw font-size would not).          */
 
   --text-eyebrow: 0.6875rem;
   --text-eyebrow--line-height: 1.2;
@@ -111,80 +77,32 @@
   --text-display-xl--line-height: 1.02;
   --text-display-xl--letter-spacing: -0.028em;
 
-  /* Hero only. Larger than anything else on the page by a clear margin, so
-     the opening reads as a title page rather than as the first heading. */
   --text-display-2xl: clamp(3rem, 1.9rem + 5.4vw, 8.25rem);
   --text-display-2xl--line-height: 0.96;
   --text-display-2xl--letter-spacing: -0.032em;
 
-  /* --- Spacing rhythm ---------------------------------------------------
-     `section` is applied as `py-section`, so it is paid TWICE per band and is
-     by far the biggest lever on overall page height. It was tuned down at the
-     owner's request: the sections read as too tall at 10vw, which spent about
-     290px of a 1440px viewport on padding alone between one band's content and
-     the next. */
   --spacing-gutter: clamp(1.25rem, 3.5vw, 2.75rem);
   --spacing-section: clamp(2rem, 4vw, 4rem);
   --spacing-section-tight: clamp(1.5rem, 3vw, 2.5rem);
-  /* Shared by the sticky header's height (`h-header`), the mobile menu's top
-     offset (`top-header`) and html's scroll-padding-top, so an anchored
-     section can never land underneath the bar. */
   --spacing-header: clamp(4rem, 6vw, 5.5rem);
 
-  /* --- Containers -------------------------------------------------------
-     Named `measure` rather than `prose`: Tailwind ships a static
-     `max-w-prose` (65ch) that would shadow a --container-prose token. */
   --container-shell: 84rem;
   --container-wide: 96rem;
   --container-measure: 42rem;
   --container-narrow: 32rem;
 
-  /* --- Radii -------------------------------------------------------------
-     Mostly minimal: sharp corners read as editorial rather than SaaS. The
-     card step is the deliberate exception, raised to 1rem at the owner's
-     request. Only the portfolio cards consume it; inner corners stay at
-     `media`, which keeps a logo tile tighter than the plate holding it. */
   --radius-card: 1rem;
   --radius-media: 0.25rem;
   --radius-pill: 9999px;
 
-  /* --- Elevation: the key -----------------------------------------------
-     A raised physical key, shared by the nav links and the portfolio filter
-     chips. Inset only: an outer drop shadow reads as dirt on a dark ground, so
-     the dimension comes from a lit top edge and a shaded bottom one.
-
-     Tokens rather than inline arbitrary values, because the call sites would
-     otherwise each repeat the same long string — the nav started out with two
-     hardcoded copies of it.
-
-     DELIBERATELY NOT NAMED `--shadow-*`. That is a Tailwind namespace, and a
-     `shadow-*` utility generated from it INLINES its value into the rule
-     rather than referencing the variable (verified in the compiled output),
-     which makes the value impossible to re-point from a scoped block. Reading
-     these through `var()` in the `keycap` utilities below allows for
-     re-pointing if needed.
-
-     The highlight is 0.14 rather than the 0.1 it started at: the ground was
-     raised from L=0.125 to L=0.205, and at 0.1 alpha the lit edge had dropped
-     to about ΔL +0.06 over `surface-raised` — visible, but well under the
-     intended read. The shade needed no change; it works better on the lighter
-     ground than it did on near-black. */
   --keycap-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.14),
     inset 0 -2px 4px 0 oklch(0 0 0 / 0.34);
   --keycap-shadow-pressed: inset 0 1px 0 0 oklch(1 0 0 / 0.03),
     inset 0 2px 5px 0 oklch(0 0 0 / 0.5);
 
-  /* The pressed key on a BRONZE fill. The shade above is tuned for a dark
-     surface; at 0.5 alpha over `accent` (L 0.745) it drops the lower edge by
-     about ΔL 0.32 and reads as grime on the metal rather than as depth. This
-     is the same gesture at a fraction of the weight, and it drops the white
-     highlight, which is invisible on bronze anyway. */
   --keycap-shadow-pressed-accent: inset 0 2px 4px 0 oklch(0 0 0 / 0.18),
     inset 0 1px 0 0 oklch(0 0 0 / 0.08);
 
-  /* --- Motion ----------------------------------------------------------
-     `--transition-duration-*` is the namespace Tailwind reads for
-     `duration-*` utilities; `--duration-*` would generate nothing.        */
   --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-standard: cubic-bezier(0.4, 0.14, 0.3, 1);
   --transition-duration-swift: 160ms;
@@ -192,23 +110,13 @@
   --transition-duration-slow: 480ms;
   --transition-duration-slower: 900ms;
 
-  /* Hero entrance. `both` fill so the element starts from the `from` state
-     rather than flashing at full opacity before the delay elapses. Animates
-     `translate`, not `transform`, so it cannot collide with Tailwind's
-     transform utilities. */
   --animate-rise: rise var(--transition-duration-slow) var(--ease-editorial)
     both;
 
-  /* Used when a filtered list is replaced, so the swap reads as a change of
-     content rather than a flicker. */
   --animate-fade: fade var(--transition-duration-base) var(--ease-standard) both;
 
-  /* The hero's background plate, held back so the headline lands first. */
   --animate-plate: plate 1.6s var(--ease-editorial) both;
 
-  /* Reading progress. `linear` and no duration: the timeline supplies the
-     progress, so an eased or timed animation would fight the scroll position
-     instead of tracking it. */
   --animate-scroll-progress: scroll-progress linear;
 
   @keyframes rise {
@@ -242,9 +150,6 @@
     }
   }
 
-  /* `scale`, not `width`: a width animation lays out on every frame of every
-     scroll, whereas scale is composited off the main thread. Only the x axis
-     moves, so the bar's 1px height is unaffected. */
   @keyframes scroll-progress {
     from {
       scale: 0 1;
@@ -255,9 +160,6 @@
   }
 }
 
-/* `inline` because these resolve CSS variables that next/font defines on
-   <html>; it keeps the utility referencing the font var directly, so it also
-   keeps working if the font class ever moves off :root. */
 @theme inline {
   --font-sans: var(--font-schibsted-grotesk), ui-sans-serif, system-ui,
     -apple-system, "Segoe UI", sans-serif;
@@ -265,28 +167,17 @@
     serif;
 }
 
-
-/* ===========================================================================
-   CUSTOM UTILITIES
-   =========================================================================== */
-
-/* The page frame. One utility instead of repeating mx-auto/max-w/px on every
-   section. */
 @utility shell {
   margin-inline: auto;
   width: 100%;
   max-width: var(--container-shell);
   padding-inline: var(--spacing-gutter);
 
-  /* Past ~1920px an 84rem column leaves ~300px of dead margin each side. One
-     step wider keeps the composition intentional without touching any
-     section's internal grid. */
   @media (width >= 120rem) {
     max-width: var(--container-wide);
   }
 }
 
-/* Small uppercase label used above headlines. */
 @utility eyebrow {
   font-family: var(--font-sans);
   font-size: var(--text-eyebrow);
@@ -296,15 +187,6 @@
   text-transform: uppercase;
 }
 
-/* The keycap set. Hand-written utilities rather than `--shadow-*` tokens,
-   because Tailwind's generated shadow utilities inline their value and so
-   cannot be re-pointed from a scoped block — see the note by `--keycap-shadow`.
-
-   `keycap-pressed` is both the hover state of a raised key and the resting
-   state of a selected one, which is how the portfolio filter marks its active
-   chip. Use `keycap-pressed-accent` for that instead wherever the key is
-   filled with the bronze: the standard shade is weighted for a dark surface
-   and turns to grime on the accent. */
 @utility keycap {
   box-shadow: var(--keycap-shadow);
 }
@@ -317,40 +199,14 @@
   box-shadow: var(--keycap-shadow-pressed-accent);
 }
 
-/* Reveal a block as it scrolls into view.
-   Driven entirely by CSS: `animation-timeline: view()` ties the same `rise`
-   keyframes the Hero uses to the element's own position in the viewport, so
-   there is no observer, no client component and nothing to hydrate. Guarded by
-   @supports, so a browser without scroll-driven animations — or a visitor with
-   JavaScript disabled, which makes no difference here — simply sees the content
-   in place with no animation at all. */
 @utility reveal {
   @supports (animation-timeline: view()) {
     animation: rise var(--transition-duration-slow) var(--ease-editorial) both;
     animation-timeline: view();
-    /* Finish well before the element is centred, so reading is never waiting
-       on motion. */
     animation-range: entry 8% cover 26%;
   }
 }
 
-/* Reading progress: the bar along the foot of the sticky header, filling left
-   to right as the document scrolls.
-
-   Scroll-DRIVEN, not scroll-listened. `animation-timeline: scroll(root block)`
-   binds the keyframes to the root scroller's own position, so there is no
-   scroll handler, no rAF loop, no client component and nothing to hydrate —
-   the same technique `reveal` above uses, pointed at the document instead of
-   the element. `root` explicitly, because the nearest scroller would otherwise
-   be resolved per-element; `body` carries `overflow-x: clip`, which does NOT
-   make it a scroll container, so the document scroller is still the right
-   target.
-
-   `scale: 0 1` sits OUTSIDE the @supports on purpose. Everything else could
-   live inside it, but then a browser with no scroll-driven animation support
-   would paint an unscaled, unanimated bar — a bronze rule sitting at 100%
-   across the header, permanently claiming the page was fully read. Collapsed
-   by default, it degrades to nothing instead. */
 @utility scroll-progress {
   transform-origin: left;
   scale: 0 1;
@@ -361,28 +217,10 @@
   }
 }
 
-/* ===========================================================================
-   MOTION LAYER (GSAP)
-
-   The CSS half of src/components/motion/choreography.tsx. That file owns the
-   timing; this owns the resting state and the painting.
-   =========================================================================== */
-
-/* Pre-reveal hidden state. Gated on `data-anim`, which the pre-paint script in
-   theme-provider.tsx sets — so if JavaScript never runs, this never matches and
-   the page renders fully visible rather than as a column of invisible sections.
-   GSAP overrides it with an inline opacity, then clears it on arrival.
-
-   Opacity only, deliberately: the offset each entrance starts from varies by
-   variant and is applied by GSAP's `fromTo`. Duplicating it here would fight
-   the tween on its first frame. */
 [data-anim="on"] [data-reveal] {
   opacity: 0;
 }
 
-/* Registered so the glare centre interpolates as a length instead of flipping
-   between discrete strings — GSAP rewrites these every frame, and an
-   unregistered custom property has no type for the compositor to work with. */
 @property --glare-x {
   syntax: "<percentage>";
   inherits: false;
@@ -395,19 +233,10 @@
   initial-value: 50%;
 }
 
-/* A tilting card. `preserve-3d` is what lets [data-tilt-layer] children lift on
-   translateZ; without it they flatten onto the card and the depth reads as a
-   plain scale.
-
-   Do NOT add `overflow: hidden` to the same element — it forces the used value
-   of transform-style back to `flat`. Clip on an inner wrapper instead. */
 @utility tilt-card {
   transform-style: preserve-3d;
 }
 
-/* The travelling highlight. Opacity is driven by GSAP (0 at rest), so this only
-   describes how the light is painted. `soft-light` keeps it reading as a sheen
-   across the photograph rather than a white blob on top of it. */
 @utility tilt-glare {
   position: absolute;
   inset: 0;
@@ -423,13 +252,6 @@
   );
 }
 
-/* Film grain. A single tiling SVG turbulence, painted as a pseudo-element so
-   it can sit over a photograph without touching the image element itself.
-   `mix-blend-overlay` lets the grain read in both the lit and crushed parts of
-   a frame instead of just greying it down.
-
-   Purely decorative and never interactive, so it is taken out of the layout
-   and pointer flow entirely. */
 @utility grain {
   position: relative;
 
@@ -446,8 +268,6 @@
   }
 }
 
-/* A single bronze bloom, used to lift one corner of an otherwise black plate.
-   Kept very low in opacity: it should register as depth, not as a gradient. */
 @utility glow {
   background-image: radial-gradient(
     60% 60% at 12% 88%,
@@ -456,11 +276,6 @@
   );
 }
 
-/* The footer's warm floor. Same bronze as `glow` but a different shape: broad
-   and centred below the foot of the page rather than a corner bloom, so the
-   colour rises evenly behind the oversized wordmark instead of leaning to one
-   side. Two stops rather than one, because a single stop fell off too fast and
-   left a visible ring where the bloom ended. */
 @utility footer-bloom {
   background-image: radial-gradient(
     115% 78% at 50% 120%,
@@ -470,17 +285,6 @@
   );
 }
 
-/* Standard treatment for every photograph on the page: desaturated and sunk
-   into the ground, recovering colour and contrast on hover. Applied to the
-   <img>; the parent supplies `group`.
-
-   FILTER ONLY — this rule must not touch `scale`. It used to push the image to
-   `scale: 1.03` on hover, which broke once the images gained a resting
-   overscale for the parallax to travel inside: `.group:hover &` has
-   specificity (0,2,0) and Tailwind's `scale-110` has (0,1,0), so hovering
-   *shrank* the plate from 110% to 103% and exposed a bare edge inside the
-   clip. The zoom is not missed — every plate that had it is now a [data-tilt]
-   card, and the 3D lift is the hover gesture. */
 @utility media-plate {
   filter: grayscale(1) contrast(1.08) brightness(0.82);
   transition: filter var(--transition-duration-slower) var(--ease-editorial);
@@ -490,22 +294,10 @@
   }
 }
 
-/* The supplied brand lockup is near-black ink keyed out to transparency — it
-   was built for the old ivory ground and is effectively invisible on the dark
-   one. The artwork is monochrome, so inverting it yields a clean white mark
-   with the transparency intact, which is cheaper and less error-prone than
-   maintaining a second asset that has to be regenerated whenever the source
-   changes. The small `sepia` pass pulls the result back off pure cyan-white
-   towards the warm bone the rest of the type uses.
-
-   If a proper light-on-dark (ideally vector) lockup is ever supplied, drop
-   this utility and point <Wordmark> at the two files instead. */
 @utility brandmark {
   filter: invert(1) sepia(0.18) saturate(0.6) brightness(1.05);
 }
 
-/* The hairline that opens every section: a short bronze tick running into a
-   full-width rule. Was repeated verbatim in seven components. */
 @utility section-rule {
   display: flex;
   align-items: center;
@@ -536,16 +328,10 @@
   }
 }
 
-/* ===========================================================================
-   BASE LAYER
-   =========================================================================== */
-
 @layer base {
   html {
     scroll-padding-top: var(--spacing-header);
     scroll-behavior: smooth;
-    /* Tells the UA to paint form controls, scrollbars and the overscroll
-       gutter dark, so the chrome around the page matches the page. */
     color-scheme: dark;
   }
 
@@ -553,34 +339,16 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    /* Set here, not only via the `text-base` utility, so an unclassed <p>
-       inherits the tuned body size instead of preflight's 1rem/1.5. */
     font-size: var(--text-base);
     line-height: var(--text-base--line-height);
-    /* Allow a synthesised oblique (no italic face is loaded yet — see the
-       note in layout.tsx) but never a synthesised bold: both families carry
-       a real weight axis. */
     font-synthesis: style;
     transition: background-color var(--transition-duration-base)
         var(--ease-editorial),
       color var(--transition-duration-base) var(--ease-editorial);
 
-    /* The horizontal-entrance reveals ("left"/"right") park their element at
-       x: ±64px from mount until it scrolls into view, which pushes the page
-       9-28px wider than the viewport between roughly 1024px and 1384px — a
-       scrollbar that sits there for most of the visit, since three of those
-       entrances are waiting further down the page.
-
-       `clip`, NOT `hidden`: `overflow: hidden` on the body would make it a
-       scroll container, which breaks `position: sticky` on the header and
-       `scroll-padding-top` on html. `clip` just clips. Only the x axis is
-       touched, so vertical scrolling is untouched. */
     overflow-x: clip;
   }
 
-  /* Headlines are the editorial serif by default; opt out with `font-sans`.
-     Note they inherit their SIZE from Tailwind's preflight (1rem), so every
-     heading needs an explicit `text-*` class. */
   h1,
   h2,
   h3,

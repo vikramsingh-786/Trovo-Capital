@@ -235,8 +235,10 @@ needs redesigning to change content is a defect, not a style preference.
 
 ## Portfolio specifics
 
-Four categories: Consumer, Enterprise, Infrastructure, Digital Assets. **No
-company has a confirmed category** — assignments were never supplied. Build so a
+Three categories: Consumer, Enterprise & Infrastructure, Digital Assets —
+Enterprise and Infrastructure were merged into one category by owner decision.
+**No company has a confirmed category** — assignments were never supplied.
+Build so a
 category can be attached per company later; never guess one. The portfolio is a
 polished interactive showcase, not a logo wall: filtering, logo, name, supplied
 description, external link. Avoid generic SaaS cards, heavy rounding, shadows and

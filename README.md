@@ -194,11 +194,13 @@ exclude option. `public/logo/` contains only built output.
 ```
 assets/brand/logo.jpg             supplied Trove lockup (source of record)
 assets/brand/portfolio/*.jpg|png  the 13 supplied company logos
+assets/brand/founders/*           the 3 supplied founder portraits
         |
         |  python3 scripts/build-assets.py
         v
 public/logo/trove-logo.webp       336x128, lossless
 public/logo/<slug>.webp           13 tiles, 192x192
+public/founders/<name>.webp       capped at 900px on the long edge, aspect kept
 ```
 
 Re-run `scripts/build-assets.py` whenever a supplied asset changes. It needs
@@ -223,6 +225,13 @@ renders exactly as letterboxing would inside the framed tile, but keeps one set
 of dimensions for all thirteen — Shield is the only non-square original
 (240x206). No logo was recreated, recoloured or redrawn.
 
+Founder portraits are **not** squared or padded like the logo tiles — each
+keeps its own aspect ratio (the three supplied originals are 0.8–1.0), only
+capped at 900px on the long edge, since `founder-reviews.tsx` frames them
+itself. Adeoye's original alone was 2400x3000 at 1.2MB; the full set of three
+went from 1.5MB to 110 KB (92.9% smaller) with no visible quality loss at the
+sizes they render at.
+
 ### Still worth improving
 
 - **A vector Trove mark would beat any raster**: the mark is monochrome line
@@ -230,7 +239,10 @@ of dimensions for all thirteen — Shield is the only non-square original
   the white-keying step entirely.
 - `src/app/icon.svg` (the favicon) is still a labelled placeholder, not the
   Trove mark.
-- No team or founder photographs have been supplied.
+- **Team portraits are not yet normalized.** `public/team/*.png` are supplied
+  originals shipped directly (1.2–1.6MB, ~1200px each) with no equivalent
+  `assets/brand/` + `build-assets.py` pass — the same problem the founder
+  portraits had until now.
 
 ## Open decisions
 
@@ -245,7 +257,7 @@ presentation, filename normalisation, and display names ("BlockScholes",
 | 1 | **Portfolio category for each of the 13 companies.** None supplied. | Phase 8 content (not Phase 7 architecture) |
 | 8 | **Three-buckets section** has no eyebrow or headline, unlike Portfolio. Add one, or run the three blocks bare? | Phase 6 |
 | 9 | **Hero**: anything beyond brand + headline — sub-line, CTA, scroll cue, imagery? | Phase 4 |
-| 10 | **Team**: roles, experience, bios, photos, surnames, ordering, links. Names only were supplied. | Phase 9 content |
+| 10 | **Team**: order and descriptions are now settled (`docs/CONTENT.md`). Balaji Srihari still needs role, experience credential, portrait and link. | Phase 9 content |
 | 11 | **Footer contents**: nav repeat, email, social, legal, address, copyright entity. | Phase 11 |
 | 12 | **Founder Reviews**: how many placeholder slots to architect for? | Phase 10 |
 | 13 | **Production domain** — still needed for `metadataBase`, canonical and OG URLs. | Phase 14 |

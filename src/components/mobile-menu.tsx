@@ -4,18 +4,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { NavItem } from "@/data/navigation";
 
-/** Tailwind's `md` breakpoint, where the desktop nav takes over. */
 const DESKTOP_QUERY = "(min-width: 48rem)";
 
-/**
- * The only client component in the navigation: a disclosure menu for small
- * screens. The wordmark, the header itself and the desktop nav are all
- * server-rendered, so this is the entire JavaScript cost of the nav.
- *
- * A simple disclosure: the panel stays mounted and toggles `hidden`. Escape
- * closes it, choosing a link closes it before the anchor jump, and crossing
- * into desktop width closes it too.
- */
 export function MobileMenu({
   items,
   className = "",
@@ -24,11 +14,6 @@ export function MobileMenu({
   className?: string;
 }) {
   const [open, setOpen] = useState(false);
-  // This component sits in the layout and survives route changes, so a soft
-  // navigation started from outside the panel (the wordmark, say) would
-  // otherwise leave it open over the new page. Adjusted during render rather
-  // than in an effect — the documented React pattern for reacting to a
-  // changed value, and it avoids a cascading re-render.
   const pathname = usePathname();
   const [renderedPathname, setRenderedPathname] = useState(pathname);
   if (renderedPathname !== pathname) {
@@ -39,9 +24,6 @@ export function MobileMenu({
   useEffect(() => {
     if (!open) return;
 
-    // Crossing into desktop hides both the panel and its trigger via
-    // `md:hidden`. Without this the menu would stay logically open with no
-    // visible control to close it.
     const media = window.matchMedia(DESKTOP_QUERY);
     function closeIfDesktop() {
       if (media.matches) setOpen(false);
@@ -72,10 +54,6 @@ export function MobileMenu({
         {open ? <CloseIcon /> : <MenuIcon />}
       </button>
 
-      {/* Sized to its content rather than the viewport, so no body scroll lock
-          is needed. `overscroll-contain` stops the panel's scroll from
-          chaining into the page behind it. Smooth open/close animation via
-          opacity and transform. */}
       <div
         className={`fixed inset-x-0 top-header z-40 max-h-[calc(100dvh-var(--spacing-header))] overflow-y-auto overscroll-contain bg-background border-b border-border transition-[opacity,transform] duration-swift ease-standard ${
           open
@@ -103,7 +81,6 @@ export function MobileMenu({
   );
 }
 
-/* Two rules rather than three: less familiar, quieter, still unmistakable. */
 function MenuIcon() {
   return (
     <svg viewBox="0 0 24 24" className="size-6" fill="none">

@@ -1,11 +1,3 @@
-/**
- * Strip macOS metadata from the static export.
- *
- * `next build` copies everything in `public/` verbatim into `out/`, including
- * Finder droppings like `.DS_Store` and AppleDouble `._*` files. Next has no
- * option to exclude them, so they are removed after the build instead — before
- * DevOps ever uploads `out/` to Cloudflare.
- */
 import { readdir, rm } from "node:fs/promises";
 import { join } from "node:path";
 
@@ -16,7 +8,7 @@ async function clean(dir) {
   try {
     entries = await readdir(dir, { withFileTypes: true });
   } catch {
-    return []; // nothing to clean
+    return [];
   }
 
   const removed = [];

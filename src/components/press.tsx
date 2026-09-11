@@ -2,25 +2,6 @@ import Image from "next/image";
 
 import { pressItems } from "@/data/press";
 
-/**
- * Press coverage, sitting between the founder reviews and the closing CTA.
- *
- * Cards carrying the publication, the headline as published, and the portfolio
- * company the coverage is about — the arrangement the owner asked for by
- * reference, with the reference's article thumbnail replaced by the company's
- * own logo. See src/data/press.ts for why, and for why no dates are shown.
- *
- * COPY: "Media" is the only word here that is not owner-supplied or quoted
- * from a publication, and it is a structural label rather than a claim. It
- * carries the <h2> on its own instead of the eyebrow-over-headline pair every
- * other section uses, because no supporting headline has been approved for
- * this section and inventing marketing copy for it is out of the question.
- * When one is supplied, it slots in beneath the label.
- *
- * Headlines vary a lot in length — one is 86 characters, the other 70 — so the
- * grid aligns cards to the top and the foot row is pushed down with `mt-auto`,
- * which keeps the two company rows level with each other regardless.
- */
 export function Press() {
   return (
     <section className="shell py-section">
@@ -40,8 +21,6 @@ export function Press() {
               className="group flex h-full flex-col rounded-card border border-border bg-linear-to-b from-surface to-surface-raised p-6 transition-colors duration-base ease-editorial hover:border-border-strong md:p-8"
             >
               <div className="flex items-center gap-4">
-                {/* The supplied logos are opaque tiles with their own grounds,
-                    so they keep a hairline frame rather than floating. */}
                 <Image
                   src={item.logo.src}
                   alt={item.company}
@@ -58,8 +37,6 @@ export function Press() {
                 {item.title}
               </h3>
 
-              {/* `mt-auto` so the foot sits on the card's baseline rather than
-                  drifting up under the shorter of the two headlines. */}
               <div className="mt-auto flex items-end justify-between gap-4 pt-6 md:pt-7">
                 <div className="min-w-0">
                   <p className="text-caption text-foreground-muted">
@@ -73,10 +50,6 @@ export function Press() {
                   )}
                 </div>
 
-                {/* Tailwind gates `group-hover:` behind `(hover: hover)`, so on
-                    a touch screen this would never arrive and nothing would
-                    mark the card as an outbound link. `pointer-coarse` rests it
-                    in the arrived state there instead. */}
                 <svg
                   viewBox="0 0 16 16"
                   fill="none"

@@ -1,13 +1,3 @@
-/**
- * The three investment perspectives.
- *
- * Copy is owner-supplied and reproduced exactly (docs/CONTENT.md) — including
- * the em dash and the typographic apostrophes. Do not rewrite, shorten,
- * paraphrase or extend it, and do not add a fourth entry without approval.
- *
- * `marker` is a typographic device, not a claim: it numbers the perspectives
- * so they read as one sequence rather than three unrelated statements.
- */
 type Perspective = {
   marker: string;
   title: string;

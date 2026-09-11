@@ -128,15 +128,18 @@ Significantly more important than the original brief specified. Not a static
 logo wall — a polished, interactive showcase.
 
 - **Eyebrow:** PORTFOLIO
-- **Headline:** The company we keep.
-- **Filters:** All · Consumer · Enterprise · Infrastructure · Digital Assets
+- **Headline:** ~~The company we keep.~~ — **removed** at the owner's request;
+  the section runs on the eyebrow alone.
+- **Filters:** All · Consumer · Enterprise & Infrastructure · Digital Assets
 
 ### Categories
 
+Enterprise and Infrastructure have been merged into one category by owner
+decision:
+
 1. Consumer
-2. Enterprise
-3. Infrastructure
-4. Digital Assets
+2. Enterprise & Infrastructure
+3. Digital Assets
 
 > **CATEGORY ASSIGNMENTS HAVE NOT BEEN SUPPLIED.** Not one of the 13 companies
 > below has a confirmed category. These must come from data/configuration and
@@ -196,48 +199,59 @@ arrive.
 
 ## Meet the Team
 
-Five people supplied — **names only**:
+The "Meet the team" heading has been **removed** at the owner's request — the
+section runs on the "Team" eyebrow alone.
 
-1. Ashish
-2. Vimal
-3. Siva
-4. Balaji
-5. Pratyush
+Display order is an explicit owner decision: **Ashish, Vimal, Siva, Balaji,
+Pratyush.**
 
 Owner's requirement, verbatim:
 
 > "need to highlight each of their startup experience along with the image"
 
 The Team component must support: name · image · current designation/role ·
-startup/company experience · experience description · optional links.
+startup/company experience · description · optional links.
 
 Must visually emphasise **both** the person/photo **and** their
 founder/operator/startup experience. Not a generic employee directory.
 
-> **Biographies, roles, experience and images have NOT been supplied.** Do not
-> invent them. Build the data structure so they drop in later.
+Descriptions supplied by the owner, held verbatim in `src/data/team.ts`:
+
+| Name | Description (as supplied) |
+|---|---|
+| Ashish Singhal | 2x founder with first-hand experience building and scaling category-defining technology businesses. |
+| Vimal Sagar Tiwari | Technologist and 2x founder with deep experience building products and technology platforms for millions of users. |
+| Siva Venkataraman | Entrepreneur and business leader with two decades of experience across startups, finance, fundraising and strategy. |
+| Balaji Srihari | Investor and operator with experience across venture capital and Flipkart, one of India's defining homegrown technology companies. |
+| Pratyush Shah | Venture investor with deep experience evaluating, investing in and partnering with emerging technology businesses globally. |
+
+> **Balaji Srihari** is a new addition with only a name and description
+> supplied so far — no role, experience credential, portrait or link. Do not
+> invent any of those; the component renders only the fields that exist.
+>
+> The second placeholder slot has been **removed** at the owner's request
+> ("for now remove 6th block"), so the team is five members, not six.
 
 ---
 
 ## Founder Reviews
 
-Three founders have now been SUPPLIED, with photographs and credential lines:
+Three founders have now been SUPPLIED, with photographs, credential lines and
+country. Display order is an explicit owner decision: Uniblock, Deconflict,
+YouSend.
 
-| Founder | Company | Credential line (as supplied) | Quote |
-|---|---|---|---|
-| Mudassar Malik | Deconflict | 22 years US Secret Service, MIT, Harvard University | supplied |
-| Adeoye Ojo | YouSend | 2x founder, Jumia, Oxford University | supplied |
-| Kevin Callahan | Uniblock | Headed global expansion for Twitter and Coinbase | **NOT SUPPLIED** |
+| Founder | Company | Country | Credential line (as supplied) | Quote |
+|---|---|---|---|---|
+| Kevin Callahan | Uniblock | Canada | Formerly headed global expansion for Twitter and Coinbase | supplied |
+| Mudassar Malik | Deconflict | USA | 22 years US Secret Service, MIT, Harvard University | supplied |
+| Adeoye Ojo | YouSend | UK | 2x founder, Jumia, Oxford University | supplied |
 
-> **The Uniblock quote is still outstanding.** The owner sent placeholder
-> characters for it and said Uniblock would provide the real text after this
-> draft. It is held as `quote: null` and the section renders a labelled
-> "awaiting approved quote" line. **Do not invent it**, and do not fill it from
-> anything Uniblock has published elsewhere.
+All three quotes are now supplied. The Uniblock quote arrived after the
+initial draft — `quote` is no longer `null`.
 
-The two supplied quotes are held VERBATIM in `src/data/founder-reviews.ts`
+The three supplied quotes are held VERBATIM in `src/data/founder-reviews.ts`
 rather than duplicated here, so there is exactly one copy of the wording to
-keep correct. Do not reword, shorten or re-punctuate either one: the owner has
+keep correct. Do not reword, shorten or re-punctuate any of them: the owner has
 noted some run long and said shortening them is a separate, explicit decision.
 
 Photographs are in `public/founders/`, used as supplied. They are not uniform

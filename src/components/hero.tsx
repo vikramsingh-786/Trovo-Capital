@@ -4,7 +4,7 @@ import { heroMedia, unsplash } from "@/data/media";
 
 export function Hero() {
   return (
-    <section className="relative isolate flex min-h-[52svh] flex-col justify-center overflow-hidden bg-obsidian-950 md:min-h-[calc(100svh-var(--spacing-header))] md:justify-end">
+    <section className="relative isolate flex min-h-[52svh] flex-col justify-center overflow-hidden bg-obsidian-950 md:min-h-[calc(95svh-var(--spacing-header))] md:justify-end">
       <div className="animate-plate absolute inset-0 -z-10">
         <Image
           data-parallax="16"
@@ -22,7 +22,7 @@ export function Hero() {
       <div className="glow absolute inset-0 -z-10" />
       <div className="grain absolute inset-0 -z-10" />
 
-      <div className="shell py-10 md:pt-8 md:pb-40">
+      <div className="shell py-10 md:pt-8 md:pb-60">
         <p className="animate-rise eyebrow text-accent [animation-delay:120ms]">
           Trove Capital
         </p>

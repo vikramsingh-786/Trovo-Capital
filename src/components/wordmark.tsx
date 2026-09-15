@@ -14,9 +14,9 @@ export function Wordmark({
       className={`inline-flex shrink-0 items-center transition-opacity duration-swift ease-standard hover:opacity-70 ${className}`}
     >
       <Image
-        src="/logo/trove-logo.webp"
+        src="/logo/trove-logo-black.svg"
         alt="Trove Capital"
-        width={336}
+        width={370}
         height={128}
         priority={priority}
         className="brandmark h-8 w-auto md:h-10"

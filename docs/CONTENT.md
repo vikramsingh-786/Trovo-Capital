@@ -54,15 +54,16 @@ page-level branding. **Trove Capital Partners** is used where it appears
 naturally in formal body copy (About, CTA). Do not rewrite supplied copy to
 force either form.
 
-A brand lockup (icon + wordmark) **has now been supplied** as a JPEG, kept
-unmodified at `assets/brand/logo.jpg`, and the owner has approved using it in place of the
-text wordmark. It is served as `public/logo/trove-logo.webp`, built by
-`scripts/build-assets.py`: the supplied file is an opaque JPEG on near-white
-paper, which would show as a white box on the ivory ground, so the paper is
-keyed out to transparency and the uneven padding trimmed. The original is kept
-unmodified in `assets/brand/` (outside `public/`, so it is not deployed) as the
-source of record. Never invent or generate a graphical
-logo; a vector version of this one would be preferable to any raster.
+A brand lockup (icon + wordmark) **has now been supplied** as vector
+originals, `public/logo/trove-logo-black.svg` and `trove-logo-white.svg`, and
+the owner has approved using it in place of the text wordmark. These are used
+directly with no build step. `Wordmark` renders the black mark and relies on
+the `brandmark` CSS filter to invert and warm-tint it into the site's ivory
+tone on the dark background it appears on; the white variant is kept for any
+future light-background placement. The favicon (`src/app/icon.svg`) is the
+icon portion of the same lockup. Never invent or generate a graphical logo —
+these vector originals supersede the earlier raster JPEG supplied for the
+same mark.
 
 ## Navigation (owner decision)
 

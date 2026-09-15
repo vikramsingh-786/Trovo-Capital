@@ -192,19 +192,31 @@ are never deployed — `next build` copies `public/` verbatim and Next offers no
 exclude option. `public/logo/` contains only built output.
 
 ```
-assets/brand/logo.jpg             supplied Trove lockup (source of record)
 assets/brand/portfolio/*.jpg|png  the 13 supplied company logos
 assets/brand/founders/*           the 3 supplied founder portraits
         |
         |  python3 scripts/build-assets.py
         v
-public/logo/trove-logo.webp       336x128, lossless
 public/logo/<slug>.webp           13 tiles, 192x192
 public/founders/<name>.webp       capped at 900px on the long edge, aspect kept
 ```
 
 Re-run `scripts/build-assets.py` whenever a supplied asset changes. It needs
 Pillow — a local tool dependency, deliberately not a project one.
+
+The Trove logo is the exception to this pipeline: the owner supplied it
+directly as vector originals, `public/logo/trove-logo-black.svg` and
+`trove-logo-white.svg`, so there is no raster source to normalize and no build
+step — they are used as-is. `Wordmark` renders the black mark and relies on
+the `brandmark` CSS filter (`invert(1) sepia(...) ...`) to invert and
+warm-tint it into the site's ivory tone live on the dark background; the white
+variant is unused today but kept for any future light-background placement.
+
+`src/app/icon.svg` (the favicon) is the icon portion of that same lockup —
+its square mark sub-path, hand-cropped to its own `0 0 337.19 337.19` viewBox
+and centred on an ivory ground — not a placeholder. There is no `apple-icon`
+file; add one (`.png`/`.jpg` only, per Next's file conventions) if iOS
+home-screen bookmarks become a requirement.
 
 ### Why WebP
 
@@ -217,8 +229,8 @@ bytes we ship and format is the only lever. Measured on this set:
 | resized, formats kept | 70.6 KB | makes 3 PNGs *larger* (crux 1.8 -> 4.8 KB) |
 | **resized + WebP** | **23.3 KB** | keeps Shield's alpha; 93.8% smaller |
 
-Deployed image payload overall: **421 KB -> 48 KB** (the 24.7 KB wordmark is
-lossless, since lossy artefacts on the primary brand mark are not worth ~9 KB).
+Deployed image payload overall: **421 KB -> 48 KB** for the portfolio tiles.
+The wordmark is no longer part of this raster budget — see above.
 
 Tiles are padded to a uniform 192x192 square. The padding is transparent, so it
 renders exactly as letterboxing would inside the framed tile, but keeps one set
@@ -234,11 +246,6 @@ sizes they render at.
 
 ### Still worth improving
 
-- **A vector Trove mark would beat any raster**: the mark is monochrome line
-  art, so an SVG would be a few KB instead of 24.7, scale perfectly, and remove
-  the white-keying step entirely.
-- `src/app/icon.svg` (the favicon) is still a labelled placeholder, not the
-  Trove mark.
 - **Team portraits are not yet normalized.** `public/team/*.png` are supplied
   originals shipped directly (1.2–1.6MB, ~1200px each) with no equivalent
   `assets/brand/` + `build-assets.py` pass — the same problem the founder
@@ -273,7 +280,6 @@ presentation, filename normalisation, and display names ("BlockScholes",
   in a metadata field is a hard *build error* without it, so the first
   `openGraph.images: "/og.png"` or `alternates.canonical: "/"` will fail the
   build until the production domain is known.
-- **`src/app/icon.svg` is a placeholder**, not a Trove brand mark.
 - **No Content-Security-Policy** in `public/_headers` yet; it depends on the
   font/analytics choices still to be made.
 - **No hairline / rule vocabulary.** Editorial layout does most of its

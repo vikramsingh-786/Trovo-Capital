@@ -41,20 +41,8 @@ export function Team() {
                     {member.role}
                   </p>
                 )}
-
-                {member.experience && (
-                  <p className="text-base text-foreground">
-                    {member.experience}
-                  </p>
-                )}
               </div>
             </div>
-
-            {member.description && (
-              <p className="mt-6 text-caption text-foreground-muted md:mt-7">
-                {member.description}
-              </p>
-            )}
 
             {member.link && (
               <p className="mt-5">

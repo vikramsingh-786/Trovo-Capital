@@ -97,7 +97,7 @@ export const portfolioCompanies: readonly PortfolioCompany[] = [
     description: "Crypto Derivatives Intelligence",
     url: "https://www.blockscholes.com/",
     logo: { src: "/logo/blockscholes.webp", width: 192, height: 192 },
-    category: "Digital Assets",
+    category: "Enterprise & Infrastructure",
   },
   {
     name: "Kelp",

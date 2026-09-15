@@ -74,8 +74,8 @@ final section's job.
 
 ## Hero
 
-- **Brand:** Trove Capital
-- **Headline:** Capital for what comes next.
+- **Brand:** Trove Capital (eyebrow removed — headline runs alone)
+- **Headline:** Capital for what comes next
 
 Keep the hero minimal and premium.
 
@@ -84,42 +84,45 @@ Keep the hero minimal and premium.
 ## About Us
 
 - **Eyebrow:** About Trove Capital
-- **Headline:** An investor’s capital. An operator’s perspective.
+- **Headline:** An investor’s capital, An operator’s perspective
 
 (Revised by the owner at the About phase — supersedes the earlier "ABOUT US"
-eyebrow. Typographic apostrophes are part of the supplied copy.)
+eyebrow. Typographic apostrophes are part of the supplied copy. Punctuation
+revised again by the owner: full stops removed from the headline and body
+copy; the headline's midpoint is now a comma instead of a period.)
 
 **Body:**
 
 > Trove Capital Partners invests in emerging technology companies with the
-> potential to shape large, evolving markets.
+> potential to shape large, evolving markets
 >
 > Built on the foundations of one of India’s leading technology groups, we
 > combine investment discipline with an operator’s perspective, bringing deep
 > technology understanding, global relationships, and first-hand
-> company-building experience to every partnership.
+> company-building experience to every partnership
 
 ---
 
 ## Three investment perspective buckets
 
-Three distinct editorial blocks.
+Three distinct editorial blocks. (Full stops removed from descriptions per
+owner revision.)
 
 ### Understanding that runs deep
 
 > Our roots are in building and scaling technology businesses — bringing an
 > operator’s understanding of products, markets and the challenges of growth to
-> how we invest.
+> how we invest
 
 ### A network built to compound
 
 > Our global network of founders, operators and investors creates meaningful
-> access to expertise, strategic relationships and capital.
+> access to expertise, strategic relationships and capital
 
 ### Built for the scaling journey
 
 > We partner with companies at pivotal stages of growth, bringing an operator’s
-> perspective to go-to-market, new markets, and the decisions that shape scale.
+> perspective to go-to-market, new markets, and the decisions that shape scale
 
 ---
 

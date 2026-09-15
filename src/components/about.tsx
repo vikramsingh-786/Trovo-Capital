@@ -12,19 +12,19 @@ export function About() {
           <p className="eyebrow text-accent">About Trove Capital</p>
 
           <h2 className="mt-8 text-display-lg">
-            <span className="md:block">An investor’s capital. </span>
-            <span className="md:block">An operator’s perspective.</span>
+            <span className="md:block">An investor’s capital, </span>
+            <span className="md:block">An operator’s perspective</span>
           </h2>
 
           <p className="mt-10 max-w-measure text-lead text-foreground-secondary md:mt-12">
             Trove Capital Partners invests in emerging technology companies with
-            the potential to shape large, evolving markets.
+            the potential to shape large, evolving markets
           </p>
           <p className="mt-7 max-w-measure text-base text-foreground-muted md:mt-8">
             Built on the foundations of one of India’s leading technology groups,
             we combine investment discipline with an operator’s perspective,
             bringing deep technology understanding, global relationships, and
-            first-hand company-building experience to every partnership.
+            first-hand company-building experience to every partnership
           </p>
         </div>
 

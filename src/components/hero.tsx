@@ -23,13 +23,9 @@ export function Hero() {
       <div className="grain absolute inset-0 -z-10" />
 
       <div className="shell py-10 md:pt-8 md:pb-60">
-        <p className="animate-rise eyebrow text-accent [animation-delay:120ms]">
-          Trove Capital
-        </p>
-
-        <h1 className="animate-rise mt-8 max-w-[15ch] text-display-2xl text-on-media [animation-delay:220ms] md:mt-10">
+        <h1 className="animate-rise max-w-[15ch] text-display-2xl text-on-media [animation-delay:120ms]">
           <span className="md:block">Capital for </span>
-          <span className="md:block">what comes next.</span>
+          <span className="md:block">what comes next</span>
         </h1>
       </div>
     </section>

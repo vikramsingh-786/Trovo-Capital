@@ -217,10 +217,6 @@
   }
 }
 
-[data-anim="on"] [data-reveal] {
-  opacity: 0;
-}
-
 @property --glare-x {
   syntax: "<percentage>";
   inherits: false;

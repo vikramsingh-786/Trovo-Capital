@@ -303,18 +303,15 @@
     height: 1px;
     width: 3rem;
     background-color: var(--color-accent);
+    transform: scaleY(0.5);
   }
 
   &::after {
     content: "";
     height: 1px;
     flex: 1;
-    background-image: linear-gradient(
-      to right,
-      var(--color-border-strong),
-      var(--color-border) 40%,
-      transparent
-    );
+    background-color: var(--color-accent);
+    transform: scaleY(0.5);
   }
 
   @media (width >= 48rem) {

@@ -8,7 +8,7 @@ export function Team() {
       <div className="section-rule" />
 
       <div className="mt-12 md:mt-16">
-        <p className="eyebrow text-accent">Team</p>
+        <p className="eyebrow text-[1rem]! text-accent">Team</p>
       </div>
 
       <ul className="mt-12 grid gap-5 md:mt-16 md:grid-cols-2 md:gap-6 lg:grid-cols-3">

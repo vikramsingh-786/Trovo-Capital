@@ -8,7 +8,7 @@ export function FounderReviews() {
       <div className="section-rule" />
 
       <div data-reveal className="mt-12 md:mt-16">
-        <p className="eyebrow text-accent">Founder Reviews</p>
+        <p className="eyebrow text-[1rem]! text-accent">Founder Reviews</p>
       </div>
 
       <ul className="mt-10 flex flex-col gap-8 md:mt-12 lg:gap-10">

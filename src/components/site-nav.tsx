@@ -24,7 +24,7 @@ export function SiteNav() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="eyebrow block rounded-pill border-t border-b border-border-strong bg-surface px-4 py-2.5 text-foreground-muted keycap transition-all duration-swift ease-standard hover:bg-surface-raised hover:text-foreground hover:keycap-pressed"
+                  className="eyebrow rounded-pill border border-border bg-surface-raised px-4 py-2.5 font-bold text-foreground-muted keycap transition-[color,background-color,border-color,box-shadow] duration-swift ease-standard hover:border-accent hover:bg-accent hover:text-background hover:keycap-pressed-accent"
                 >
                   {item.label}
                 </a>

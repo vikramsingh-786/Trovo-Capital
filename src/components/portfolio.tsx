@@ -10,7 +10,7 @@ export function Portfolio() {
         <div className="section-rule" />
 
         <div data-reveal className="mt-12 md:mt-16">
-          <p className="eyebrow text-accent">Portfolio</p>
+          <p className="eyebrow text-[1rem]! text-accent">Portfolio</p>
         </div>
 
         <PortfolioLedger />

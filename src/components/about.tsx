@@ -9,7 +9,7 @@ export function About() {
 
       <div className="mt-12 grid gap-x-8 gap-y-14 md:mt-16 lg:grid-cols-12 lg:gap-y-0">
         <div data-reveal="left" className="lg:col-span-7">
-          <p className="eyebrow text-accent">About Trove Capital</p>
+          <p className="eyebrow text-[1rem]! text-accent">About Trove Capital</p>
 
           <h2 className="mt-8 text-display-lg">
             <span className="md:block">An investor’s capital, </span>

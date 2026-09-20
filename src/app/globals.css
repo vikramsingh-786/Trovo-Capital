@@ -321,11 +321,43 @@
   }
 }
 
+/* Journey card — shared by the desktop grid and the mobile Embla carousel.
+   The carousel writes transform/opacity/filter/--shadow-alpha inline per
+   frame, so nothing here may transition those properties. */
+
+@utility journey-slide {
+  & > article {
+    transform-origin: center;
+    will-change: transform, opacity;
+  }
+}
+
+/* Unset outside the carousel, so the grid renders no shadow. */
+@utility journey-card {
+  box-shadow: 0 24px 48px -12px oklch(0.14 0.012 40 / var(--shadow-alpha, 0));
+}
+
+@utility journey-reveal {
+  opacity: 0.5;
+  translate: 0 8px;
+  filter: blur(3px);
+  transition-property: opacity, translate, filter;
+  transition-duration: 320ms;
+  transition-timing-function: var(--ease-editorial);
+
+  [data-active] & {
+    opacity: 1;
+    translate: 0 0;
+    filter: blur(0);
+  }
+}
+
 @layer base {
   html {
     scroll-padding-top: var(--spacing-header);
     scroll-behavior: smooth;
     color-scheme: dark;
+    overflow-x: clip;
   }
 
   body {

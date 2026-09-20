@@ -2,6 +2,35 @@ import Image from "next/image";
 
 import { founderReviews } from "@/data/founder-reviews";
 
+type Review = (typeof founderReviews)[number];
+
+function Portrait({
+  review,
+  className,
+  sizes,
+}: {
+  review: Review;
+  className: string;
+  sizes: string;
+}) {
+  if (!review.image) return null;
+
+  return (
+    <div
+      className={`grain relative overflow-hidden rounded-media border border-border bg-surface ${className}`}
+    >
+      <Image
+        src={review.image.src}
+        alt={review.name}
+        width={review.image.width}
+        height={review.image.height}
+        sizes={sizes}
+        className="media-plate aspect-[4/4.5] w-full object-cover"
+      />
+    </div>
+  );
+}
+
 export function FounderReviews() {
   return (
     <section className="shell py-section">
@@ -11,7 +40,7 @@ export function FounderReviews() {
         <p className="eyebrow text-[1rem]! text-accent">Founder Reviews</p>
       </div>
 
-      <ul className="mt-10 flex flex-col gap-8 md:mt-12 lg:gap-10">
+      <ul className="mt-10 flex flex-col gap-14 md:mt-12 lg:gap-10">
         {founderReviews.map((review, index) => {
           const portraitLeads = index % 2 === 0;
 
@@ -21,27 +50,19 @@ export function FounderReviews() {
               data-reveal-group
               className="lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8 xl:gap-x-12"
             >
-              <div
-                data-reveal={portraitLeads ? "left" : "right"}
-                className={`group grain relative max-w-48 overflow-hidden rounded-media border border-border bg-surface sm:max-w-56 lg:col-span-3 lg:row-start-1 lg:max-w-none ${
+              {/* Below lg the portrait moves into the attribution row instead,
+                  so it isn't stranded beside an empty column. */}
+              <Portrait
+                review={review}
+                sizes="30vw"
+                className={`hidden lg:col-span-3 lg:row-start-1 lg:block ${
                   portraitLeads ? "lg:col-start-1" : "lg:col-start-10"
                 }`}
-              >
-                {review.image && (
-                  <Image
-                    src={review.image.src}
-                    alt={review.name}
-                    width={review.image.width}
-                    height={review.image.height}
-                    sizes="(min-width: 64rem) 30vw, 60vw"
-                    className="media-plate aspect-[4/4.5] w-full object-cover"
-                  />
-                )}
-              </div>
+              />
 
               <div
                 data-reveal={portraitLeads ? "right" : "left"}
-                className={`mt-6 lg:col-span-8 lg:row-start-1 lg:mt-0 ${
+                className={`lg:col-span-8 lg:row-start-1 ${
                   portraitLeads ? "lg:col-start-5" : "lg:col-start-1"
                 }`}
               >
@@ -57,8 +78,14 @@ export function FounderReviews() {
                   </p>
                 )}
 
-                <div className="mt-6 flex items-center gap-4 md:mt-7">
-                  <span className="h-px w-8 shrink-0 bg-accent" />
+                <div className="mt-7 flex items-center gap-4 md:mt-8">
+                  <Portrait
+                    review={review}
+                    sizes="64px"
+                    className="w-16 shrink-0 lg:hidden"
+                  />
+
+                  <span className="hidden h-px w-8 shrink-0 bg-accent lg:block" />
 
                   <div className="min-w-0">
                     <p className="text-base text-foreground">

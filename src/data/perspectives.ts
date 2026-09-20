@@ -1,4 +1,4 @@
-type Perspective = {
+export type Perspective = {
   marker: string;
   title: string;
   description: string;

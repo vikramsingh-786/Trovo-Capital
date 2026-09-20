@@ -51,48 +51,55 @@ export function MobileMenu({
         aria-label="Toggle menu"
         aria-expanded={open}
       >
-        {open ? <CloseIcon /> : <MenuIcon />}
+        <span className="relative block size-6">
+          <span
+            className={`absolute left-0 h-px w-full bg-current transition-[top,rotate,translate] duration-base ease-editorial ${
+              open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-[9px]"
+            }`}
+          />
+          <span
+            className={`absolute left-0 h-px w-full bg-current transition-[top,rotate,translate] duration-base ease-editorial ${
+              open ? "top-1/2 -translate-y-1/2 -rotate-45" : "top-[15px]"
+            }`}
+          />
+        </span>
       </button>
 
+      {/* 0fr -> 1fr unfurls the panel without hard-coding its height. The inner
+          wrapper does the clipping, so the rule below the nav collapses too. */}
       <div
-        className={`fixed inset-x-0 top-header z-40 max-h-[calc(100dvh-var(--spacing-header))] overflow-y-auto overscroll-contain bg-background border-b border-border transition-[opacity,transform] duration-swift ease-standard ${
+        className={`fixed inset-x-0 top-header z-40 grid bg-background transition-[grid-template-rows,opacity] duration-base ease-editorial ${
           open
-            ? "pointer-events-auto opacity-100"
-            : "pointer-events-none opacity-0 -translate-y-2"
+            ? "pointer-events-auto grid-rows-[1fr] opacity-100"
+            : "pointer-events-none grid-rows-[0fr] opacity-0"
         }`}
       >
-        <nav className="shell py-4">
-          <ul>
-            {items.map((item) => (
-              <li key={item.href} className="border-b border-border last:border-b-0">
-                <a
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="block py-4 font-display text-title text-foreground transition-colors duration-base ease-standard hover:text-foreground-secondary active:text-accent"
+        <div className="overflow-hidden">
+          <nav className="shell max-h-[calc(100dvh-var(--spacing-header))] overflow-y-auto overscroll-contain border-b border-border py-4">
+            <ul>
+              {items.map((item, index) => (
+                <li
+                  key={item.href}
+                  style={{
+                    transitionDelay: open ? `${90 + index * 55}ms` : "0ms",
+                  }}
+                  className={`border-b border-border transition-[opacity,translate] duration-base ease-editorial last:border-b-0 ${
+                    open ? "translate-y-0 opacity-100" : "-translate-y-1 opacity-0"
+                  }`}
                 >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+                  <a
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="block py-4 font-display text-title text-foreground transition-colors duration-base ease-standard hover:text-foreground-secondary active:text-accent"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
-  );
-}
-
-function MenuIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="size-6" fill="none">
-      <path d="M3 9h18M3 15h18" stroke="currentColor" strokeWidth="1.25" />
-    </svg>
-  );
-}
-
-function CloseIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="size-6" fill="none">
-      <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" strokeWidth="1.25" />
-    </svg>
   );
 }

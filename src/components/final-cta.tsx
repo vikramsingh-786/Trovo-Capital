@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ctaMedia, unsplash } from "@/data/media";
+import { ctaMedia } from "@/data/media";
 
 const EMAIL = "trovecapital@partners.co";
 
@@ -12,7 +12,7 @@ export function FinalCta() {
     >
       <div className="absolute inset-0 -z-10">
         <Image
-          src={unsplash(ctaMedia, 2000, 70)}
+          src={ctaMedia.src}
           alt={ctaMedia.alt}
           fill
           sizes="100vw"

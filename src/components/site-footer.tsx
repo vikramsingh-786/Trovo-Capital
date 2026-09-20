@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import { ctaMedia, unsplash } from "@/data/media";
-import { navItems } from "@/data/navigation";
+import { ctaMedia } from "@/data/media";
 
+import { FooterNav } from "./footer-nav";
 import { Wordmark } from "./wordmark";
 
 const EMAIL = "trovecapital@partners.co";
@@ -16,7 +16,7 @@ export function SiteFooter() {
     >
       <div className="absolute inset-0 -z-10">
         <Image
-          src={unsplash(ctaMedia, 2000, 70)}
+          src={ctaMedia.src}
           alt={ctaMedia.alt}
           fill
           sizes="100vw"
@@ -36,20 +36,7 @@ export function SiteFooter() {
             <Wordmark priority={false} />
           </div>
 
-          <nav className="md:col-span-3">
-            <ul className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    className="font-display text-title-sm text-foreground-secondary transition-colors duration-base ease-standard hover:text-accent"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <FooterNav />
 
           <div className="md:col-span-3">
             <p className="eyebrow text-foreground-faint">Contact</p>

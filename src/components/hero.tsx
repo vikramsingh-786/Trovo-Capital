@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { heroMedia, unsplash } from "@/data/media";
+import { heroMedia } from "@/data/media";
 
 export function Hero() {
   return (
@@ -8,7 +8,7 @@ export function Hero() {
       <div className="animate-plate absolute inset-0 -z-10">
         <Image
           data-parallax="16"
-          src={unsplash(heroMedia, 2400, 72)}
+          src={heroMedia.src}
           alt={heroMedia.alt}
           fill
           priority

@@ -33,25 +33,29 @@ export function PortfolioLedger() {
   return (
     <div className="mt-14 md:mt-18">
       {availableCategories.length > 0 && (
-        <div className="flex flex-wrap items-center gap-2.5 border-b border-border pb-8">
-          {([ALL, ...availableCategories] as Filter[]).map((category) => {
-            const isActive = category === active;
+        <div className="border-b border-border pb-8">
+          {/* Every filter stays visible without scrolling — below md the pills
+              tighten their tracking and padding so all four fit. */}
+          <div className="flex flex-wrap items-center gap-2">
+            {([ALL, ...availableCategories] as Filter[]).map((category) => {
+              const isActive = category === active;
 
-            return (
-              <button
-                key={category}
-                type="button"
-                onClick={() => setFilter(category)}
-                className={`eyebrow rounded-pill border px-4 py-2.5 transition-[color,background-color,border-color,box-shadow] duration-swift ease-standard ${
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setFilter(category)}
+                  className={`eyebrow shrink-0 rounded-pill border px-3 py-2 tracking-[0.07em]! whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-swift ease-standard md:px-4 md:py-2.5 md:tracking-[0.16em]! ${
                   isActive
-                    ? "border-accent bg-accent text-background keycap-pressed-accent"
-                    : "border-border bg-surface-raised text-foreground-muted keycap hover:border-border-strong hover:text-foreground hover:keycap-pressed"
-                }`}
-              >
-                {category}
-              </button>
-            );
-          })}
+                      ? "border-accent bg-accent text-background keycap-pressed-accent"
+                      : "border-border bg-surface-raised text-foreground-muted keycap hover:border-border-strong hover:text-foreground hover:keycap-pressed"
+                  }`}
+                >
+                  {category}
+                </button>
+              );
+            })}
+          </div>
         </div>
       )}
 
@@ -66,7 +70,7 @@ export function PortfolioLedger() {
             href={company.url}
             target="_blank"
             rel="noreferrer"
-            className="group tilt-card relative flex flex-col rounded-card border border-border bg-linear-to-b from-surface-sunken to-surface-raised p-6 transition-colors duration-base ease-editorial hover:border-border-strong md:p-7"
+            className="group tilt-card relative flex flex-col rounded-card border border-border bg-linear-to-b from-surface-sunken to-surface-raised p-5 transition-colors duration-base ease-editorial hover:border-border-strong md:p-7"
           >
             <span className="absolute -inset-px overflow-hidden rounded-card">
               <span className="glow absolute inset-0 opacity-0 transition-opacity duration-slow ease-editorial group-hover:opacity-100" />
@@ -85,10 +89,12 @@ export function PortfolioLedger() {
                 alt={company.name}
                 width={company.logo.width}
                 height={company.logo.height}
-                className="size-14 rounded-media border border-border object-contain transition-colors duration-base ease-standard group-hover:border-border-strong"
+                className="size-12 rounded-media border border-border object-contain transition-colors duration-base ease-standard group-hover:border-border-strong md:size-14"
               />
 
-              {company.category && (
+              {/* Redundant once a category is selected — every visible card
+                  would repeat the label already shown in the active pill. */}
+              {company.category && active === ALL && (
                 <span className="eyebrow shrink-0 text-[0.5625rem] text-foreground-faint transition-colors duration-base ease-standard group-hover:text-accent">
                   {company.category}
                 </span>
@@ -97,9 +103,9 @@ export function PortfolioLedger() {
 
             <div
               data-tilt-layer="55"
-              className="relative mt-8 flex items-baseline justify-between gap-3 md:mt-10"
+              className="relative mt-6 flex items-baseline justify-between gap-3 md:mt-10"
             >
-              <h3 className="text-title transition-colors duration-base ease-standard group-hover:text-accent">
+              <h3 className="text-title-sm transition-colors duration-base ease-standard group-hover:text-accent md:text-title">
                 {company.name}
               </h3>
 

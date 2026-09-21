@@ -28,7 +28,7 @@ export function JourneyCard({
       style={style}
       data-active={active || undefined}
       onClick={onClick}
-      className="journey-card tilt-card relative cursor-pointer max-md:overflow-hidden max-md:rounded-card max-md:border max-md:border-border max-md:bg-surface max-md:p-3"
+      className="journey-card tilt-card relative transform-flat cursor-pointer max-md:overflow-hidden max-md:rounded-card max-md:border max-md:border-border max-md:bg-surface max-md:p-3"
     >
       <div
         data-tilt-layer="45"

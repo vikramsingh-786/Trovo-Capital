@@ -15,7 +15,7 @@ export function Team() {
         {teamMembers.map((member) => (
           <li
             key={member.name}
-            className="reveal group rounded-card border border-border bg-linear-to-b from-surface to-surface-raised p-6 transition-colors duration-base ease-editorial hover:border-border-strong"
+            className="reveal group cursor-pointer rounded-card border border-border bg-linear-to-b from-surface to-surface-raised p-6 transition-colors duration-base ease-editorial hover:border-border-strong"
           >
             <div className="flex items-start gap-4 md:gap-5">
               <div className="grain relative size-20 shrink-0 overflow-hidden rounded-media border border-border bg-surface md:size-24">

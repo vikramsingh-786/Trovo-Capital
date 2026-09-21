@@ -17,7 +17,7 @@ function Portrait({
 
   return (
     <div
-      className={`grain relative overflow-hidden rounded-media border border-border bg-surface ${className}`}
+      className={`group grain relative cursor-pointer overflow-hidden rounded-media border border-border bg-surface ${className}`}
     >
       <Image
         src={review.image.src}

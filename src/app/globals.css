@@ -230,6 +230,7 @@
 }
 
 @utility tilt-card {
+  cursor: pointer;
   transform-style: preserve-3d;
 }
 

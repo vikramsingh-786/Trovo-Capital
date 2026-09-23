@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { ctaMedia } from "@/data/media";
 
-const EMAIL = "trovecapital@partners.co";
+const EMAIL = "blackinkcapital@partners.co";
 
 export function FinalCta() {
   return (
@@ -38,7 +38,7 @@ export function FinalCta() {
           data-reveal
           className="mt-8 max-w-measure text-lead text-on-media-muted"
         >
-          Connect with Trove Capital Partners.
+          Connect with BlackInk Capital Partners.
         </p>
 
         <p data-reveal className="mt-10 md:mt-12">

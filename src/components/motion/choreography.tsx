@@ -37,7 +37,7 @@ function variantOf(el: Element): RevealVariant {
   return raw === "left" || raw === "right" || raw === "scale" ? raw : "rise";
 }
 
-export const LAYOUT_EVENT = "trove:layoutchange";
+export const LAYOUT_EVENT = "blackink:layoutchange";
 
 export function Choreography() {
   useGSAP(() => {

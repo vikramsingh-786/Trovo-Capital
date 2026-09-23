@@ -5,7 +5,7 @@ import { ctaMedia } from "@/data/media";
 import { FooterNav } from "./footer-nav";
 import { Wordmark } from "./wordmark";
 
-const EMAIL = "trovecapital@partners.co";
+const EMAIL = "blackinkcapital@partners.co";
 
 export function SiteFooter() {
   return (
@@ -54,7 +54,7 @@ export function SiteFooter() {
 
       <div className="mt-8 overflow-hidden md:mt-12">
         <p className="shell translate-y-[0.1em] select-none text-center font-display text-[clamp(4rem,26vw,24rem)] leading-[0.72] tracking-[-0.04em] text-foreground uppercase opacity-[0.06]">
-          Trove
+          Blackink
         </p>
       </div>
     </footer>

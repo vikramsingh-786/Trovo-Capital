@@ -15,7 +15,7 @@ export function Wordmark({
     >
       <Image
         src="/logo/blackink-capital.png"
-        alt="BlackInk Capital"
+        alt="Black Ink Capital"
         width={1304}
         height={432}
         priority={priority}

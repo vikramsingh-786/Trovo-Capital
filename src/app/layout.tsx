@@ -20,11 +20,11 @@ const schibstedGrotesk = Schibsted_Grotesk({
 
 export const metadata: Metadata = {
   title: {
-    default: "BlackInk Capital",
-    template: "%s | BlackInk Capital",
+    default: "Black Ink Capital",
+    template: "%s | Black Ink Capital",
   },
   description:
-    "BlackInk Capital Partners invests in emerging technology companies with the potential to shape large, evolving markets.",
+    "Black Ink Capital invests in emerging technology companies with the potential to shape large, evolving markets.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

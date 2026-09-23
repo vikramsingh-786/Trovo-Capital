@@ -32,7 +32,7 @@ export default function NotFound() {
             data-magnetic="26"
             className="group relative inline-block font-sans text-title transition-colors duration-base ease-editorial hover:text-accent"
           >
-            Return to BlackInk Capital
+            Return to Black Ink Capital
             <span className="absolute -bottom-2 left-0 h-px w-full bg-border-strong transition-colors duration-base ease-editorial group-hover:bg-accent" />
           </Link>
         </p>

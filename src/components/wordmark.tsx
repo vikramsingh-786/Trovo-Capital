@@ -16,10 +16,10 @@ export function Wordmark({
       <Image
         src="/logo/blackink-capital.png"
         alt="Black Ink Capital"
-        width={1304}
-        height={432}
+        width={2846}
+        height={1029}
         priority={priority}
-        className="brandmark h-8 w-auto md:h-10"
+        className="brandmark h-9 w-auto md:h-12"
       />
     </Link>
   );

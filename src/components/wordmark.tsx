@@ -14,12 +14,12 @@ export function Wordmark({
       className={`inline-flex shrink-0 items-center transition-opacity duration-swift ease-standard hover:opacity-70 ${className}`}
     >
       <Image
-        src="/logo/blackink-capital.png"
-        alt="Black Ink Capital"
-        width={2846}
-        height={1029}
+        src="/logo/BlackInk-Lane-Final-Logo-White.svg"
+        alt="Black Lane Capital"
+        width={1414}
+        height={387}
         priority={priority}
-        className="brandmark h-9 w-auto md:h-12"
+        className="h-9 w-auto md:h-12"
       />
     </Link>
   );

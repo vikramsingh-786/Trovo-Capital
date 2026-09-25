@@ -5,7 +5,7 @@ import { ctaMedia } from "@/data/media";
 import { FooterNav } from "./footer-nav";
 import { Wordmark } from "./wordmark";
 
-const EMAIL = "contact@blackink.capital";
+const EMAIL = "contact@blacklanecapital.com";
 
 export function SiteFooter() {
   return (
@@ -38,7 +38,7 @@ export function SiteFooter() {
 
           <FooterNav />
 
-          <div className="md:col-span-3">
+          <div id="contact" className="md:col-span-3">
             <p className="eyebrow text-foreground-faint">Contact</p>
             <a
               href={`mailto:${EMAIL}`}
@@ -54,7 +54,7 @@ export function SiteFooter() {
 
       <div className="mt-8 overflow-hidden md:mt-12">
         <p className="shell translate-y-[0.1em] select-none whitespace-nowrap text-center font-display text-[clamp(2.5rem,18vw,16rem)] leading-[0.72] tracking-[-0.04em] text-foreground uppercase opacity-[0.06]">
-          Black Ink
+          Black Lane
         </p>
       </div>
     </footer>

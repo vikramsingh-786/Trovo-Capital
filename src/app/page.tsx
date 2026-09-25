@@ -1,5 +1,4 @@
 import { About } from "@/components/about";
-import { FinalCta } from "@/components/final-cta";
 import { FounderReviews } from "@/components/founder-reviews";
 import { Hero } from "@/components/hero";
 import { InvestmentPerspectives } from "@/components/investment-perspectives";
@@ -17,7 +16,6 @@ export default function Home() {
       <Team />
       <FounderReviews />
       <Press />
-      <FinalCta />
     </main>
   );
 }

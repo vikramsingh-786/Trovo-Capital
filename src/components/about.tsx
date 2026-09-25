@@ -15,7 +15,7 @@ export function About() {
           data-reveal="left"
           className="lg:col-span-7 lg:col-start-1 lg:row-start-1"
         >
-          <p className="eyebrow text-[1rem]! text-accent">About Black Ink Capital</p>
+          <p className="eyebrow text-[1rem]! text-accent">About Black Lane Capital</p>
 
           <h2 className="mt-8 text-display-lg">
             <span className="block">An investor’s capital, </span>
@@ -49,7 +49,7 @@ export function About() {
           className="mt-10 md:mt-12 lg:col-span-7 lg:col-start-1 lg:row-start-2"
         >
           <p className="max-w-measure text-lead text-foreground-secondary">
-            Black Ink Capital invests in emerging technology companies with
+            Black Lane Capital invests in emerging technology companies with
             the potential to shape large, evolving markets
           </p>
           <p className="mt-7 max-w-measure text-base text-foreground-muted md:mt-8">

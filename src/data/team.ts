@@ -21,7 +21,6 @@ export const teamMembers: readonly TeamMember[] = [
   {
     name: "Balaji Srihari",
     role: "Advisor",
-    image: { src: "/team/balaji.webp", width: 559, height: 527 },
     link: "https://www.linkedin.com/in/balajisrihari/",
   },
   {

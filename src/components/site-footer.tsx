@@ -53,7 +53,7 @@ export function SiteFooter() {
       </div>
 
       <div className="mt-8 overflow-hidden md:mt-12">
-        <p className="shell translate-y-[0.1em] select-none whitespace-nowrap text-center font-display text-[clamp(2.5rem,18vw,16rem)] leading-[0.72] tracking-[-0.04em] text-foreground uppercase opacity-[0.06]">
+        <p className="shell translate-y-[0.1em] select-none whitespace-nowrap text-center font-display text-[clamp(2.25rem,14.5vw,13.5rem)] leading-[0.72] tracking-[-0.04em] text-foreground uppercase opacity-[0.06]">
           BlackLane
         </p>
       </div>
